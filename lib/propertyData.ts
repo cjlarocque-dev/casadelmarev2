@@ -1,13 +1,16 @@
-// Casa Del Mare Property Data
+// Casa Del Mare Property Data - Updated from original site
 export const property = {
   name: 'Casa Del Mare',
-  tagline: 'Luxury Beachfront Vacation Rental in North Myrtle Beach',
-  description: 'Wake up to the soothing sound of ocean waves at Casa Del Mare, a stunning 5-bedroom beachfront property designed for the perfect family getaway. Located just steps from pristine sandy beaches, our home offers modern amenities, spacious accommodations, and unforgettable coastal memories.',
+  tagline: 'A Raised Beach House Getaway on Intercoastal Waters',
+  description: 'Casa Del Mare is your ultimate beach escape, perfectly positioned less than a 5-minute walk from the pristine sands of Cherry Grove Beach in North Myrtle Beach. This spacious 5-bedroom, 2-bathroom home comfortably sleeps 16 guests, making it ideal for large families and groups seeking a relaxing, quiet getaway. Designed with family fun in mind, the property features a game room for indoor entertainment, a soothing hot tub perfect for unwinding after beach days, and expansive outdoor living spaces including a large back deck with a gas grill for unforgettable meals with waterfront channel views. An outdoor seating area complete with TV allows you to enjoy entertainment with gentle breezes, while every corner of the home encourages connection and relaxation.',
   bedrooms: 5,
+  bathrooms: 2,
   maxGuests: 16,
-  bathrooms: 3,
-  squareFeet: 3500,
-  beachDistance: '5 minutes',
+  beachDistance: '< 5 min walk',
+  address: '325 52nd Ave North, North Myrtle Beach, SC 29582',
+  latitude: 33.8261,
+  longitude: -78.6711,
+  email: 'familybeachtripsusa@gmail.com',
   
   // OwnerRez Integration
   ownerrez: {
@@ -18,174 +21,213 @@ export const property = {
 
 export const amenities = [
   {
-    icon: '🏊',
-    title: 'Private Pool',
-    description: 'Heated pool with ocean views and comfortable lounging areas for guests of all ages.',
+    icon: '🛏️',
+    title: 'Sleeping',
+    description: '5 Bedrooms, 2 Bathrooms. Sleeps 16 guests comfortably.',
   },
   {
-    icon: '🍽️',
-    title: 'Chef\'s Kitchen',
-    description: 'Fully equipped kitchen with stainless steel appliances, perfect for preparing meals.',
+    icon: '🎮',
+    title: 'Entertainment',
+    description: 'Game room for indoor fun and family activities.',
+  },
+  {
+    icon: '🧖',
+    title: 'Relaxation',
+    description: 'Hot tub for unwinding and soaking under the stars.',
+  },
+  {
+    icon: '🏖️',
+    title: 'Beach Access',
+    description: 'Less than 5 minutes walk to Cherry Grove Beach in North Myrtle Beach.',
+  },
+  {
+    icon: '🍖',
+    title: 'Outdoor Dining',
+    description: 'Large back deck with gas grill for memorable meals overlooking the intercoastal channel.',
   },
   {
     icon: '📺',
-    title: 'Entertainment',
-    description: 'Smart TVs, streaming services, board games, and toys for all ages.',
+    title: 'Outdoor Living',
+    description: 'Outdoor seating area with TV and scenic water views.',
   },
   {
-    icon: '🛏️',
-    title: 'Comfortable Bedrooms',
-    description: 'Spacious bedrooms with premium linens and air conditioning throughout.',
+    icon: '🚤',
+    title: 'Water Access',
+    description: 'Direct access to intercoastal waterway with dock for boats and water activities.',
   },
   {
-    icon: '🌊',
-    title: 'Oceanfront Deck',
-    description: 'Large deck with stunning ocean views, perfect for sunsets and gatherings.',
-  },
-  {
-    icon: '🧺',
-    title: 'Laundry Facilities',
-    description: 'Full-size washer and dryer to keep your family comfortable during your stay.',
-  },
-  {
-    icon: '🅿️',
-    title: 'Ample Parking',
-    description: 'Multiple parking spaces available for your vehicles.',
-  },
-  {
-    icon: '📶',
-    title: 'High-Speed WiFi',
-    description: 'Fast, reliable internet connection throughout the property.',
+    icon: '✨',
+    title: 'Modern Amenities',
+    description: 'Fully equipped kitchen, laundry facilities, and high-speed WiFi throughout.',
   },
 ];
 
 export const hostStory = [
-  'Welcome to Casa Del Mare! We\'re a family passionate about creating unforgettable vacation experiences. Our home is more than just a rental property—it\'s a place where families come together, make memories, and experience the magic of the North Carolina coast.',
-  'With over 15 years of hospitality experience, we understand what families need for the perfect beach getaway. Every detail of Casa Del Mare has been thoughtfully designed with your comfort and enjoyment in mind.',
-  'Whether you\'re celebrating a special occasion, reconnecting with loved ones, or simply seeking a peaceful escape, our home provides the perfect setting. We take pride in maintaining our property to the highest standards.',
-  'Our goal is simple: to provide you with a welcoming, comfortable space where you can relax, play, and create lasting memories with those you love most.',
-  'We look forward to hosting your family at Casa Del Mare. Questions? Feel free to reach out—we\'re here to help make your stay absolutely perfect!',
+  'Welcome to Casa del Mare — "House by the Sea." Inspired by our Italian heritage and love for the ocean, our home reflects what matters most to us: family, connection, and time spent together.',
+  'We grew up surrounded by shared meals, laughter, and strong family values, and those traditions continue to shape who we are today. Family vacations have always been a special time for us to slow down, reconnect, and enjoy life\'s simple moments.',
+  'Casa del Mare is our way of sharing that experience — a place to relax, unwind, and create lasting memories in North Myrtle Beach.',
+  'While professionally managed by Vacasa for a seamless stay, the heart of this home comes from our family.',
+  'We\'re so glad you\'re here and hope your time at Casa del Mare is truly special.',
 ];
 
 export const gallery = [
-  { url: 'pictures/dock-canal.jpg', alt: 'Scenic dock view', category: 'Outdoor' },
-  { url: 'pictures/beach-front.jpg', alt: 'Beachfront property', category: 'Exterior' },
-  { url: 'pictures/pool-area.jpg', alt: 'Swimming pool', category: 'Amenities' },
-  { url: 'pictures/living-room.jpg', alt: 'Spacious living room', category: 'Interior' },
-  { url: 'pictures/kitchen.jpg', alt: 'Modern kitchen', category: 'Interior' },
-  { url: 'pictures/master-bedroom.jpg', alt: 'Master bedroom', category: 'Bedrooms' },
-  { url: 'pictures/guest-bedroom.jpg', alt: 'Guest bedroom', category: 'Bedrooms' },
-  { url: 'pictures/bathroom.jpg', alt: 'Luxury bathroom', category: 'Interior' },
-  { url: 'pictures/deck-view.jpg', alt: 'Ocean view from deck', category: 'Outdoor' },
-  { url: 'pictures/dining-area.jpg', alt: 'Dining area', category: 'Interior' },
-  { url: 'pictures/game-room.jpg', alt: 'Game room', category: 'Entertainment' },
-  { url: 'pictures/outdoor-seating.jpg', alt: 'Outdoor seating area', category: 'Outdoor' },
+  // Exterior & Aerial Views
+  { url: 'pictures/cdm-front.jpg', alt: 'Front of house', category: 'Exterior' },
+  { url: 'pictures/cdm-front-porch.jpg', alt: 'Front porch', category: 'Exterior' },
+  { url: 'pictures/DJI_20260327190330_0155_D.jpg', alt: 'Aerial view of property', category: 'Aerial' },
+  { url: 'pictures/DJI_20260327190335_0156_D.jpg', alt: 'Aerial property overview', category: 'Aerial' },
+  { url: 'pictures/DJI_20260327192303_0166_D.jpg', alt: 'Aerial waterfront view', category: 'Aerial' },
+  { url: 'pictures/DJI_20260327192428_0168_D.jpg', alt: 'Aerial property perspective', category: 'Aerial' },
+  
+  // Living Spaces
+  { url: 'pictures/cdm-living-room.jpg', alt: 'Living room', category: 'Interior' },
+  { url: 'pictures/cdm-living-room-2.jpg', alt: 'Living room view', category: 'Interior' },
+  { url: 'pictures/living roo.jpeg', alt: 'Living room seating', category: 'Interior' },
+  { url: 'pictures/cdm-kitchen.jpg', alt: 'Kitchen', category: 'Interior' },
+  { url: 'pictures/cdm-dining.jpg', alt: 'Dining area', category: 'Interior' },
+  { url: 'pictures/dining room table-landscape.JPG', alt: 'Dining room table', category: 'Interior' },
+  
+  // Bedrooms
+  { url: 'pictures/cdm-mbr.jpg', alt: 'Master bedroom', category: 'Bedrooms' },
+  { url: 'pictures/cdm-mbr-desk.jpg', alt: 'Master bedroom desk area', category: 'Bedrooms' },
+  { url: 'pictures/bedroom beige-landscape.JPG', alt: 'Beige bedroom', category: 'Bedrooms' },
+  { url: 'pictures/bedroom-sailboat-color-adjusted.jpg', alt: 'Sailboat themed bedroom', category: 'Bedrooms' },
+  { url: 'pictures/turtle-bedroom-color-adjusted.jpg', alt: 'Turtle themed bedroom', category: 'Bedrooms' },
+  { url: 'pictures/cdm-bunkroom.jpg', alt: 'Bunk room', category: 'Bedrooms' },
+  
+  // Game Room & Entertainment
+  { url: 'pictures/cdm-gameroom.jpg', alt: 'Game room', category: 'Entertainment' },
+  { url: 'pictures/games.jpeg', alt: 'Game room games', category: 'Entertainment' },
+  
+  // Outdoor Spaces
+  { url: 'pictures/cdm-deck.jpg', alt: 'Main deck', category: 'Outdoor' },
+  { url: 'pictures/deck-overhead.JPG', alt: 'Deck overhead view', category: 'Outdoor' },
+  { url: 'pictures/cdm-rear-1.jpeg', alt: 'Rear view', category: 'Outdoor' },
+  { url: 'pictures/cdm-rear-2.jpeg', alt: 'Rear exterior view', category: 'Outdoor' },
+  { url: 'pictures/cdm-rear-3.jpeg', alt: 'Rear property view', category: 'Outdoor' },
+  { url: 'pictures/full backyard.png', alt: 'Full backyard view', category: 'Outdoor' },
+  { url: 'pictures/hammock-color-adjusted.jpg', alt: 'Hammock relaxation', category: 'Outdoor' },
+  
+  // Waterfront & Dock
+  { url: 'pictures/dock-canal.jpg', alt: 'Dock with canal view', category: 'Waterfront' },
+  { url: 'pictures/dock-color-adjusted-landscape.jpg', alt: 'Dock landscape view', category: 'Waterfront' },
+  { url: 'pictures/cdm-cherry-point.JPG', alt: 'Cherry Point waterfront', category: 'Waterfront' },
+  { url: 'pictures/house-creek-color-adjusted-landscape.jpg', alt: 'House and creek view', category: 'Waterfront' },
+  { url: 'pictures/kayaks-color-adjusted.jpg', alt: 'Kayaks at dock', category: 'Waterfront' },
+  
+  // Hot Tub & Amenities
+  { url: 'pictures/hottub.jpg', alt: 'Hot tub', category: 'Amenities' },
+  
+  // Sunset & Scenic Views
+  { url: 'pictures/cdm-sunset.JPG', alt: 'Sunset view', category: 'Scenic' },
+  { url: 'pictures/cdm-sunsetpier.JPG', alt: 'Sunset at pier', category: 'Scenic' },
+  
+  // Additional Features
+  { url: 'pictures/living roomkitchen view-landscape.JPG', alt: 'Living room and kitchen view', category: 'Interior' },
+  { url: 'pictures/first picture.jpg', alt: 'Property feature', category: 'Exterior' },
+  { url: 'pictures/last pic.jpg', alt: 'Property view', category: 'Exterior' },
 ];
 
 export const restaurants = [
   {
-    name: 'Sea Level Restaurant',
-    description: 'Upscale waterfront dining with fresh seafood and craft cocktails.',
+    name: '21 Main Prime Steakhouse',
+    description: 'Seafood & dry-aged beef served in a gracious Southern setting within North Beach Plantation resort.',
   },
   {
-    name: 'Angelo\'s Italian Restaurant',
-    description: 'Authentic Italian cuisine with an extensive wine selection.',
+    name: 'Hamburger Joe\'s',
+    description: 'Down-to-earth outpost serving hamburgers & other classic diner fare with homemade sauces.',
   },
   {
-    name: 'Croissants Cafe & Bakery',
-    description: 'Charming French-inspired café perfect for breakfast and pastries.',
+    name: 'Sea Captain\'s House',
+    description: 'Oceanfront dining featuring fresh seafood and coastal cuisine with stunning ocean views.',
   },
   {
-    name: 'Catch Restaurant',
-    description: 'Contemporary American cuisine featuring local catch of the day.',
+    name: 'Verandas',
+    description: 'Fine dining offering innovative American cuisine and an extensive wine selection in an elegant atmosphere.',
   },
   {
-    name: 'North Beach Seafood',
-    description: 'Casual seafood spot with fresh fish and classic beach fare.',
+    name: 'Croissants Bisté & Café',
+    description: 'French-inspired bistro serving fresh seafood, steaks, and seasonal dishes with European flair.',
   },
   {
-    name: 'Blu Restaurant & Bar',
-    description: 'Oceanfront fine dining with panoramic beach views.',
+    name: 'Local On the Water',
+    description: 'Lively venue featuring seafood fare, burgers and cocktails, plus seating with waterway views.',
+  },
+  {
+    name: 'Boardwalk Billy\'s NMB',
+    description: 'Waterfront restaurant offering live music daily along with ribs, seafood, sushi & Happy Hour.',
+  },
+  {
+    name: 'Greg Norman\'s Australian Grille',
+    description: 'Clubby spot for steak & Australian plates (owned by the famed golfer) in a roomy, waterfront space.',
   },
 ];
 
 export const beachActivities = [
   {
-    name: 'Surfing & Paddleboarding',
-    description: 'Rent equipment and enjoy the Atlantic waves or calm bay waters.',
-  },
-  {
-    name: 'Swimming & Sunbathing',
-    description: 'Miles of pristine sandy beaches perfect for swimming and relaxing.',
-  },
-  {
-    name: 'Jet Skiing & Water Sports',
-    description: 'Thrilling water activities available through local rental companies.',
+    name: 'Kayaking & Paddleboarding',
+    description: 'Cherry Grove Kayaking offers guided tours and rentals through salt marshes and out to Waties Island with delivery to your location.',
   },
   {
     name: 'Fishing Charters',
-    description: 'Deep sea fishing trips and inlet fishing opportunities for all skill levels.',
+    description: 'North Myrtle Beach Fishing Charters offers inshore, nearshore, and deep-sea fishing with experienced local guides and 40+ years of expertise.',
   },
   {
-    name: 'Beach Volleyball',
-    description: 'Public volleyball courts and beach games for fun with friends and family.',
+    name: 'Jet Ski Rentals',
+    description: 'Action Water Sportz provides half-hour to 2-hour jet ski rentals on the Intracoastal Waterway with well-maintained equipment.',
   },
   {
-    name: 'Shelling & Beachcombing',
-    description: 'Collect beautiful shells and sea treasures along the shoreline.',
+    name: 'Beach Sports & Recreation',
+    description: 'North Beach Pier offers public areas for beach volleyball, horseshoes, and other recreational activities along the sandy shoreline.',
+  },
+  {
+    name: 'Dolphin & Whale Watching Tours',
+    description: 'Southern Shores Cruises provides catamaran dolphin tours with island exploration and educational marine experiences for all ages.',
   },
 ];
 
 export const attractions = [
   {
     name: 'Barefoot Landing',
-    description: 'Unique outdoor shopping and entertainment complex with restaurants and shops.',
+    description: 'Entertainment complex with shopping, dining, live music venues, and fun attractions on the waterfront.',
+  },
+  {
+    name: 'North Beach Pier & Boardwalk',
+    description: 'Scenic oceanfront pier perfect for fishing, walking, and enjoying stunning views of the Atlantic Ocean.',
+  },
+  {
+    name: 'Alligator Farm Zoo',
+    description: 'Educational wildlife facility featuring alligators, exotic animals, and interactive experiences for all ages.',
+  },
+  {
+    name: 'The Market Common',
+    description: 'Outdoor shopping and dining destination with boutique stores, restaurants, and entertainment venues.',
   },
   {
     name: 'Huntington Beach State Park',
-    description: 'Beautiful state park with nature trails, boardwalk, and scenic views.',
-  },
-  {
-    name: 'Myrtle Beach Boardwalk',
-    description: 'Classic oceanfront boardwalk with shops, restaurants, and entertainment.',
-  },
-  {
-    name: 'Family Golf Centers',
-    description: 'Mini golf, go-karts, and arcade games for family entertainment.',
-  },
-  {
-    name: 'Alligator Farm',
-    description: 'Educational wildlife facility showcasing alligators and native species.',
-  },
-  {
-    name: 'Myrtle Beach Aquarium',
-    description: 'Interactive aquarium with touch tanks and ocean animal exhibits.',
+    description: 'Beautiful state park with pristine beaches, nature trails, and picnic areas for outdoor recreation.',
   },
 ];
 
 export const natureWildlife = [
   {
-    name: 'Kayaking Through Salt Marshes',
-    description: 'Paddle through scenic marshlands and spot dolphins and birds.',
+    name: 'Huntington Beach State Park Trails',
+    description: 'Scenic nature trails through pristine coastal ecosystems perfect for bird watching and wildlife observation.',
   },
   {
-    name: 'Birding Opportunities',
-    description: 'Watch for native bird species including herons, egrets, and shorebirds.',
+    name: 'Osprey & Shorebird Watching',
+    description: 'Prime locations along the coast for spotting osprey, herons, egrets, and other migratory birds year-round.',
   },
   {
-    name: 'Dolphin Watching Tours',
-    description: 'Boat tours to spot Atlantic dolphins in their natural habitat.',
+    name: 'Salt Marsh Kayaking Tours',
+    description: 'Paddling through pristine salt marshes to observe fiddler crabs, fish, and native wetland vegetation.',
   },
   {
-    name: 'Turtle Watch Program',
-    description: 'Learn about sea turtles during nesting season with guided programs.',
+    name: 'North Inlet-Winyah Bay Reserve',
+    description: 'Protected estuarine reserve offering opportunities to explore marine habitats and observe diverse wildlife.',
   },
   {
-    name: 'Nature Preserve Trails',
-    description: 'Peaceful walking trails through native coastal vegetation and wildlife habitats.',
-  },
-  {
-    name: 'Wildlife Photography',
-    description: 'Capture beautiful moments with local wildlife and coastal scenery.',
+    name: 'Dolphin & Marine Life Sightings',
+    description: 'Natural dolphin encounters throughout the intracoastal waterways and ocean, often visible from docks and piers.',
   },
 ];
