@@ -351,7 +351,7 @@ export default function Home() {
             <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-bold text-lg transition transform hover:scale-105">
               Book Now
             </button>
-            <a href="#about" className="bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-8 py-3 rounded-lg font-bold text-lg border-2 border-white transition">
+            <a href="#about" className="bg-white/20 hover:bg-white/30 text-white px-8 py-3 rounded-lg font-bold text-lg border-2 border-white transition">
               Learn More
             </a>
           </div>

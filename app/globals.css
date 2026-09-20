@@ -175,5 +175,5 @@ html {
 }
 
 .btn-secondary {
-  @apply px-8 py-3 bg-white bg-opacity-20 text-white font-bold rounded-lg border-2 border-white shadow-lg hover:bg-opacity-30 transition transform hover:scale-105 active:scale-95;
+  @apply px-8 py-3 bg-white/20 text-white font-bold rounded-lg border-2 border-white shadow-lg hover:bg-white/30 transition transform hover:scale-105 active:scale-95;
 }
