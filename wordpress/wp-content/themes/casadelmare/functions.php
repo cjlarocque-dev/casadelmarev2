@@ -115,6 +115,11 @@ add_filter( 'body_class', 'casadelmare_body_classes' );
 require_once CASADELMARE_DIR . '/inc/customizer.php';
 
 /**
+ * Load property data
+ */
+require_once CASADELMARE_DIR . '/inc/property-data.php';
+
+/**
  * Add Gutenberg editor support
  */
 function casadelmare_block_editor_styles() {
