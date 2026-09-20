@@ -88,6 +88,14 @@ function casadelmare_custom_logo() {
 add_action( 'after_setup_theme', 'casadelmare_custom_logo' );
 
 /**
+ * Add Elementor support
+ */
+function casadelmare_elementor_support() {
+    add_theme_support( 'elementor' );
+}
+add_action( 'after_setup_theme', 'casadelmare_elementor_support' );
+
+/**
  * Filter: Add body classes
  */
 function casadelmare_body_classes( $classes ) {
@@ -100,6 +108,11 @@ function casadelmare_body_classes( $classes ) {
     return $classes;
 }
 add_filter( 'body_class', 'casadelmare_body_classes' );
+
+/**
+ * Load theme customizer
+ */
+require_once CASADELMARE_DIR . '/inc/customizer.php';
 
 /**
  * Add Gutenberg editor support

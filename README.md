@@ -166,6 +166,7 @@ The old static HTML site is at `c:\repos\casadelmare`. To migrate content:
 Install via WordPress admin → **Plugins → Add New**:
 
 ### Essential:
+- **Elementor** - Visual page builder (drag & drop) - **RECOMMENDED**
 - **Yoast SEO** - SEO optimization & sitemap
 - **WP Smush** - Image optimization
 - **Wordfence Security** - Security hardening
@@ -173,9 +174,9 @@ Install via WordPress admin → **Plugins → Add New**:
 - **All-in-One WP Migration** - Site migration tool
 
 ### Optional:
-- **Elementor** or **Divi** - Page builder
+- **WPForms Lite** - Contact forms (integrates with Elementor)
+- **Elementor Pro** - Advanced features (premium, optional)
 - **WooCommerce** - If adding e-commerce
-- **Caldera Forms** - Advanced contact forms
 - **Booking Calendar** - If managing direct reservations
 
 ## Environment Configuration
