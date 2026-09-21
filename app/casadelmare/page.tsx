@@ -43,7 +43,7 @@ export default function Home() {
             <li><a href="#about" className="hover:text-amber-200 transition duration-300 font-medium">About</a></li>
             <li><a href="#amenities" className="hover:text-amber-200 transition duration-300 font-medium">Amenities</a></li>
             <li><a href="#gallery" className="hover:text-amber-200 transition duration-300 font-medium">Gallery</a></li>
-            <li><a href="#booking" className="hover:text-amber-200 transition duration-300 font-medium">Book</a></li>
+            <li><a href="/casadelmare/book-now" className="hover:text-amber-200 transition duration-300 font-medium">Book Now</a></li>
           </ul>
         </nav>
       </header>
@@ -74,7 +74,7 @@ export default function Home() {
               {property.tagline}
             </p>
             <div className="flex gap-6 justify-center flex-wrap">
-              <a href="#booking" className="btn-primary text-lg">
+              <a href="/casadelmare/book-now" className="btn-primary text-lg">
                 Book Now
               </a>
               <a href="#about" className="btn-secondary text-lg">
@@ -192,7 +192,7 @@ export default function Home() {
           />
           
           <div className="text-center">
-            <a href="#booking" className="btn-primary text-lg inline-block">
+            <a href="/casadelmare/book-now" className="btn-primary text-lg inline-block">
               Book Your Stay
             </a>
           </div>
@@ -499,7 +499,7 @@ export default function Home() {
           </div>
           
           <div className="flex gap-6 justify-center flex-wrap animate-fade-in-up">
-            <a href="#booking" className="btn-primary text-lg shadow-2xl inline-block">
+            <a href="/casadelmare/book-now" className="btn-primary text-lg shadow-2xl inline-block">
               Book Now
             </a>
           </div>
