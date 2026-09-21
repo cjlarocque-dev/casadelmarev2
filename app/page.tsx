@@ -1,6 +1,5 @@
 'use client';
 
-import Script from 'next/script';
 import { useEffect, useState } from 'react';
 import { property, amenities, hostStory, gallery, restaurants, beachActivities, attractions, natureWildlife } from '@/lib/propertyData';
 
@@ -11,6 +10,25 @@ export default function Home() {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Load OwnerRez widget after component mounts
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://app.ownerrez.com/widget.js';
+    script.async = true;
+    script.onload = () => {
+      if ((window as any).OwnerRezWidgets) {
+        (window as any).OwnerRezWidgets.loadWidgets();
+      }
+    };
+    document.body.appendChild(script);
+    
+    return () => {
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
+    };
   }, []);
 
   return (
@@ -282,11 +300,6 @@ export default function Home() {
           {/* OwnerRez Calendar Widget */}
           <div className="mb-12 bg-white rounded-2xl shadow-2xl overflow-hidden p-6">
             <div className="ownerrez-widget" data-propertyId="934d8c678417484ea626901fabf33f9a" data-widget-type="calendar - Single Month Calendar" data-widgetId="7e3b809403d14958a4be387802aabe0f"></div>
-            <Script src="https://app.ownerrez.com/widget.js" strategy="lazyOnload" onLoad={() => {
-              if (typeof window !== 'undefined' && (window as any).OwnerRezWidgets) {
-                (window as any).OwnerRezWidgets.loadWidgets();
-              }
-            }} />
           </div>
           
           <div className="flex gap-6 justify-center flex-wrap animate-fade-in-up">
