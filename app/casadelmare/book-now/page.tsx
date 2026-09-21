@@ -58,7 +58,7 @@ export default function BookNowPage() {
             <div className="text-center">
               <div className="text-4xl mb-4">🏠</div>
               <h3 className="text-xl font-bold text-gray-800 mb-2">5 Bedrooms</h3>
-              <p className="text-gray-600">Sleeps up to 16 guests comfortably</p>
+              <p className="text-gray-600">Sleeps up to 14 guests comfortably</p>
             </div>
             <div className="text-center">
               <div className="text-4xl mb-4">🌊</div>

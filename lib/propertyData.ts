@@ -2,7 +2,7 @@
 export const property = {
   name: 'Casa Del Mare',
   tagline: 'A Raised Beach House Getaway on Intercoastal Waters',
-  description: 'Casa Del Mare is your ultimate beach escape, perfectly positioned less than a 5-minute walk from the pristine sands of Cherry Grove Beach in North Myrtle Beach. This spacious 5-bedroom, 2-bathroom home comfortably sleeps 16 guests, making it ideal for large families and groups seeking a relaxing, quiet getaway. Designed with family fun in mind, the property features a game room for indoor entertainment, a soothing hot tub perfect for unwinding after beach days, and expansive outdoor living spaces including a large back deck with a gas grill for unforgettable meals with waterfront channel views. An outdoor seating area complete with TV allows you to enjoy entertainment with gentle breezes, while every corner of the home encourages connection and relaxation.',
+  description: 'Casa Del Mare is your ultimate beach escape, perfectly positioned less than a 5-minute walk from the pristine sands of Cherry Grove Beach in North Myrtle Beach. This spacious 5-bedroom, 2-bathroom home comfortably sleeps 14 guests, making it ideal for large families and groups seeking a relaxing, quiet getaway. Designed with family fun in mind, the property features a game room for indoor entertainment, a soothing hot tub perfect for unwinding after beach days, and expansive outdoor living spaces including a large back deck with a gas grill for unforgettable meals with waterfront channel views. An outdoor seating area complete with TV allows you to enjoy entertainment with gentle breezes, while every corner of the home encourages connection and relaxation.',
   bedrooms: 5,
   bathrooms: 2,
   maxGuests: 16,
@@ -23,7 +23,7 @@ export const amenities = [
   {
     icon: '🛏️',
     title: 'Sleeping',
-    description: '5 Bedrooms, 2 Bathrooms. Sleeps 16 guests comfortably.',
+    description: '5 Bedrooms, 2 Bathrooms. Sleeps 14 guests comfortably.',
   },
   {
     icon: '🎮',
