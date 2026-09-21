@@ -72,10 +72,10 @@ export default function Home() {
               {property.tagline}
             </p>
             <div className="flex gap-6 justify-center flex-wrap">
-              <a href={property.ownerrez.bookingUrl} className="btn-primary text-lg">
+              <a href="#booking" className="btn-primary text-lg">
                 Book Now
               </a>
-              <a href="#booking" className="btn-secondary text-lg">
+              <a href="#about" className="btn-secondary text-lg">
                 Explore
               </a>
             </div>
@@ -188,7 +188,7 @@ export default function Home() {
           </div>
           
           <div className="text-center">
-            <a href={property.ownerrez.bookingUrl} className="btn-primary text-lg inline-block">
+            <a href="#booking" className="btn-primary text-lg inline-block">
               Book Your Stay
             </a>
           </div>
@@ -294,27 +294,17 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
           <h2 className="text-7xl font-bold text-white mb-6 animate-fade-in-down drop-shadow-lg">Ready to Visit?</h2>
           <p className="text-2xl mb-12 text-white/95 leading-relaxed animate-fade-in-up font-light max-w-2xl mx-auto">
-            Experience paradise at Casa Del Mare. Check availability and reserve your perfect beach getaway today.
+            Experience paradise at Casa Del Mare. Send us a booking inquiry today!
           </p>
-          
-          {/* OwnerRez Calendar Widget */}
-          <div className="mb-12 bg-white rounded-2xl shadow-2xl overflow-hidden p-6">
-            <h3 className="text-2xl font-bold text-blue-600 mb-4">Check Availability</h3>
-            <div className="ownerrez-widget" data-propertyId="934d8c678417484ea626901fabf33f9a" data-widget-type="calendar - Single Month Calendar" data-widgetId="7e3b809403d14958a4be387802aabe0f"></div>
-          </div>
           
           {/* OwnerRez Booking/Inquiry Widget */}
           <div className="mb-12 bg-white rounded-2xl shadow-2xl overflow-hidden p-6">
-            <h3 className="text-2xl font-bold text-blue-600 mb-4">Send a Booking Inquiry</h3>
             <div className="ownerrez-widget" data-propertyId="934d8c678417484ea626901fabf33f9a" data-widget-type="Booking/Inquiry" data-widgetId="c6ca2a8f9c92439b9b5b040d41cd25df"></div>
           </div>
           
           <div className="flex gap-6 justify-center flex-wrap animate-fade-in-up">
-            <a href={property.ownerrez.bookingUrl} className="btn-primary text-lg shadow-2xl inline-block">
+            <a href="#booking" className="btn-primary text-lg shadow-2xl inline-block">
               Book Now
-            </a>
-            <a href={property.ownerrez.bookingUrl} className="btn-secondary text-lg shadow-2xl inline-block">
-              Check Availability
             </a>
           </div>
         </div>
