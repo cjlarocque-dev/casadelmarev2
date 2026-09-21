@@ -157,10 +157,6 @@ export const restaurants = [
     name: 'Boardwalk Billy\'s NMB',
     description: 'Waterfront restaurant offering live music daily along with ribs, seafood, sushi & Happy Hour.',
   },
-  {
-    name: 'Greg Norman\'s Australian Grille',
-    description: 'Clubby spot for steak & Australian plates (owned by the famed golfer) in a roomy, waterfront space.',
-  },
 ];
 
 export const beachActivities = [
