@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { property, amenities, hostStory, gallery, restaurants, beachActivities, attractions, natureWildlife } from '@/lib/propertyData';
-import KitchenSection from '@/app/components/KitchenSection';
+import RoomSection from '@/app/components/RoomSection';
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
@@ -197,7 +197,23 @@ export default function Home() {
       </section>
 
       {/* Kitchen Section */}
-      <KitchenSection scrollY={scrollY} />
+      <RoomSection
+        scrollY={scrollY}
+        roomId="kitchen"
+        title="The Kitchen"
+        description="Fully equipped chef's kitchen with stainless steel appliances, granite countertops, and an open floor plan that connects to the dining and living areas—truly the heart of the home."
+        features={[
+          'Stainless steel appliances',
+          'Granite countertops',
+          'Full-size refrigerator',
+          'Double ovens',
+          'Dishwasher included',
+          'Breakfast bar seating',
+        ]}
+        imageFolder="kitchen"
+        bgColor="from-amber-50 to-orange-50"
+        accentColor="text-amber-700"
+      />
 
       {/* Host Story Section */}
       <section className="py-32 bg-white relative overflow-hidden">
