@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { property, amenities, hostStory, gallery, restaurants, beachActivities, attractions, natureWildlife } from '@/lib/propertyData';
-import RoomSection from '@/app/components/RoomSection';
 import BedroomsSection from '@/app/components/BedroomsSection';
 import ImageGallery from '@/app/components/ImageGallery';
 
@@ -201,21 +200,48 @@ export default function Home() {
       </section>
 
       {/* Kitchen Section */}
-      <RoomSection
-        scrollY={scrollY}
-        roomId="kitchen"
+      <BedroomsSection
         title="The Kitchen"
         description="Fully equipped chef's kitchen with stainless steel appliances, granite countertops, and an open floor plan that connects to the dining and living areas—truly the heart of the home."
-        features={[
-          'Stainless steel appliances',
-          'Granite countertops',
-          'Full-size refrigerator',
-          'Double ovens',
-          'Dishwasher included',
-          'Breakfast bar seating',
+        rooms={[
+          {
+            icon: '🍽️',
+            title: 'Stainless Steel Appliances',
+            description: 'Modern, high-end cooking equipment',
+          },
+          {
+            icon: '🪨',
+            title: 'Granite Countertops',
+            description: 'Durable and elegant work surfaces',
+          },
+          {
+            icon: '❄️',
+            title: 'Full-Size Refrigerator',
+            description: 'Plenty of storage for groceries',
+          },
+          {
+            icon: '🔥',
+            title: 'Double Ovens',
+            description: 'Perfect for meal preparation',
+          },
+          {
+            icon: '🍴',
+            title: 'Dishwasher',
+            description: 'Convenient cleanup after meals',
+          },
+          {
+            icon: '☕',
+            title: 'Breakfast Bar',
+            description: 'Casual seating with great views',
+          },
         ]}
         imagePaths={[
           '/pictures/kitchen/01-kitchen.jpg',
+          '/pictures/indoor/dining/01-dining.jpg',
+          '/pictures/indoor/dining/02-dining-table.jpg',
+          '/pictures/indoor/living-room/04-kitchen-view.jpg',
+          '/pictures/general/08-front-exterior.jpg',
+          '/pictures/general/09-front-porch.jpg',
         ]}
         bgColor="from-amber-50 to-orange-50"
         accentColor="text-amber-700"
