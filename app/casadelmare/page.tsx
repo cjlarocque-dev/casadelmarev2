@@ -52,7 +52,7 @@ export default function Home() {
       <section 
         className="relative min-h-screen pt-20 bg-cover bg-center flex items-center justify-center overflow-hidden"
         style={{
-          backgroundImage: 'url(/pictures/dock-canal.jpg)',
+          backgroundImage: 'url(/pictures/outdoor/dock/01-dock-canal.jpg)',
           backgroundAttachment: 'fixed',
           backgroundSize: 'cover',
         }}
