@@ -9,7 +9,7 @@ interface RoomSectionProps {
   title: string;
   description: string;
   features: string[];
-  imageFolder: string;
+  imagePaths: string[];
   bgColor?: string;
   accentColor?: string;
 }
@@ -20,30 +20,12 @@ export default function RoomSection({
   title,
   description,
   features,
-  imageFolder,
+  imagePaths,
   bgColor = 'from-amber-50 to-orange-50',
   accentColor = 'text-amber-700',
 }: RoomSectionProps) {
-  const [images, setImages] = useState<string[]>([]);
   const sectionRef = useRef<HTMLElement>(null);
   const [sectionTop, setSectionTop] = useState(0);
-
-  // Dynamically import images from the specified folder
-  useEffect(() => {
-    const loadImages = async () => {
-      try {
-        const importedImages = import.meta.glob('/public/pictures/**/*.jpg', { eager: true });
-        const imageArray = Object.keys(importedImages)
-          .filter(path => path.includes(`/${imageFolder}/`))
-          .sort()
-          .map(path => path.replace('/public', ''));
-        setImages(imageArray);
-      } catch (error) {
-        console.error('Error loading images:', error);
-      }
-    };
-    loadImages();
-  }, [imageFolder]);
 
   // Calculate section position for scroll effects
   useEffect(() => {
@@ -60,7 +42,7 @@ export default function RoomSection({
   // Calculate scroll progress for this section (0 to 1)
   const scrollProgress = Math.max(0, Math.min(1, (scrollY - sectionTop + 300) / 500));
 
-  if (images.length === 0) return null;
+  if (imagePaths.length === 0) return null;
 
   return (
     <section
@@ -73,10 +55,10 @@ export default function RoomSection({
         <div className="grid md:grid-cols-2 gap-12 items-start">
           {/* LEFT: Large Anchor Image */}
           <div className="flex flex-col gap-8">
-            {images[0] && (
+            {imagePaths[0] && (
               <div className="relative h-96 md:h-[600px] rounded-3xl overflow-hidden shadow-2xl">
                 <Image
-                  src={images[0]}
+                  src={imagePaths[0]}
                   alt={title}
                   fill
                   className="object-cover hover:scale-105 transition-transform duration-500"
@@ -107,7 +89,7 @@ export default function RoomSection({
             {/* Floating Images Container */}
             <div className="relative h-96 mt-12">
               {/* Image 2 - floats from right */}
-              {images[1] && (
+              {imagePaths[1] && (
                 <div
                   className="absolute top-0 right-0 w-56 h-72 md:w-64 md:h-80 rounded-2xl overflow-hidden shadow-xl"
                   style={{
@@ -117,7 +99,7 @@ export default function RoomSection({
                   }}
                 >
                   <Image
-                    src={images[1]}
+                    src={imagePaths[1]}
                     alt={`${title} detail 1`}
                     fill
                     className="object-cover hover:scale-110 transition-transform duration-300"
@@ -126,7 +108,7 @@ export default function RoomSection({
               )}
 
               {/* Image 3 - floats from right, delayed */}
-              {images[2] && (
+              {imagePaths[2] && (
                 <div
                   className="absolute top-32 right-20 w-48 h-64 md:w-56 md:h-72 rounded-2xl overflow-hidden shadow-xl"
                   style={{
@@ -136,7 +118,7 @@ export default function RoomSection({
                   }}
                 >
                   <Image
-                    src={images[2]}
+                    src={imagePaths[2]}
                     alt={`${title} detail 2`}
                     fill
                     className="object-cover hover:scale-110 transition-transform duration-300"

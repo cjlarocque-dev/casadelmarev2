@@ -210,7 +210,9 @@ export default function Home() {
           'Dishwasher included',
           'Breakfast bar seating',
         ]}
-        imageFolder="kitchen"
+        imagePaths={[
+          '/pictures/kitchen/01-kitchen.jpg',
+        ]}
         bgColor="from-amber-50 to-orange-50"
         accentColor="text-amber-700"
       />
