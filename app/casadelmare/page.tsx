@@ -171,7 +171,25 @@ export default function Home() {
             <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-cyan-400 mx-auto mt-6 rounded-full"></div>
           </div>
           
-          <ImageGallery images={gallery} />
+          <ImageGallery 
+            images={[
+              { url: '/pictures/general/01-aerial-1.jpg', alt: 'Aerial view', category: 'Aerial' },
+              { url: '/pictures/general/02-aerial-2.jpg', alt: 'Aerial view', category: 'Aerial' },
+              { url: '/pictures/general/03-aerial-3.jpg', alt: 'Aerial view', category: 'Aerial' },
+              { url: '/pictures/general/04-aerial-4.jpg', alt: 'Aerial view', category: 'Aerial' },
+              { url: '/pictures/general/05-sunset.jpg', alt: 'Sunset', category: 'Sunset' },
+              { url: '/pictures/general/06-sunset-pier.jpg', alt: 'Sunset at pier', category: 'Sunset' },
+              { url: '/pictures/general/07-cherry-point.jpg', alt: 'Cherry Point view', category: 'View' },
+              { url: '/pictures/general/08-front-exterior.jpg', alt: 'Front exterior', category: 'Exterior' },
+              { url: '/pictures/general/09-front-porch.jpg', alt: 'Front porch', category: 'Exterior' },
+              { url: '/pictures/general/10-rear-1.jpg', alt: 'Rear view', category: 'Exterior' },
+              { url: '/pictures/general/11-rear-2.jpg', alt: 'Rear view', category: 'Exterior' },
+              { url: '/pictures/general/12-rear-3.jpg', alt: 'Rear view', category: 'Exterior' },
+              { url: '/pictures/general/13-creek-view.jpg', alt: 'Creek view', category: 'View' },
+              { url: '/pictures/general/14-misc.jpg', alt: 'Property view', category: 'Property' },
+              { url: '/pictures/general/15-misc-2.jpg', alt: 'Property view', category: 'Property' },
+            ]} 
+          />
           
           <div className="text-center">
             <a href="#booking" className="btn-primary text-lg inline-block">
