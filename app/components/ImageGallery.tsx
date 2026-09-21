@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import lightGallery from 'lightgallery';
 import lgThumbnail from 'lightgallery/plugins/thumbnail';
 import lgZoom from 'lightgallery/plugins/zoom';
@@ -20,6 +20,7 @@ interface ImageGalleryProps {
 
 export default function ImageGallery({ images }: ImageGalleryProps) {
   const galleryRef = useRef<HTMLDivElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     if (galleryRef.current && images.length > 0) {
@@ -33,7 +34,10 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
           download: false,
           rotate: false,
         },
-      });
+        onSlideItemLoad: (detail: any) => {
+          setCurrentIndex(detail.index);
+        },
+      } as any);
 
       return () => {
         lg.destroy();
@@ -41,29 +45,66 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
     }
   }, [images]);
 
+  const handleThumbnailClick = (index: number) => {
+    if (galleryRef.current) {
+      const link = galleryRef.current.querySelector(
+        `a[data-index="${index}"]`
+      ) as HTMLAnchorElement;
+      if (link) link.click();
+    }
+  };
+
   return (
-    <div
-      ref={galleryRef}
-      className="mb-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
-    >
-      {images.map((photo, index) => (
-        <a
-          key={index}
-          href={`/pictures/${photo.url.replace('pictures/', '')}`}
-          data-lg-size="1280-720"
-          className="relative h-64 md:h-80 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow cursor-pointer group"
-          data-alt={photo.alt}
-        >
-          <img
-            src={`/pictures/${photo.url.replace('pictures/', '')}`}
-            alt={photo.alt}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
-            <span className="text-white font-bold text-sm">{photo.category}</span>
-          </div>
-        </a>
-      ))}
+    <div className="mb-12">
+      {/* Main Carousel Display */}
+      <div
+        ref={galleryRef}
+        className="flex flex-col gap-6"
+      >
+        {images.map((photo, index) => (
+          <a
+            key={index}
+            href={`/pictures/${photo.url.replace('pictures/', '')}`}
+            data-lg-size="1280-720"
+            data-index={index}
+            className={index === 0 ? 'block' : 'hidden'}
+          >
+            <img
+              src={`/pictures/${photo.url.replace('pictures/', '')}`}
+              alt={photo.alt}
+              className="w-full h-auto rounded-lg shadow-lg"
+            />
+          </a>
+        ))}
+      </div>
+
+      {/* Carousel Thumbnails */}
+      <div className="mt-6 flex gap-2 overflow-x-auto pb-2">
+        {images.map((photo, index) => (
+          <button
+            key={index}
+            onClick={() => handleThumbnailClick(index)}
+            className={`flex-shrink-0 h-20 w-24 rounded-lg overflow-hidden border-2 transition-all ${
+              index === currentIndex
+                ? 'border-blue-500 opacity-100 scale-105'
+                : 'border-gray-300 opacity-60 hover:opacity-100'
+            }`}
+          >
+            <img
+              src={`/pictures/${photo.url.replace('pictures/', '')}`}
+              alt={photo.alt}
+              className="w-full h-full object-cover"
+            />
+          </button>
+        ))}
+      </div>
+
+      {/* Image Counter */}
+      <div className="mt-4 text-center text-gray-600">
+        <p className="text-sm">
+          {currentIndex + 1} / {images.length}
+        </p>
+      </div>
     </div>
   );
 }
