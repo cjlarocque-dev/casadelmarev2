@@ -269,6 +269,102 @@ export default function Home() {
         accentColor="text-green-700"
       />
 
+      {/* Outdoor Spaces Section */}
+      <BedroomsSection
+        title="Outdoor Living"
+        description="Experience the best of coastal living with expansive outdoor spaces. From the spacious deck perfect for morning coffee to the relaxing hot tub, dock access for water activities, and beautiful landscaped backyard—there's something for everyone. Enjoy stunning water views and fresh ocean breezes in this outdoor paradise."
+        rooms={[
+          {
+            icon: '🏡',
+            title: 'Deck',
+            description: 'Expansive deck with seating and water views',
+          },
+          {
+            icon: '🌊',
+            title: 'Dock',
+            description: 'Direct water access for kayaking and boating',
+          },
+          {
+            icon: '♨️',
+            title: 'Hot Tub',
+            description: 'Relaxing hot tub overlooking the water',
+          },
+          {
+            icon: '🌳',
+            title: 'Backyard',
+            description: 'Landscaped grounds with hammock and seating',
+          },
+          {
+            icon: '🚣',
+            title: 'Water Activities',
+            description: 'Perfect for kayaking, paddleboarding, and fishing',
+          },
+          {
+            icon: '🌅',
+            title: 'Sunset Views',
+            description: 'Stunning sunset vistas from multiple areas',
+          },
+        ]}
+        imagePaths={[
+          '/pictures/outdoor/deck/01-deck.jpg',
+          '/pictures/outdoor/dock/01-dock-canal.jpg',
+          '/pictures/outdoor/hottub/01-hottub.jpg',
+          '/pictures/outdoor/backyard/01-backyard.jpg',
+          '/pictures/outdoor/backyard/02-hammock.jpg',
+          '/pictures/general/05-sunset.jpg',
+        ]}
+        bgColor="from-cyan-50 to-blue-50"
+        accentColor="text-cyan-700"
+      />
+
+      {/* Living & Game Room Section */}
+      <BedroomsSection
+        title="Living & Recreation"
+        description="The heart of Casa Del Mare features elegant living spaces designed for relaxation and entertainment. From the spacious living room with premium seating to the well-appointed dining area for family meals, and the fun game room for recreation—there's plenty of space for everyone to enjoy quality time together."
+        rooms={[
+          {
+            icon: '🛋️',
+            title: 'Living Room',
+            description: 'Spacious living area with comfortable seating and entertainment',
+          },
+          {
+            icon: '🍽️',
+            title: 'Dining Room',
+            description: 'Elegant dining area with seating for the whole family',
+          },
+          {
+            icon: '🎮',
+            title: 'Game Room',
+            description: 'Fun activities and games for family entertainment',
+          },
+          {
+            icon: '📺',
+            title: 'TV & Entertainment',
+            description: 'Multiple entertainment systems throughout the home',
+          },
+          {
+            icon: '☕',
+            title: 'Open Floor Plan',
+            description: 'Flowing spaces perfect for gathering and relaxing',
+          },
+          {
+            icon: '✨',
+            title: 'Modern Amenities',
+            description: 'All the comforts of home with premium finishes',
+          },
+        ]}
+        imagePaths={[
+          '/pictures/indoor/living-room/01-living-room.jpg',
+          '/pictures/indoor/dining/01-dining.jpg',
+          '/pictures/indoor/game-room/01-gameroom.jpg',
+          '/pictures/indoor/living-room/02-living-room-alt.jpg',
+          '/pictures/indoor/dining/02-dining-table.jpg',
+          '/pictures/indoor/game-room/02-games.jpg',
+        ]}
+        bgColor="from-orange-50 to-amber-50"
+        accentColor="text-orange-700"
+      />
+
       {/* Host Story Section */}
       <section className="py-32 bg-white relative overflow-hidden">
         <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-96 bg-gradient-to-t from-blue-100 to-transparent blur-3xl opacity-30"></div>
