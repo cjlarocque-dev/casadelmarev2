@@ -1,0 +1,7 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  
+  # Redirect root to /casadelmare
+  RewriteCond %{REQUEST_URI} ^/$
+  RewriteRule ^(.*)$ /casadelmare [L,R=301]
+</IfModule>
