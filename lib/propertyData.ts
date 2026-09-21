@@ -5,7 +5,7 @@ export const property = {
   description: 'Casa Del Mare is your ultimate beach escape, perfectly positioned less than a 5-minute walk from the pristine sands of Cherry Grove Beach in North Myrtle Beach. This spacious 5-bedroom, 2-bathroom home comfortably sleeps 14 guests, making it ideal for large families and groups seeking a relaxing, quiet getaway. Designed with family fun in mind, the property features a game room for indoor entertainment, a soothing hot tub perfect for unwinding after beach days, and expansive outdoor living spaces including a large back deck with a gas grill for unforgettable meals with waterfront channel views. An outdoor seating area complete with TV allows you to enjoy entertainment with gentle breezes, while every corner of the home encourages connection and relaxation.',
   bedrooms: 5,
   bathrooms: 2,
-  maxGuests: 16,
+  maxGuests: 14,
   beachDistance: '< 5 min walk',
   address: '325 52nd Ave North, North Myrtle Beach, SC 29582',
   latitude: 33.8261,
