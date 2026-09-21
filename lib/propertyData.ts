@@ -14,8 +14,8 @@ export const property = {
   
   // OwnerRez Integration
   ownerrez: {
-    propertyId: '', // To be configured
-    bookingUrl: '', // To be configured
+    propertyId: '934d8c678417484ea626901fabf33f9a',
+    bookingUrl: 'https://app.ownerrez.com/widgets/7e3b809403d14958a4be387802aabe0f?view=form&propertyKey=934d8c678417484ea626901fabf33f9a',
   },
 };
 

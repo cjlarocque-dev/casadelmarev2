@@ -53,10 +53,10 @@ export default function Home() {
               {property.tagline}
             </p>
             <div className="flex gap-6 justify-center flex-wrap">
-              <button className="btn-primary text-lg">
+              <a href={property.ownerrez.bookingUrl} className="btn-primary text-lg">
                 Book Now
-              </button>
-              <a href="#about" className="btn-secondary text-lg">
+              </a>
+              <a href="#booking" className="btn-secondary text-lg">
                 Explore
               </a>
             </div>
@@ -169,9 +169,9 @@ export default function Home() {
           </div>
           
           <div className="text-center">
-            <button className="btn-primary text-lg">
-              View Full Gallery
-            </button>
+            <a href={property.ownerrez.bookingUrl} className="btn-primary text-lg inline-block">
+              Book Your Stay
+            </a>
           </div>
         </div>
       </section>
@@ -272,18 +272,29 @@ export default function Home() {
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-white rounded-full mix-blend-screen filter blur-3xl"></div>
         </div>
         
-        <div className="max-w-3xl mx-auto px-6 text-center relative z-10">
+        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
           <h2 className="text-7xl font-bold text-white mb-6 animate-fade-in-down drop-shadow-lg">Ready to Visit?</h2>
           <p className="text-2xl mb-12 text-white/95 leading-relaxed animate-fade-in-up font-light max-w-2xl mx-auto">
             Experience paradise at Casa Del Mare. Check availability and reserve your perfect beach getaway today.
           </p>
+          
+          {/* OwnerRez Calendar Widget */}
+          <div className="mb-12 bg-white rounded-2xl shadow-2xl overflow-hidden">
+            <iframe
+              src={property.ownerrez.bookingUrl}
+              style={{ width: '100%', height: '600px', border: 'none' }}
+              title="Casa Del Mare Booking Calendar"
+              allow="payment"
+            ></iframe>
+          </div>
+          
           <div className="flex gap-6 justify-center flex-wrap animate-fade-in-up">
-            <button className="btn-primary text-lg shadow-2xl">
+            <a href={property.ownerrez.bookingUrl} className="btn-primary text-lg shadow-2xl inline-block">
               Book Now
-            </button>
-            <button className="btn-secondary text-lg shadow-2xl">
+            </a>
+            <a href={property.ownerrez.bookingUrl} className="btn-secondary text-lg shadow-2xl inline-block">
               Check Availability
-            </button>
+            </a>
           </div>
         </div>
       </section>
