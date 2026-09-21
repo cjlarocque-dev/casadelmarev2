@@ -25,6 +25,7 @@ export default function Home() {
             <li><a href="#about" className="hover:text-amber-200 transition duration-300 font-medium">About</a></li>
             <li><a href="#amenities" className="hover:text-amber-200 transition duration-300 font-medium">Amenities</a></li>
             <li><a href="#gallery" className="hover:text-amber-200 transition duration-300 font-medium">Gallery</a></li>
+            <li><a href="/casadelmare/availability" className="hover:text-amber-200 transition duration-300 font-medium">Availability</a></li>
             <li><a href="/casadelmare/book-now" className="hover:text-amber-200 transition duration-300 font-medium">Book Now</a></li>
           </ul>
         </nav>
