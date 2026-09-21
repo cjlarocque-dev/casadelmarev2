@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { property, amenities, hostStory, gallery, restaurants, beachActivities, attractions, natureWildlife } from '@/lib/propertyData';
 import RoomSection from '@/app/components/RoomSection';
+import ImageGallery from '@/app/components/ImageGallery';
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
@@ -170,23 +171,7 @@ export default function Home() {
             <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-cyan-400 mx-auto mt-6 rounded-full"></div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {gallery.slice(0, 12).map((photo, index) => (
-              <div
-                key={index}
-                className="image-zoom relative h-80 rounded-2xl overflow-hidden shadow-xl card-hover group"
-              >
-                <img
-                  src={`/pictures/${photo.url.replace('pictures/', '')}`}
-                  alt={photo.alt}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
-                  <span className="text-white font-bold text-lg">{photo.category}</span>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ImageGallery images={gallery} />
           
           <div className="text-center">
             <a href="#booking" className="btn-primary text-lg inline-block">
