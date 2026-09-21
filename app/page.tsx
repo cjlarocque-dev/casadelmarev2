@@ -299,7 +299,14 @@ export default function Home() {
           
           {/* OwnerRez Calendar Widget */}
           <div className="mb-12 bg-white rounded-2xl shadow-2xl overflow-hidden p-6">
+            <h3 className="text-2xl font-bold text-blue-600 mb-4">Check Availability</h3>
             <div className="ownerrez-widget" data-propertyId="934d8c678417484ea626901fabf33f9a" data-widget-type="calendar - Single Month Calendar" data-widgetId="7e3b809403d14958a4be387802aabe0f"></div>
+          </div>
+          
+          {/* OwnerRez Booking/Inquiry Widget */}
+          <div className="mb-12 bg-white rounded-2xl shadow-2xl overflow-hidden p-6">
+            <h3 className="text-2xl font-bold text-blue-600 mb-4">Send a Booking Inquiry</h3>
+            <div className="ownerrez-widget" data-propertyId="934d8c678417484ea626901fabf33f9a" data-widget-type="Booking/Inquiry" data-widgetId="c6ca2a8f9c92439b9b5b040d41cd25df"></div>
           </div>
           
           <div className="flex gap-6 justify-center flex-wrap animate-fade-in-up">
