@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { property, amenities, hostStory, gallery, restaurants, beachActivities, attractions, natureWildlife } from '@/lib/propertyData';
+import KitchenSection from '@/app/components/KitchenSection';
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
@@ -194,6 +195,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Kitchen Section */}
+      <KitchenSection scrollY={scrollY} />
 
       {/* Host Story Section */}
       <section className="py-32 bg-white relative overflow-hidden">
