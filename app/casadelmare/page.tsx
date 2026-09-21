@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { property, amenities, hostStory, gallery, restaurants, beachActivities, attractions, natureWildlife } from '@/lib/propertyData';
 import RoomSection from '@/app/components/RoomSection';
+import BedroomsSection from '@/app/components/BedroomsSection';
 import ImageGallery from '@/app/components/ImageGallery';
 
 export default function Home() {
@@ -218,6 +219,54 @@ export default function Home() {
         ]}
         bgColor="from-amber-50 to-orange-50"
         accentColor="text-amber-700"
+      />
+
+      {/* Bedrooms & Bathrooms Section */}
+      <BedroomsSection
+        title="Bed & Bath"
+        description="Casa Del Mare features 5 beautifully appointed bedrooms and multiple luxurious bathrooms, ensuring comfort and privacy for the entire family. Each bedroom is thoughtfully designed with quality linens, ample storage, and modern amenities. The bathrooms feature premium fixtures and spa-like touches for a truly relaxing stay."
+        rooms={[
+          {
+            icon: '🛏️',
+            title: 'Master Bedroom',
+            description: 'King bed with ensuite bath and walk-in shower',
+          },
+          {
+            icon: '🛏️',
+            title: 'Guest Bedroom 1',
+            description: 'Queen bed with full bathroom access',
+          },
+          {
+            icon: '🛏️',
+            title: 'Guest Bedroom 2',
+            description: 'Queen bed with full bathroom access',
+          },
+          {
+            icon: '🛏️',
+            title: 'Guest Bedroom 3',
+            description: 'Queen bed with full bathroom access',
+          },
+          {
+            icon: '🛏️',
+            title: 'Bunkroom',
+            description: 'Full size bunks, great for kids',
+          },
+          {
+            icon: '🚿',
+            title: 'Full Bathrooms',
+            description: 'Multiple luxury bathrooms with showers and tubs',
+          },
+        ]}
+        imagePaths={[
+          '/pictures/bedrooms/master/01-master.jpg',
+          '/pictures/bedrooms/guest-1/01-turtle-room.jpg',
+          '/pictures/bedrooms/guest-2/01-beige-room.jpg',
+          '/pictures/bedrooms/guest-3/01-sailboat-room.jpg',
+          '/pictures/bedrooms/bunkroom/01-bunkroom.jpg',
+          '/pictures/indoor/bathroom-placeholder.jpg', // We'll need to add a bathroom image
+        ]}
+        bgColor="from-green-50 to-green-100"
+        accentColor="text-green-700"
       />
 
       {/* Host Story Section */}
