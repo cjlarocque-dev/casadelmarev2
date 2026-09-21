@@ -1,5 +1,6 @@
 'use client';
 
+import Script from 'next/script';
 import { useEffect, useState } from 'react';
 import { property, amenities, hostStory, gallery, restaurants, beachActivities, attractions, natureWildlife } from '@/lib/propertyData';
 
@@ -279,13 +280,13 @@ export default function Home() {
           </p>
           
           {/* OwnerRez Calendar Widget */}
-          <div className="mb-12 bg-white rounded-2xl shadow-2xl overflow-hidden">
-            <iframe
-              src={property.ownerrez.bookingUrl}
-              style={{ width: '100%', height: '600px', border: 'none' }}
-              title="Casa Del Mare Booking Calendar"
-              allow="payment"
-            ></iframe>
+          <div className="mb-12 bg-white rounded-2xl shadow-2xl overflow-hidden p-6">
+            <div className="ownerrez-widget" data-propertyId="934d8c678417484ea626901fabf33f9a" data-widget-type="calendar - Single Month Calendar" data-widgetId="7e3b809403d14958a4be387802aabe0f"></div>
+            <Script src="https://app.ownerrez.com/widget.js" strategy="lazyOnload" onLoad={() => {
+              if (typeof window !== 'undefined' && window.OwnerRezWidgets) {
+                window.OwnerRezWidgets.loadWidgets();
+              }
+            }} />
           </div>
           
           <div className="flex gap-6 justify-center flex-wrap animate-fade-in-up">
