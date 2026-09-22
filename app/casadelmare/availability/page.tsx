@@ -22,7 +22,15 @@ export default function AvailabilityPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-cyan-50">
+    <div className="min-h-screen" style={{
+      backgroundImage: 'url(/pictures/general/07-cherry-point.jpg)',
+      backgroundAttachment: 'fixed',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    }}>
+      {/* Shade Overlay */}
+      <div className="fixed inset-0 bg-black/40 pointer-events-none"></div>
+
       {/* Sticky Navigation */}
       <header className="fixed top-0 w-full z-50 backdrop-blur-md bg-gradient-to-r from-blue-600/90 to-cyan-500/90 shadow-2xl">
         <nav className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
@@ -39,26 +47,26 @@ export default function AvailabilityPage() {
         </nav>
       </header>
 
-      <main className="pt-32">
+      <main className="pt-32 relative z-10">
         {/* Hero Section */}
         <section className="py-20 text-center">
           <div className="max-w-7xl mx-auto px-6">
-            <h1 className="text-6xl font-bold text-blue-600 mb-4">Current Availability</h1>
-            <p className="text-2xl text-gray-600 mb-12">Check Casa Del Mare's availability calendar</p>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-cyan-400 mx-auto rounded-full"></div>
+            <h1 className="text-6xl font-bold text-white mb-4 drop-shadow-lg">Current Availability</h1>
+            <p className="text-2xl text-white/90 mb-12 drop-shadow-md">Check Casa Del Mare's availability calendar</p>
+            <div className="w-24 h-1 bg-gradient-to-r from-amber-200 to-cyan-300 mx-auto rounded-full shadow-lg"></div>
           </div>
         </section>
 
         {/* Calendar Widget Section */}
         <section className="py-20">
           <div className="max-w-4xl mx-auto px-6">
-            <div className="bg-white rounded-2xl shadow-2xl p-8">
+            <div className="bg-white/95 rounded-2xl shadow-2xl p-8 backdrop-blur-sm">
               {/* OwnerRez Single Month Calendar Widget */}
               <div className="ownerrez-widget" data-propertyId="934d8c678417484ea626901fabf33f9a" data-widget-type="calendar - Single Month Calendar" data-widgetId="7e3b809403d14958a4be387802aabe0f"></div>
             </div>
             
             <div className="text-center mt-12">
-              <p className="text-gray-600 text-lg mb-6">Ready to book your stay?</p>
+              <p className="text-white/95 text-lg mb-6 drop-shadow-md">Ready to book your stay?</p>
               <a href="/casadelmare/book-now" className="btn-primary text-lg inline-block">
                 Book Now
               </a>
@@ -68,7 +76,7 @@ export default function AvailabilityPage() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-950 text-gray-300 py-16 border-t-4 border-blue-600 mt-20">
+      <footer className="bg-gray-950 text-gray-300 py-16 border-t-4 border-blue-600 mt-20 relative z-10">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
             <div>
