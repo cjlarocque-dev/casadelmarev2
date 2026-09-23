@@ -1,8 +1,10 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function AvailabilityPage() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   useEffect(() => {
     const script = document.createElement('script');
     script.src = 'https://app.ownerrez.com/widget.js';
@@ -37,6 +39,8 @@ export default function AvailabilityPage() {
           <a href="/casadelmare" className="text-3xl font-bold text-white tracking-tight hover:text-amber-200 transition">
             Casa Del Mare
           </a>
+          
+          {/* Desktop Navigation */}
           <ul className="hidden md:flex gap-8 text-white">
             <li><a href="/casadelmare#about" className="hover:text-amber-200 transition duration-300 font-medium">About</a></li>
             <li><a href="/casadelmare#amenities" className="hover:text-amber-200 transition duration-300 font-medium">Amenities</a></li>
@@ -44,7 +48,29 @@ export default function AvailabilityPage() {
             <li><a href="/casadelmare/availability" className="hover:text-amber-200 transition duration-300 font-medium text-amber-200">Availability</a></li>
             <li><a href="/casadelmare/book-now" className="hover:text-amber-200 transition duration-300 font-medium">Book Now</a></li>
           </ul>
+
+          {/* Hamburger Menu Button */}
+          <button 
+            className="md:hidden text-white text-3xl hover:text-amber-200 transition"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            ☰
+          </button>
         </nav>
+
+        {/* Mobile Navigation Menu */}
+        {menuOpen && (
+          <div className="md:hidden bg-gradient-to-b from-blue-600 to-blue-700 px-6 py-4 shadow-lg">
+            <ul className="flex flex-col gap-4 text-white">
+              <li><a href="/casadelmare#about" className="block hover:text-amber-200 transition font-medium" onClick={() => setMenuOpen(false)}>About</a></li>
+              <li><a href="/casadelmare#amenities" className="block hover:text-amber-200 transition font-medium" onClick={() => setMenuOpen(false)}>Amenities</a></li>
+              <li><a href="/casadelmare#gallery" className="block hover:text-amber-200 transition font-medium" onClick={() => setMenuOpen(false)}>Gallery</a></li>
+              <li><a href="/casadelmare/availability" className="block hover:text-amber-200 transition font-medium text-amber-200" onClick={() => setMenuOpen(false)}>Availability</a></li>
+              <li><a href="/casadelmare/book-now" className="block hover:text-amber-200 transition font-medium" onClick={() => setMenuOpen(false)}>Book Now</a></li>
+            </ul>
+          </div>
+        )}
       </header>
 
       <main className="pt-32 relative z-10">

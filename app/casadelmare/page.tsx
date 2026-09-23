@@ -7,6 +7,7 @@ import ImageGallery from '@/app/components/ImageGallery';
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -20,7 +21,11 @@ export default function Home() {
       {/* Sticky Navigation */}
       <header className="fixed top-0 w-full z-50 backdrop-blur-md bg-gradient-to-r from-blue-600/90 to-cyan-500/90 shadow-2xl">
         <nav className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-          <h1 className="text-3xl font-bold text-white tracking-tight">Casa Del Mare</h1>
+          <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo(0, 0); }} className="text-3xl font-bold text-white tracking-tight hover:text-amber-200 transition">
+            Casa Del Mare
+          </a>
+          
+          {/* Desktop Navigation */}
           <ul className="hidden md:flex gap-8 text-white">
             <li><a href="#about" className="hover:text-amber-200 transition duration-300 font-medium">About</a></li>
             <li><a href="#amenities" className="hover:text-amber-200 transition duration-300 font-medium">Amenities</a></li>
@@ -28,7 +33,29 @@ export default function Home() {
             <li><a href="/casadelmare/availability" className="hover:text-amber-200 transition duration-300 font-medium">Availability</a></li>
             <li><a href="/casadelmare/book-now" className="hover:text-amber-200 transition duration-300 font-medium">Book Now</a></li>
           </ul>
+
+          {/* Hamburger Menu Button */}
+          <button 
+            className="md:hidden text-white text-3xl hover:text-amber-200 transition"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            ☰
+          </button>
         </nav>
+
+        {/* Mobile Navigation Menu */}
+        {menuOpen && (
+          <div className="md:hidden bg-gradient-to-b from-blue-600 to-blue-700 px-6 py-4 shadow-lg">
+            <ul className="flex flex-col gap-4 text-white">
+              <li><a href="#about" className="block hover:text-amber-200 transition font-medium" onClick={() => setMenuOpen(false)}>About</a></li>
+              <li><a href="#amenities" className="block hover:text-amber-200 transition font-medium" onClick={() => setMenuOpen(false)}>Amenities</a></li>
+              <li><a href="#gallery" className="block hover:text-amber-200 transition font-medium" onClick={() => setMenuOpen(false)}>Gallery</a></li>
+              <li><a href="/casadelmare/availability" className="block hover:text-amber-200 transition font-medium" onClick={() => setMenuOpen(false)}>Availability</a></li>
+              <li><a href="/casadelmare/book-now" className="block hover:text-amber-200 transition font-medium" onClick={() => setMenuOpen(false)}>Book Now</a></li>
+            </ul>
+          </div>
+        )}
       </header>
 
       {/* Hero Section with Parallax */}

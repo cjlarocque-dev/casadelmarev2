@@ -1,8 +1,10 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function BookNowPage() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   // Load OwnerRez widget after component mounts
   useEffect(() => {
     const script = document.createElement('script');
@@ -35,13 +37,35 @@ export default function BookNowPage() {
       {/* Sticky Navigation */}
       <header className="fixed top-0 w-full z-50 backdrop-blur-md bg-gradient-to-r from-blue-600/90 to-cyan-500/90 shadow-2xl">
         <nav className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-          <a href="/casadelmare" className="text-3xl font-bold text-white tracking-tight hover:opacity-80 transition">
+          <a href="/casadelmare" className="text-3xl font-bold text-white tracking-tight hover:text-amber-200 transition">
             Casa Del Mare
           </a>
-          <a href="/casadelmare" className="text-white hover:text-amber-200 transition duration-300 font-medium">
-            ← Back to Home
-          </a>
+          
+          {/* Desktop Navigation */}
+          <div className="hidden md:block">
+            <a href="/casadelmare" className="text-white hover:text-amber-200 transition duration-300 font-medium">
+              ← Back to Home
+            </a>
+          </div>
+
+          {/* Hamburger Menu Button */}
+          <button 
+            className="md:hidden text-white text-3xl hover:text-amber-200 transition"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            ☰
+          </button>
         </nav>
+
+        {/* Mobile Navigation Menu */}
+        {menuOpen && (
+          <div className="md:hidden bg-gradient-to-b from-blue-600 to-blue-700 px-6 py-4 shadow-lg">
+            <a href="/casadelmare" className="block text-white hover:text-amber-200 transition font-medium" onClick={() => setMenuOpen(false)}>
+              ← Back to Home
+            </a>
+          </div>
+        )}
       </header>
 
       {/* Booking Section */}
