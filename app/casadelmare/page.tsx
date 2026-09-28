@@ -212,17 +212,17 @@ export default function Home() {
       {/* Kitchen Section */}
       <BedroomsSection
         title="The Kitchen"
-        description="Fully equipped chef's kitchen with stainless steel appliances, granite countertops, and an open floor plan that connects to the dining and living areas—truly the heart of the home."
+        description="Fully equipped kitchen with ceramic flat top electric range, granite countertops, and plenty of counter space for meal preparation. The open floor plan connects to the dining and living areas—truly the heart of the home."
         rooms={[
           {
-            icon: '🍽️',
-            title: 'Stainless Steel Appliances',
-            description: 'Modern, high-end cooking equipment',
+            icon: '🍳',
+            title: 'Ceramic Flat Top Electric Range',
+            description: 'Modern, efficient cooking equipment',
           },
           {
             icon: '🪨',
             title: 'Granite Countertops',
-            description: 'Durable and elegant work surfaces',
+            description: 'Plenty of counter space for meal prep',
           },
           {
             icon: '❄️',
@@ -230,19 +230,9 @@ export default function Home() {
             description: 'Plenty of storage for groceries',
           },
           {
-            icon: '🔥',
-            title: 'Double Ovens',
-            description: 'Perfect for meal preparation',
-          },
-          {
             icon: '🍴',
             title: 'Dishwasher',
             description: 'Convenient cleanup after meals',
-          },
-          {
-            icon: '☕',
-            title: 'Breakfast Bar',
-            description: 'Casual seating with great views',
           },
         ]}
         imagePaths={[
@@ -260,12 +250,12 @@ export default function Home() {
       {/* Bedrooms & Bathrooms Section */}
       <BedroomsSection
         title="Bed & Bath"
-        description="Casa Del Mare features 5 beautifully appointed bedrooms and multiple luxurious bathrooms, ensuring comfort and privacy for the entire family. Each bedroom is thoughtfully designed with quality linens, ample storage, and modern amenities. The bathrooms feature premium fixtures and spa-like touches for a truly relaxing stay."
+        description="Casa Del Mare features 5 beautifully appointed bedrooms and 3 luxurious bathrooms, ensuring comfort and privacy for the entire family. Each bedroom is thoughtfully designed with quality linens, ample storage, and modern amenities. The bathrooms feature premium fixtures and spa-like touches for a truly relaxing stay."
         rooms={[
           {
             icon: '🛏️',
             title: 'Master Bedroom',
-            description: 'King bed with ensuite bath and walk-in shower',
+            description: 'King bed with private access',
           },
           {
             icon: '🛏️',
@@ -275,12 +265,12 @@ export default function Home() {
           {
             icon: '🛏️',
             title: 'Guest Bedroom 2',
-            description: 'Queen bed with full bathroom access',
+            description: 'Queen bed with shared bathroom',
           },
           {
             icon: '🛏️',
             title: 'Guest Bedroom 3',
-            description: 'Queen bed with full bathroom access',
+            description: 'Queen bed with shared bathroom',
           },
           {
             icon: '🛏️',
@@ -290,7 +280,7 @@ export default function Home() {
           {
             icon: '🚿',
             title: 'Full Bathrooms',
-            description: 'Multiple luxury bathrooms with showers and tubs',
+            description: '3 bathrooms: 1 with tub/shower, 2 with walk-in showers',
           },
         ]}
         imagePaths={[
@@ -308,8 +298,13 @@ export default function Home() {
       {/* Outdoor Spaces Section */}
       <BedroomsSection
         title="Outdoor Living"
-        description="Experience the best of coastal living with expansive outdoor spaces. From the spacious deck perfect for morning coffee to the relaxing hot tub, dock access for water activities, and beautiful landscaped backyard—there's something for everyone. Enjoy stunning water views and fresh ocean breezes in this outdoor paradise."
+        description="Experience the best of coastal living with expansive outdoor spaces. Enjoy sunrise views over the beach and sunset views over the marsh from the spacious deck. Relax in the hot tub, access the water via private dock, or unwind in the beautiful landscaped backyard—there's something for everyone in this outdoor paradise."
         rooms={[
+          {
+            icon: '🌅',
+            title: 'Sunrise & Sunset Views',
+            description: 'Beautiful sunrises over the beach and sunsets over the marsh',
+          },
           {
             icon: '🏡',
             title: 'Deck',
@@ -335,18 +330,13 @@ export default function Home() {
             title: 'Water Activities',
             description: 'Perfect for kayaking, paddleboarding, and fishing',
           },
-          {
-            icon: '🌅',
-            title: 'Sunset Views',
-            description: 'Stunning sunset vistas from multiple areas',
-          },
         ]}
         imagePaths={[
+          '/pictures/general/06-sunrise.jpg',
           '/pictures/outdoor/deck/01-deck.jpg',
           '/pictures/outdoor/dock/01-dock-canal.jpg',
           '/pictures/outdoor/hottub/01-hottub.jpg',
           '/pictures/outdoor/backyard/01-backyard.jpg',
-          '/pictures/outdoor/backyard/02-hammock.jpg',
           '/pictures/general/05-sunset.jpg',
         ]}
         bgColor="from-cyan-50 to-blue-50"
