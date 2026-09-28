@@ -1,30 +1,11 @@
 @import "tailwindcss";
 
-@layer base {
-  @font-face {
-    font-family: 'Pacifico';
-    src: url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-  }
-  
-  @font-face {
-    font-family: 'Dancing Script';
-    src: url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
-  }
-}
-
 :root {
   --background: #ffffff;
   --foreground: #171717;
   --primary: #0077be;
   --secondary: #00d4ff;
   --accent: #ff6b35;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
