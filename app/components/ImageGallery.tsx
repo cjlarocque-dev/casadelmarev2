@@ -1,12 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import lightGallery from 'lightgallery';
-import lgThumbnail from 'lightgallery/plugins/thumbnail';
-import lgZoom from 'lightgallery/plugins/zoom';
-import 'lightgallery/css/lightgallery.css';
-import 'lightgallery/css/lg-zoom.css';
-import 'lightgallery/css/lg-thumbnail.css';
+import dynamic from 'next/dynamic';
 
 interface GalleryImage {
   url: string;
@@ -21,29 +16,56 @@ interface ImageGalleryProps {
 export default function ImageGallery({ images }: ImageGalleryProps) {
   const galleryRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [lg, setLg] = useState<any>(null);
 
   useEffect(() => {
-    if (galleryRef.current && images.length > 0) {
-      const lg = lightGallery(galleryRef.current, {
-        plugins: [lgThumbnail, lgZoom],
-        speed: 500,
-        licenseKey: 'your_license_key_here',
-        mobileSettings: {
-          controls: true,
-          showCloseIcon: true,
-          download: false,
-          rotate: false,
-        },
-        onSlideItemLoad: (detail: any) => {
-          setCurrentIndex(detail.index);
-        },
-      } as any);
+    // Load lightgallery dynamically only on client side
+    const loadGallery = async () => {
+      try {
+        const lightGallery = (await import('lightgallery')).default;
+        const lgThumbnail = (await import('lightgallery/plugins/thumbnail')).default;
+        const lgZoom = (await import('lightgallery/plugins/zoom')).default;
+        
+        // Load CSS via link tags instead of imports
+        if (!document.querySelector('[data-lightgallery-css]')) {
+          const link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = 'https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.0/lightgallery.min.css';
+          link.setAttribute('data-lightgallery-css', 'main');
+          document.head.appendChild(link);
+        }
 
-      return () => {
+        if (galleryRef.current && images.length > 0) {
+          const instance = lightGallery(galleryRef.current, {
+            plugins: [lgThumbnail, lgZoom],
+            speed: 500,
+            licenseKey: 'your_license_key_here',
+            mobileSettings: {
+              controls: true,
+              showCloseIcon: true,
+              download: false,
+              rotate: false,
+            },
+            onSlideItemLoad: (detail: any) => {
+              setCurrentIndex(detail.index);
+            },
+          } as any);
+
+          setLg(instance);
+        }
+      } catch (error) {
+        console.error('Failed to load lightgallery:', error);
+      }
+    };
+
+    loadGallery();
+
+    return () => {
+      if (lg) {
         lg.destroy();
-      };
-    }
-  }, [images]);
+      }
+    };
+  }, [images, lg]);
 
   const handleThumbnailClick = (index: number) => {
     if (galleryRef.current) {
