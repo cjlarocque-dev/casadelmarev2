@@ -34,8 +34,8 @@ export default function AvailabilityPage() {
       <div className="fixed inset-0 bg-black/40 pointer-events-none"></div>
 
       {/* Sticky Navigation */}
-      <header className="fixed top-0 w-full z-50 backdrop-blur-md bg-gradient-to-r from-blue-600/90 to-cyan-500/90 shadow-2xl">
-        <nav className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+      <header className="wave-header fixed top-0 w-full z-50 shadow-2xl">
+        <nav className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center relative z-10">
           <a href="/casadelmare" className="text-3xl font-bold text-white tracking-tight hover:text-amber-200 transition">
             Casa Del Mare
           </a>

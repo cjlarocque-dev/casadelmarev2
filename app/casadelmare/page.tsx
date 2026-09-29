@@ -19,8 +19,8 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white overflow-hidden">
       {/* Sticky Navigation */}
-      <header className="fixed top-0 w-full z-50 backdrop-blur-md bg-gradient-to-r from-blue-600/90 to-cyan-500/90 shadow-2xl">
-        <nav className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+      <header className="wave-header fixed top-0 w-full z-50 shadow-2xl">
+        <nav className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center relative z-10">
           <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo(0, 0); }} className="text-3xl font-bold text-white tracking-tight hover:text-amber-200 transition">
             Casa Del Mare
           </a>
@@ -46,7 +46,7 @@ export default function Home() {
 
         {/* Mobile Navigation Menu */}
         {menuOpen && (
-          <div className="md:hidden bg-gradient-to-b from-blue-600 to-blue-700 px-6 py-4 shadow-lg">
+          <div className="relative z-20 bg-gradient-to-b from-blue-600 to-blue-700 px-6 py-4 shadow-lg md:hidden">
             <ul className="flex flex-col gap-4 text-white">
               <li><a href="#about" className="block hover:text-amber-200 transition font-medium" onClick={() => setMenuOpen(false)}>About</a></li>
               <li><a href="#amenities" className="block hover:text-amber-200 transition font-medium" onClick={() => setMenuOpen(false)}>Amenities</a></li>
