@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { Poppins } from "next/font/google";
 import "./globals.css";
+
+const poppins = Poppins({
+  weight: ["300", "400", "500", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-poppins",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Casa Del Mare | Luxury Beachfront Vacation Rental",
@@ -9,7 +17,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="h-full antialiased">
+    <html lang="en" className={`${poppins.variable} h-full antialiased`}>
       <head>
         {/* Meta Pixel Code */}
         <Script
@@ -44,7 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
       </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col font-poppins">{children}</body>
     </html>
   );
 }

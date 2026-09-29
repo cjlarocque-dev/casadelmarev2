@@ -8,6 +8,7 @@
   --primary: #0077be;
   --secondary: #00d4ff;
   --accent: #ff6b35;
+  --font-poppins: Poppins, system-ui, -apple-system, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,7 +21,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: var(--font-poppins);
   overflow-x: hidden;
 }
 
