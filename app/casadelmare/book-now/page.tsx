@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import PricingComparison from '@/app/components/PricingComparison';
 
 export default function BookNowPage() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -71,6 +72,11 @@ export default function BookNowPage() {
       {/* Booking Section */}
       <section className="pt-32 pb-20 px-4 md:px-8 relative z-10">
         <div className="max-w-4xl mx-auto">
+          {/* Pricing Comparison */}
+          <div className="mb-20">
+            <PricingComparison />
+          </div>
+
           {/* Section Header */}
           <div className="text-center mb-16">
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">Book Your Stay</h1>
