@@ -2,8 +2,13 @@ import { readFileSync } from 'fs';
 import { homedir } from 'os';
 import { join } from 'path';
 
-const PROPERTY_ID = '934d8c678417484ea626901fabf33f9a';
+// Use numeric property ID, not the UUID from the widget
+const PROPERTY_ID = '496831';
 const PAT_FILE = join(homedir(), '.ownerrez', 'CDM_site');
+const OWNERREZ_EMAIL = 'clarocque06@gmail.com';
+
+// Your nightly rate - update this to match your actual pricing
+const NIGHTLY_RATE = 350; // Set to your base nightly rate
 
 function getPAT(): string {
   try {
@@ -20,39 +25,44 @@ export async function GET() {
   try {
     const pat = getPAT();
     
-    // Fetch property rates from OwnerRez API
+    // Create Basic Auth header with email:token format
+    const auth = Buffer.from(`${OWNERREZ_EMAIL}:${pat}`).toString('base64');
+    
+    // Fetch property details from OwnerRez API
     const response = await fetch(
       `https://api.ownerrez.com/v2/properties/${PROPERTY_ID}`,
       {
         headers: {
-          'Authorization': `Bearer ${pat}`,
+          'Authorization': `Basic ${auth}`,
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'User-Agent': 'Casa-Del-Mare-Website/1.0',
         },
       }
     );
 
     if (!response.ok) {
+      const errorText = await response.text();
+      console.error(`OwnerRez API error (${response.status}):`, errorText);
       return Response.json(
         { error: `OwnerRez API error: ${response.statusText}` },
         { status: response.status }
       );
     }
 
-    const data = await response.json();
-    
-    // Extract nightly rate
-    const nightlyRate = data.rate || data.baseRate || 0;
+    // Use configured nightly rate
+    const nightlyRate = NIGHTLY_RATE;
 
-    // Calculate platform fees
-    const airbnbFee = nightlyRate * 0.18; // 18% Airbnb + payment processing
-    const vrboFee = nightlyRate * 0.20; // 20% VRBO + payment processing
+    // Calculate platform fees (industry standard)
+    const airbnbFee = nightlyRate * 0.18; // 18% Airbnb commission + payment processing
+    const vrboFee = nightlyRate * 0.20; // 20% VRBO commission + payment processing
     
     return Response.json({
       directRate: nightlyRate,
-      airbnbEstimate: nightlyRate + airbnbFee,
-      vrboEstimate: nightlyRate + vrboFee,
-      airbnbSavings: airbnbFee,
-      vrboSavings: vrboFee,
+      airbnbEstimate: Math.round((nightlyRate + airbnbFee) * 100) / 100,
+      vrboEstimate: Math.round((nightlyRate + vrboFee) * 100) / 100,
+      airbnbSavings: Math.round(airbnbFee * 100) / 100,
+      vrboSavings: Math.round(vrboFee * 100) / 100,
       timestamp: new Date().toISOString(),
     });
   } catch (error) {
