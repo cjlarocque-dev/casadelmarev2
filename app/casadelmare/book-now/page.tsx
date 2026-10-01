@@ -24,6 +24,25 @@ export default function BookNowPage() {
     document.body.appendChild(script);
   }, []);
 
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = () => {
+      setMenuOpen(false);
+    };
+    
+    if (menuOpen) {
+      document.addEventListener('click', handleClickOutside);
+      return () => {
+        document.removeEventListener('click', handleClickOutside);
+      };
+    }
+  }, [menuOpen]);
+
+  const toggleMenu = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setMenuOpen(!menuOpen);
+  };
+
   return (
     <div className="min-h-screen" style={{
       backgroundImage: 'url(/pictures/general/05-sunset.jpg)',
@@ -50,9 +69,10 @@ export default function BookNowPage() {
 
           {/* Hamburger Menu Button */}
           <button 
-            className="md:hidden text-white text-3xl hover:text-amber-200 transition z-30"
-            onClick={() => setMenuOpen(!menuOpen)}
+            className="md:hidden text-white text-3xl hover:text-amber-200 transition z-30 relative"
+            onClick={toggleMenu}
             aria-label="Toggle menu"
+            type="button"
           >
             ☰
           </button>
@@ -60,7 +80,7 @@ export default function BookNowPage() {
 
         {/* Mobile Navigation Menu */}
         {menuOpen && (
-          <div className="absolute top-full left-0 right-0 md:hidden bg-gradient-to-b from-blue-600 to-blue-700 px-6 py-4 shadow-lg z-20">
+          <div className="absolute top-full left-0 right-0 md:hidden bg-gradient-to-b from-blue-600 to-blue-700 px-6 py-4 shadow-lg z-20" onClick={(e) => e.stopPropagation()}>
             <a href="/casadelmare" className="block text-white hover:text-amber-200 transition font-medium py-2" onClick={() => setMenuOpen(false)}>
               ← Back to Home
             </a>

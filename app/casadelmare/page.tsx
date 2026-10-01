@@ -15,6 +15,25 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = () => {
+      setMenuOpen(false);
+    };
+    
+    if (menuOpen) {
+      document.addEventListener('click', handleClickOutside);
+      return () => {
+        document.removeEventListener('click', handleClickOutside);
+      };
+    }
+  }, [menuOpen]);
+
+  const toggleMenu = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setMenuOpen(!menuOpen);
+  };
+
 
   return (
     <div className="min-h-screen bg-white overflow-hidden">
@@ -36,9 +55,10 @@ export default function Home() {
 
           {/* Hamburger Menu Button */}
           <button 
-            className="md:hidden text-white text-3xl hover:text-amber-200 transition z-30"
-            onClick={() => setMenuOpen(!menuOpen)}
+            className="md:hidden text-white text-3xl hover:text-amber-200 transition z-30 relative"
+            onClick={toggleMenu}
             aria-label="Toggle menu"
+            type="button"
           >
             ☰
           </button>
@@ -46,7 +66,7 @@ export default function Home() {
 
         {/* Mobile Navigation Menu */}
         {menuOpen && (
-          <div className="absolute top-full left-0 right-0 md:hidden bg-gradient-to-b from-blue-600 to-blue-700 px-6 py-4 shadow-lg z-20">
+          <div className="absolute top-full left-0 right-0 md:hidden bg-gradient-to-b from-blue-600 to-blue-700 px-6 py-4 shadow-lg z-20" onClick={(e) => e.stopPropagation()}>
             <ul className="flex flex-col gap-4 text-white">
               <li><a href="#about" className="block hover:text-amber-200 transition font-medium py-2" onClick={() => setMenuOpen(false)}>About</a></li>
               <li><a href="#amenities" className="block hover:text-amber-200 transition font-medium py-2" onClick={() => setMenuOpen(false)}>Amenities</a></li>
