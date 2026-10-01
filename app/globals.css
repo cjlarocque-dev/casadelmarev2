@@ -61,7 +61,8 @@ html {
 .wave-header {
   position: relative;
   background: linear-gradient(180deg, #0077be 0%, #00b4d8 30%, #ffd89b 100%);
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: visible;
   width: 100%;
 }
 
