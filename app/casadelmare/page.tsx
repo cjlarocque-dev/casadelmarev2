@@ -15,28 +15,8 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close menu when clicking outside
-  useEffect(() => {
-    const handleClickOutside = () => {
-      setMenuOpen(false);
-    };
-    
-    if (menuOpen) {
-      document.addEventListener('click', handleClickOutside);
-      return () => {
-        document.removeEventListener('click', handleClickOutside);
-      };
-    }
-  }, [menuOpen]);
-
-  const toggleMenu = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setMenuOpen(!menuOpen);
-  };
-
-
   return (
-    <div className="min-h-screen bg-white overflow-hidden">
+    <div className="min-h-screen bg-white">
       {/* Sticky Navigation */}
       <header className="wave-header fixed top-0 w-full z-50 shadow-2xl">
         <nav className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center relative z-10">
@@ -55,8 +35,8 @@ export default function Home() {
 
           {/* Hamburger Menu Button */}
           <button 
-            className="md:hidden text-white text-3xl hover:text-amber-200 transition z-30 relative"
-            onClick={toggleMenu}
+            className="md:hidden text-white text-3xl hover:text-amber-200 transition"
+            onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
             type="button"
           >
@@ -66,7 +46,7 @@ export default function Home() {
 
         {/* Mobile Navigation Menu */}
         {menuOpen && (
-          <div className="absolute top-full left-0 right-0 md:hidden bg-gradient-to-b from-blue-600 to-blue-700 px-6 py-4 shadow-lg z-20" onClick={(e) => e.stopPropagation()}>
+          <nav className="md:hidden bg-gradient-to-b from-blue-600 to-blue-700 px-6 py-4 shadow-lg">
             <ul className="flex flex-col gap-4 text-white">
               <li><a href="#about" className="block hover:text-amber-200 transition font-medium py-2" onClick={() => setMenuOpen(false)}>About</a></li>
               <li><a href="#amenities" className="block hover:text-amber-200 transition font-medium py-2" onClick={() => setMenuOpen(false)}>Amenities</a></li>
@@ -74,7 +54,7 @@ export default function Home() {
               <li><a href="/casadelmare/availability" className="block hover:text-amber-200 transition font-medium py-2" onClick={() => setMenuOpen(false)}>Availability</a></li>
               <li><a href="/casadelmare/book-now" className="block hover:text-amber-200 transition font-medium py-2" onClick={() => setMenuOpen(false)}>Book Now</a></li>
             </ul>
-          </div>
+          </nav>
         )}
       </header>
 
