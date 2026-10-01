@@ -5,8 +5,14 @@ import { useEffect, useState } from 'react';
 export default function BookNowPage() {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Load OwnerRez widget after component mounts
+  // Load OwnerRez widget after component mounts (only once via window check)
   useEffect(() => {
+    // Only add script if not already loaded
+    if ((window as any).OwnerRezWidgets) {
+      (window as any).OwnerRezWidgets.loadWidgets();
+      return;
+    }
+
     const script = document.createElement('script');
     script.src = 'https://app.ownerrez.com/widget.js';
     script.async = true;
@@ -16,12 +22,6 @@ export default function BookNowPage() {
       }
     };
     document.body.appendChild(script);
-    
-    return () => {
-      if (document.body.contains(script)) {
-        document.body.removeChild(script);
-      }
-    };
   }, []);
 
   return (
@@ -50,7 +50,7 @@ export default function BookNowPage() {
 
           {/* Hamburger Menu Button */}
           <button 
-            className="md:hidden text-white text-3xl hover:text-amber-200 transition"
+            className="md:hidden text-white text-3xl hover:text-amber-200 transition z-30"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
@@ -60,8 +60,8 @@ export default function BookNowPage() {
 
         {/* Mobile Navigation Menu */}
         {menuOpen && (
-          <div className="md:hidden bg-gradient-to-b from-blue-600 to-blue-700 px-6 py-4 shadow-lg">
-            <a href="/casadelmare" className="block text-white hover:text-amber-200 transition font-medium" onClick={() => setMenuOpen(false)}>
+          <div className="absolute top-full left-0 right-0 md:hidden bg-gradient-to-b from-blue-600 to-blue-700 px-6 py-4 shadow-lg z-20">
+            <a href="/casadelmare" className="block text-white hover:text-amber-200 transition font-medium py-2" onClick={() => setMenuOpen(false)}>
               ← Back to Home
             </a>
           </div>

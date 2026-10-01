@@ -36,7 +36,7 @@ export default function Home() {
 
           {/* Hamburger Menu Button */}
           <button 
-            className="md:hidden text-white text-3xl hover:text-amber-200 transition"
+            className="md:hidden text-white text-3xl hover:text-amber-200 transition z-30"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
@@ -46,13 +46,13 @@ export default function Home() {
 
         {/* Mobile Navigation Menu */}
         {menuOpen && (
-          <div className="relative z-20 bg-gradient-to-b from-blue-600 to-blue-700 px-6 py-4 shadow-lg md:hidden">
+          <div className="absolute top-full left-0 right-0 md:hidden bg-gradient-to-b from-blue-600 to-blue-700 px-6 py-4 shadow-lg z-20">
             <ul className="flex flex-col gap-4 text-white">
-              <li><a href="#about" className="block hover:text-amber-200 transition font-medium" onClick={() => setMenuOpen(false)}>About</a></li>
-              <li><a href="#amenities" className="block hover:text-amber-200 transition font-medium" onClick={() => setMenuOpen(false)}>Amenities</a></li>
-              <li><a href="#gallery" className="block hover:text-amber-200 transition font-medium" onClick={() => setMenuOpen(false)}>Gallery</a></li>
-              <li><a href="/casadelmare/availability" className="block hover:text-amber-200 transition font-medium" onClick={() => setMenuOpen(false)}>Availability</a></li>
-              <li><a href="/casadelmare/book-now" className="block hover:text-amber-200 transition font-medium" onClick={() => setMenuOpen(false)}>Book Now</a></li>
+              <li><a href="#about" className="block hover:text-amber-200 transition font-medium py-2" onClick={() => setMenuOpen(false)}>About</a></li>
+              <li><a href="#amenities" className="block hover:text-amber-200 transition font-medium py-2" onClick={() => setMenuOpen(false)}>Amenities</a></li>
+              <li><a href="#gallery" className="block hover:text-amber-200 transition font-medium py-2" onClick={() => setMenuOpen(false)}>Gallery</a></li>
+              <li><a href="/casadelmare/availability" className="block hover:text-amber-200 transition font-medium py-2" onClick={() => setMenuOpen(false)}>Availability</a></li>
+              <li><a href="/casadelmare/book-now" className="block hover:text-amber-200 transition font-medium py-2" onClick={() => setMenuOpen(false)}>Book Now</a></li>
             </ul>
           </div>
         )}
