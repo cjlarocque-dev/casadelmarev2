@@ -52,7 +52,6 @@ export default function BookNowPage() {
           <button 
             className="md:hidden text-white text-3xl hover:text-amber-200 transition"
             onClick={() => setMenuOpen(!menuOpen)}
-            onTouchEnd={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
             type="button"
           >
