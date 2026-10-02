@@ -52,31 +52,25 @@ export default function AvailabilityPage() {
 
           {/* Hamburger Menu Button */}
           <button 
-            className="md:hidden text-white text-3xl hover:text-amber-200 transition z-50"
+            className="md:hidden text-white text-3xl hover:text-amber-200 transition"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
             type="button"
           >
-            {menuOpen ? '✕' : '☰'}
+            ☰
           </button>
         </nav>
 
-        {/* Mobile Navigation Menu - Now full width dropdown */}
-        <div 
-          className={`md:hidden fixed left-0 top-20 w-full bg-blue-600 shadow-lg transition-all duration-200 ease-in-out overflow-hidden ${
-            menuOpen ? 'max-h-96 opacity-100 visible' : 'max-h-0 opacity-0 invisible'
-          }`}
-        >
-          <nav className="px-6 py-4">
-            <ul className="flex flex-col gap-0 text-white">
-              <li><a href="/casadelmare#about" className="block py-3 hover:text-amber-200 hover:bg-blue-700 transition font-medium" onClick={() => setMenuOpen(false)}>About</a></li>
-              <li><a href="/casadelmare#amenities" className="block py-3 hover:text-amber-200 hover:bg-blue-700 transition font-medium" onClick={() => setMenuOpen(false)}>Amenities</a></li>
-              <li><a href="/casadelmare#gallery" className="block py-3 hover:text-amber-200 hover:bg-blue-700 transition font-medium" onClick={() => setMenuOpen(false)}>Gallery</a></li>
-              <li><a href="/casadelmare/availability" className="block py-3 hover:text-amber-200 hover:bg-blue-700 transition font-medium text-amber-200" onClick={() => setMenuOpen(false)}>Availability</a></li>
-              <li><a href="/casadelmare/book-now" className="block py-3 hover:text-amber-200 hover:bg-blue-700 transition font-medium" onClick={() => setMenuOpen(false)}>Book Now</a></li>
-            </ul>
-          </nav>
-        </div>
+        {/* Mobile Navigation Menu - Simple inline, no fixed positioning */}
+        {menuOpen && (
+          <div className="md:hidden bg-blue-600 px-6 py-4 shadow-lg">
+            <a href="/casadelmare#about" className="block py-3 text-white hover:text-amber-200 font-medium" onClick={() => setMenuOpen(false)}>About</a>
+            <a href="/casadelmare#amenities" className="block py-3 text-white hover:text-amber-200 font-medium" onClick={() => setMenuOpen(false)}>Amenities</a>
+            <a href="/casadelmare#gallery" className="block py-3 text-white hover:text-amber-200 font-medium" onClick={() => setMenuOpen(false)}>Gallery</a>
+            <a href="/casadelmare/availability" className="block py-3 text-white hover:text-amber-200 font-medium text-amber-200" onClick={() => setMenuOpen(false)}>Availability</a>
+            <a href="/casadelmare/book-now" className="block py-3 text-white hover:text-amber-200 font-medium" onClick={() => setMenuOpen(false)}>Book Now</a>
+          </div>
+        )}
       </header>
 
       <main className="pt-32 relative z-10">

@@ -50,27 +50,21 @@ export default function BookNowPage() {
 
           {/* Hamburger Menu Button */}
           <button 
-            className="md:hidden text-white text-3xl hover:text-amber-200 transition z-50"
+            className="md:hidden text-white text-3xl hover:text-amber-200 transition"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
             type="button"
           >
-            {menuOpen ? '✕' : '☰'}
+            ☰
           </button>
         </nav>
 
-        {/* Mobile Navigation Menu - Now full width dropdown */}
-        <div 
-          className={`md:hidden fixed left-0 top-20 w-full bg-blue-600 shadow-lg transition-all duration-200 ease-in-out overflow-hidden ${
-            menuOpen ? 'max-h-96 opacity-100 visible' : 'max-h-0 opacity-0 invisible'
-          }`}
-        >
-          <nav className="px-6 py-4">
-            <a href="/casadelmare" className="block py-3 text-white hover:text-amber-200 hover:bg-blue-700 transition font-medium" onClick={() => setMenuOpen(false)}>
-              ← Back to Home
-            </a>
-          </nav>
-        </div>
+        {/* Mobile Navigation Menu - Simple inline, no fixed positioning */}
+        {menuOpen && (
+          <div className="md:hidden bg-blue-600 px-6 py-4 shadow-lg">
+            <a href="/casadelmare" className="block py-3 text-white hover:text-amber-200 font-medium" onClick={() => setMenuOpen(false)}>← Back to Home</a>
+          </div>
+        )}
       </header>
 
       {/* Booking Section */}
