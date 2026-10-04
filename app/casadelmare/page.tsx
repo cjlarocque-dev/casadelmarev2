@@ -1,6 +1,7 @@
 import { property, amenities, hostStory, gallery, restaurants, beachActivities, attractions, natureWildlife } from '@/lib/propertyData';
 import BedroomsSection from '@/app/components/BedroomsSection';
 import ImageGallery from '@/app/components/ImageGallery';
+import MobileMenu from '@/app/components/MobileMenu';
 
 export default function Home() {
   return (
@@ -21,21 +22,15 @@ export default function Home() {
             <li><a href="/casadelmare/book-now" className="hover:text-amber-200 transition duration-300 font-medium">Book Now</a></li>
           </ul>
 
-          <details className="md:hidden">
-            <summary
-              className="list-none text-white text-3xl hover:text-amber-200 transition cursor-pointer select-none [&::-webkit-details-marker]:hidden"
-              aria-label="Toggle menu"
-            >
-              ☰
-            </summary>
-            <div className="fixed left-4 right-4 top-[88px] bg-blue-600 px-6 py-4 shadow-2xl rounded-lg z-[9999]">
-              <a href="#about" className="block py-3 text-white hover:text-amber-200 font-medium">About</a>
-              <a href="#amenities" className="block py-3 text-white hover:text-amber-200 font-medium">Amenities</a>
-              <a href="#gallery" className="block py-3 text-white hover:text-amber-200 font-medium">Gallery</a>
-              <a href="/casadelmare/availability" className="block py-3 text-white hover:text-amber-200 font-medium">Availability</a>
-              <a href="/casadelmare/book-now" className="block py-3 text-white hover:text-amber-200 font-medium">Book Now</a>
-            </div>
-          </details>
+          <MobileMenu
+            links={[
+              { href: '#about', label: 'About' },
+              { href: '#amenities', label: 'Amenities' },
+              { href: '#gallery', label: 'Gallery' },
+              { href: '/casadelmare/availability', label: 'Availability' },
+              { href: '/casadelmare/book-now', label: 'Book Now' },
+            ]}
+          />
         </nav>
       </header>
 

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import MobileMenu from '@/app/components/MobileMenu';
 
 export default function AvailabilityPage() {
   // Load OwnerRez widget after component mounts (only once via window check)
@@ -47,21 +48,15 @@ export default function AvailabilityPage() {
             <li><a href="/casadelmare/book-now" className="hover:text-amber-200 transition duration-300 font-medium">Book Now</a></li>
           </ul>
 
-          <details className="md:hidden">
-            <summary
-              className="list-none text-white text-3xl hover:text-amber-200 transition cursor-pointer select-none [&::-webkit-details-marker]:hidden"
-              aria-label="Toggle menu"
-            >
-              ☰
-            </summary>
-            <div className="fixed left-4 right-4 top-[88px] bg-blue-600 px-6 py-4 shadow-2xl rounded-lg z-[9999]">
-              <a href="/casadelmare#about" className="block py-3 text-white hover:text-amber-200 font-medium">About</a>
-              <a href="/casadelmare#amenities" className="block py-3 text-white hover:text-amber-200 font-medium">Amenities</a>
-              <a href="/casadelmare#gallery" className="block py-3 text-white hover:text-amber-200 font-medium">Gallery</a>
-              <a href="/casadelmare/availability" className="block py-3 text-white hover:text-amber-200 font-medium text-amber-200">Availability</a>
-              <a href="/casadelmare/book-now" className="block py-3 text-white hover:text-amber-200 font-medium">Book Now</a>
-            </div>
-          </details>
+          <MobileMenu
+            links={[
+              { href: '/casadelmare#about', label: 'About' },
+              { href: '/casadelmare#amenities', label: 'Amenities' },
+              { href: '/casadelmare#gallery', label: 'Gallery' },
+              { href: '/casadelmare/availability', label: 'Availability', className: 'text-amber-200' },
+              { href: '/casadelmare/book-now', label: 'Book Now' },
+            ]}
+          />
         </nav>
       </header>
 

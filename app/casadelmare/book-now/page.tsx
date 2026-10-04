@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import MobileMenu from '@/app/components/MobileMenu';
 
 export default function BookNowPage() {
   // Load OwnerRez widget after component mounts (only once via window check)
@@ -45,17 +46,11 @@ export default function BookNowPage() {
             </a>
           </div>
 
-          <details className="md:hidden">
-            <summary
-              className="list-none text-white text-3xl hover:text-amber-200 transition cursor-pointer select-none [&::-webkit-details-marker]:hidden"
-              aria-label="Toggle menu"
-            >
-              ☰
-            </summary>
-            <div className="fixed left-4 right-4 top-[88px] bg-blue-600 px-6 py-4 shadow-2xl rounded-lg z-[9999]">
-              <a href="/casadelmare" className="block py-3 text-white hover:text-amber-200 font-medium">← Back to Home</a>
-            </div>
-          </details>
+          <MobileMenu
+            links={[
+              { href: '/casadelmare', label: '← Back to Home' },
+            ]}
+          />
         </nav>
       </header>
 
