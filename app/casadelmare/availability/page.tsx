@@ -32,7 +32,7 @@ export default function AvailabilityPage() {
       <div className="fixed inset-0 bg-black/40 pointer-events-none"></div>
 
       {/* Sticky Navigation - changed from fixed to sticky for iOS stability */}
-      <header className="wave-header sticky top-0 w-full z-50 shadow-2xl md:fixed">
+      <header className="wave-header sticky top-0 w-full z-[120] shadow-2xl md:fixed">
         <nav className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center relative z-10">
           <a href="/casadelmare" className="text-3xl font-bold text-white tracking-tight hover:text-amber-200 transition">
             Casa Del Mare
@@ -47,14 +47,14 @@ export default function AvailabilityPage() {
             <li><a href="/casadelmare/book-now" className="hover:text-amber-200 transition duration-300 font-medium">Book Now</a></li>
           </ul>
 
-          <details className="md:hidden relative">
+          <details className="md:hidden relative z-[130]">
             <summary
               className="list-none text-white text-3xl hover:text-amber-200 transition cursor-pointer select-none [&::-webkit-details-marker]:hidden"
               aria-label="Toggle menu"
             >
               ☰
             </summary>
-            <div className="absolute right-0 mt-3 w-64 bg-blue-600 px-6 py-4 shadow-lg rounded-lg">
+            <div className="absolute right-0 mt-3 w-64 bg-blue-600 px-6 py-4 shadow-lg rounded-lg z-[140]">
               <a href="/casadelmare#about" className="block py-3 text-white hover:text-amber-200 font-medium">About</a>
               <a href="/casadelmare#amenities" className="block py-3 text-white hover:text-amber-200 font-medium">Amenities</a>
               <a href="/casadelmare#gallery" className="block py-3 text-white hover:text-amber-200 font-medium">Gallery</a>
