@@ -1,26 +1,14 @@
-'use client';
-
-import { useEffect, useState } from 'react';
 import { property, amenities, hostStory, gallery, restaurants, beachActivities, attractions, natureWildlife } from '@/lib/propertyData';
 import BedroomsSection from '@/app/components/BedroomsSection';
 import ImageGallery from '@/app/components/ImageGallery';
 
 export default function Home() {
-  const [scrollY, setScrollY] = useState(0);
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
     <div className="min-h-screen bg-white">
-      {/* Sticky Navigation */}
-      <header className="wave-header fixed top-0 w-full z-50 shadow-2xl">
+      {/* Sticky Navigation - changed from fixed to sticky for iOS stability */}
+      <header className="wave-header sticky top-0 w-full z-50 shadow-2xl md:fixed">
         <nav className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center relative z-10">
-          <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo(0, 0); }} className="text-3xl font-bold text-white tracking-tight hover:text-amber-200 transition">
+          <a href="/casadelmare" className="text-3xl font-bold text-white tracking-tight hover:text-amber-200 transition">
             Casa Del Mare
           </a>
           
@@ -33,45 +21,38 @@ export default function Home() {
             <li><a href="/casadelmare/book-now" className="hover:text-amber-200 transition duration-300 font-medium">Book Now</a></li>
           </ul>
 
-          {/* Hamburger Menu Button */}
-          <button 
-            className="md:hidden text-white text-3xl hover:text-amber-200 transition"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
-            type="button"
-          >
-            ☰
-          </button>
+          <details className="md:hidden relative">
+            <summary
+              className="list-none text-white text-3xl hover:text-amber-200 transition cursor-pointer select-none [&::-webkit-details-marker]:hidden"
+              aria-label="Toggle menu"
+            >
+              ☰
+            </summary>
+            <div className="absolute right-0 mt-3 w-64 bg-blue-600 px-6 py-4 shadow-lg rounded-lg">
+              <a href="#about" className="block py-3 text-white hover:text-amber-200 font-medium">About</a>
+              <a href="#amenities" className="block py-3 text-white hover:text-amber-200 font-medium">Amenities</a>
+              <a href="#gallery" className="block py-3 text-white hover:text-amber-200 font-medium">Gallery</a>
+              <a href="/casadelmare/availability" className="block py-3 text-white hover:text-amber-200 font-medium">Availability</a>
+              <a href="/casadelmare/book-now" className="block py-3 text-white hover:text-amber-200 font-medium">Book Now</a>
+            </div>
+          </details>
         </nav>
-
-        {/* Mobile Navigation Menu - Simple inline, no fixed positioning */}
-        {menuOpen && (
-          <div className="md:hidden bg-blue-600 px-6 py-4 shadow-lg">
-            <a href="#about" className="block py-3 text-white hover:text-amber-200 font-medium" onClick={() => setMenuOpen(false)}>About</a>
-            <a href="#amenities" className="block py-3 text-white hover:text-amber-200 font-medium" onClick={() => setMenuOpen(false)}>Amenities</a>
-            <a href="#gallery" className="block py-3 text-white hover:text-amber-200 font-medium" onClick={() => setMenuOpen(false)}>Gallery</a>
-            <a href="/casadelmare/availability" className="block py-3 text-white hover:text-amber-200 font-medium" onClick={() => setMenuOpen(false)}>Availability</a>
-            <a href="/casadelmare/book-now" className="block py-3 text-white hover:text-amber-200 font-medium" onClick={() => setMenuOpen(false)}>Book Now</a>
-          </div>
-        )}
       </header>
 
-      {/* Hero Section with Parallax */}
+      {/* Hero Section - Removed parallax to fix iOS Safari crash */}
       <section 
         className="relative min-h-screen pt-20 bg-cover bg-center flex items-center justify-center overflow-hidden"
         style={{
           backgroundImage: 'url(/pictures/outdoor/dock/01-dock-canal.jpg)',
-          backgroundAttachment: 'fixed',
           backgroundSize: 'cover',
         }}
       >
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
         
-        {/* Parallax Content */}
+        {/* Content */}
         <div 
           className="relative text-center text-white max-w-4xl px-6 z-10"
-          style={{ transform: `translateY(${scrollY * 0.4}px)` }}
         >
           <div className="animate-fade-in-down">
             <h2 className="text-7xl md:text-8xl font-bold mb-6 text-amber-100 drop-shadow-lg">

@@ -1,10 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 export default function AvailabilityPage() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
   // Load OwnerRez widget after component mounts (only once via window check)
   useEffect(() => {
     // Only add script if not already loaded
@@ -27,15 +25,14 @@ export default function AvailabilityPage() {
   return (
     <div className="min-h-screen" style={{
       backgroundImage: 'url(/pictures/general/07-cherry-point.jpg)',
-      backgroundAttachment: 'fixed',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
     }}>
       {/* Shade Overlay */}
       <div className="fixed inset-0 bg-black/40 pointer-events-none"></div>
 
-      {/* Sticky Navigation */}
-      <header className="wave-header fixed top-0 w-full z-50 shadow-2xl">
+      {/* Sticky Navigation - changed from fixed to sticky for iOS stability */}
+      <header className="wave-header sticky top-0 w-full z-50 shadow-2xl md:fixed">
         <nav className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center relative z-10">
           <a href="/casadelmare" className="text-3xl font-bold text-white tracking-tight hover:text-amber-200 transition">
             Casa Del Mare
@@ -50,27 +47,22 @@ export default function AvailabilityPage() {
             <li><a href="/casadelmare/book-now" className="hover:text-amber-200 transition duration-300 font-medium">Book Now</a></li>
           </ul>
 
-          {/* Hamburger Menu Button */}
-          <button 
-            className="md:hidden text-white text-3xl hover:text-amber-200 transition"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
-            type="button"
-          >
-            ☰
-          </button>
+          <details className="md:hidden relative">
+            <summary
+              className="list-none text-white text-3xl hover:text-amber-200 transition cursor-pointer select-none [&::-webkit-details-marker]:hidden"
+              aria-label="Toggle menu"
+            >
+              ☰
+            </summary>
+            <div className="absolute right-0 mt-3 w-64 bg-blue-600 px-6 py-4 shadow-lg rounded-lg">
+              <a href="/casadelmare#about" className="block py-3 text-white hover:text-amber-200 font-medium">About</a>
+              <a href="/casadelmare#amenities" className="block py-3 text-white hover:text-amber-200 font-medium">Amenities</a>
+              <a href="/casadelmare#gallery" className="block py-3 text-white hover:text-amber-200 font-medium">Gallery</a>
+              <a href="/casadelmare/availability" className="block py-3 text-white hover:text-amber-200 font-medium text-amber-200">Availability</a>
+              <a href="/casadelmare/book-now" className="block py-3 text-white hover:text-amber-200 font-medium">Book Now</a>
+            </div>
+          </details>
         </nav>
-
-        {/* Mobile Navigation Menu - Simple inline, no fixed positioning */}
-        {menuOpen && (
-          <div className="md:hidden bg-blue-600 px-6 py-4 shadow-lg">
-            <a href="/casadelmare#about" className="block py-3 text-white hover:text-amber-200 font-medium" onClick={() => setMenuOpen(false)}>About</a>
-            <a href="/casadelmare#amenities" className="block py-3 text-white hover:text-amber-200 font-medium" onClick={() => setMenuOpen(false)}>Amenities</a>
-            <a href="/casadelmare#gallery" className="block py-3 text-white hover:text-amber-200 font-medium" onClick={() => setMenuOpen(false)}>Gallery</a>
-            <a href="/casadelmare/availability" className="block py-3 text-white hover:text-amber-200 font-medium text-amber-200" onClick={() => setMenuOpen(false)}>Availability</a>
-            <a href="/casadelmare/book-now" className="block py-3 text-white hover:text-amber-200 font-medium" onClick={() => setMenuOpen(false)}>Book Now</a>
-          </div>
-        )}
       </header>
 
       <main className="pt-32 relative z-10">

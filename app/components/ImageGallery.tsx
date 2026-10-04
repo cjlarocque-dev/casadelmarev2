@@ -1,7 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import dynamic from 'next/dynamic';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 interface GalleryImage {
   url: string;
@@ -15,13 +14,23 @@ interface ImageGalleryProps {
 
 export default function ImageGallery({ images }: ImageGalleryProps) {
   const galleryRef = useRef<HTMLDivElement>(null);
+  const lgRef = useRef<any>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [lg, setLg] = useState<any>(null);
+  const imageSignature = useMemo(
+    () => images.map((image) => image.url).join('|'),
+    [images]
+  );
 
   useEffect(() => {
+    let cancelled = false;
+
     // Load lightgallery dynamically only on client side
     const loadGallery = async () => {
       try {
+        if (!galleryRef.current || imageSignature.length === 0 || lgRef.current) {
+          return;
+        }
+
         const lightGallery = (await import('lightgallery')).default;
         const lgThumbnail = (await import('lightgallery/plugins/thumbnail')).default;
         const lgZoom = (await import('lightgallery/plugins/zoom')).default;
@@ -35,7 +44,7 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
           document.head.appendChild(link);
         }
 
-        if (galleryRef.current && images.length > 0) {
+        if (galleryRef.current && imageSignature.length > 0 && !cancelled) {
           const instance = lightGallery(galleryRef.current, {
             plugins: [lgThumbnail, lgZoom],
             speed: 500,
@@ -51,7 +60,7 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
             },
           } as any);
 
-          setLg(instance);
+          lgRef.current = instance;
         }
       } catch (error) {
         console.error('Failed to load lightgallery:', error);
@@ -61,11 +70,13 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
     loadGallery();
 
     return () => {
-      if (lg) {
-        lg.destroy();
+      cancelled = true;
+      if (lgRef.current) {
+        lgRef.current.destroy();
+        lgRef.current = null;
       }
     };
-  }, [images, lg]);
+  }, [imageSignature]);
 
   const handleThumbnailClick = (index: number) => {
     if (galleryRef.current) {
