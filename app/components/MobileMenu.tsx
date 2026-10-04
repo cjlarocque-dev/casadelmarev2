@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 interface MobileMenuLink {
   href: string;
@@ -14,6 +14,16 @@ interface MobileMenuProps {
 
 export default function MobileMenu({ links }: MobileMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const lastToggleRef = useRef(0);
+
+  const toggleMenu = () => {
+    const now = Date.now();
+    if (now - lastToggleRef.current < 250) {
+      return;
+    }
+    lastToggleRef.current = now;
+    setIsOpen((prev) => !prev);
+  };
 
   return (
     <div className="md:hidden">
@@ -21,7 +31,11 @@ export default function MobileMenu({ links }: MobileMenuProps) {
         type="button"
         aria-label="Toggle menu"
         className="text-white text-3xl hover:text-amber-200 transition"
-        onClick={() => setIsOpen((prev) => !prev)}
+        onClick={toggleMenu}
+        onTouchEnd={(event) => {
+          event.preventDefault();
+          toggleMenu();
+        }}
       >
         ☰
       </button>
