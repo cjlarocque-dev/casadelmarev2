@@ -13,7 +13,7 @@ interface ImageGalleryProps {
 }
 
 export default function ImageGallery({ images }: ImageGalleryProps) {
-  const galleryRef = useRef<HTMLDivElement>(null);
+  const lightboxItemsRef = useRef<HTMLDivElement>(null);
   const lgRef = useRef<any>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const imageSignature = useMemo(
@@ -27,7 +27,7 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
     // Load lightgallery dynamically only on client side
     const loadGallery = async () => {
       try {
-        if (!galleryRef.current || imageSignature.length === 0 || lgRef.current) {
+        if (!lightboxItemsRef.current || imageSignature.length === 0 || lgRef.current) {
           return;
         }
 
@@ -44,8 +44,8 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
           document.head.appendChild(link);
         }
 
-        if (galleryRef.current && imageSignature.length > 0 && !cancelled) {
-          const instance = lightGallery(galleryRef.current, {
+        if (lightboxItemsRef.current && imageSignature.length > 0 && !cancelled) {
+          const instance = lightGallery(lightboxItemsRef.current, {
             plugins: [lgThumbnail, lgZoom],
             speed: 500,
             licenseKey: 'your_license_key_here',
@@ -78,38 +78,57 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
     };
   }, [imageSignature]);
 
-  const handleThumbnailClick = (index: number) => {
-    if (galleryRef.current) {
-      const link = galleryRef.current.querySelector(
-        `a[data-index="${index}"]`
-      ) as HTMLAnchorElement;
-      if (link) link.click();
+  useEffect(() => {
+    if (currentIndex >= images.length) {
+      setCurrentIndex(0);
     }
+  }, [images.length, currentIndex]);
+
+  const handleThumbnailClick = (index: number) => {
+    setCurrentIndex(index);
   };
+
+  const handleMainImageClick = () => {
+    if (lgRef.current) {
+      lgRef.current.openGallery(currentIndex);
+      return;
+    }
+
+    const fallback = `/pictures/${images[currentIndex].url.replace('pictures/', '')}`;
+    window.open(fallback, '_blank', 'noopener,noreferrer');
+  };
+
+  if (images.length === 0) {
+    return null;
+  };
+
+  const currentImage = images[currentIndex];
+  const currentImageSrc = `/pictures/${currentImage.url.replace('pictures/', '')}`;
 
   return (
     <div className="mb-12">
-      {/* Main Carousel Display */}
-      <div
-        ref={galleryRef}
-        className="flex flex-col gap-6"
-      >
+      {/* Hidden lightbox source list */}
+      <div ref={lightboxItemsRef} className="hidden">
         {images.map((photo, index) => (
           <a
             key={index}
             href={`/pictures/${photo.url.replace('pictures/', '')}`}
             data-lg-size="1280-720"
             data-index={index}
-            className={index === 0 ? 'block' : 'hidden'}
           >
-            <img
-              src={`/pictures/${photo.url.replace('pictures/', '')}`}
-              alt={photo.alt}
-              className="w-full h-auto rounded-lg shadow-lg"
-            />
+            {photo.alt}
           </a>
         ))}
       </div>
+
+      {/* Main image controlled by thumbnail state */}
+      <button type="button" onClick={handleMainImageClick} className="w-full text-left">
+        <img
+          src={currentImageSrc}
+          alt={currentImage.alt}
+          className="w-full h-auto rounded-lg shadow-lg"
+        />
+      </button>
 
       {/* Carousel Thumbnails */}
       <div className="mt-6 flex gap-2 overflow-x-auto pb-2">
