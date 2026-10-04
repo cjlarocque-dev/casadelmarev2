@@ -15,6 +15,7 @@ interface MobileMenuProps {
 export default function MobileMenu({ links }: MobileMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const lastToggleRef = useRef(0);
+  const ignoreNextClickRef = useRef(false);
 
   const toggleMenu = () => {
     const now = Date.now();
@@ -31,9 +32,16 @@ export default function MobileMenu({ links }: MobileMenuProps) {
         type="button"
         aria-label="Toggle menu"
         className="text-white text-3xl hover:text-amber-200 transition"
-        onClick={toggleMenu}
+        onClick={() => {
+          if (ignoreNextClickRef.current) {
+            ignoreNextClickRef.current = false;
+            return;
+          }
+          toggleMenu();
+        }}
         onTouchEnd={(event) => {
           event.preventDefault();
+          ignoreNextClickRef.current = true;
           toggleMenu();
         }}
       >
