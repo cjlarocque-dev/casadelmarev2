@@ -1,9 +1,12 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import MobileMenu from '@/app/components/MobileMenu';
 
 export default function BookNowPage() {
+  const ownerRezContainerRef = useRef<HTMLDivElement>(null);
+  const lastTrackedRef = useRef<{ key: string; timestamp: number }>({ key: '', timestamp: 0 });
+
   // Load OwnerRez widget after component mounts (only once via window check)
   useEffect(() => {
     // Only add script if not already loaded
@@ -21,6 +24,61 @@ export default function BookNowPage() {
       }
     };
     document.body.appendChild(script);
+  }, []);
+
+  useEffect(() => {
+    const handleOwnerRezClick = (event: MouseEvent) => {
+      const target = event.target as Element | null;
+      if (!target || !ownerRezContainerRef.current) {
+        return;
+      }
+
+      const interactiveElement = target.closest('a, button, input[type="submit"], [role="button"]') as
+        | HTMLElement
+        | null;
+      if (!interactiveElement || !ownerRezContainerRef.current.contains(interactiveElement)) {
+        return;
+      }
+
+      const text = (interactiveElement.textContent ?? '').trim().toLowerCase();
+      const href = interactiveElement instanceof HTMLAnchorElement ? interactiveElement.href : '';
+
+      let eventName = 'ownerrez_cta_click';
+      if (text.includes('book') || href.includes('book')) {
+        eventName = 'ownerrez_book_now_click';
+      } else if (text.includes('inquir') || href.includes('inquiry') || href.includes('inquire')) {
+        eventName = 'ownerrez_inquiry_click';
+      }
+
+      const dedupeKey = `${eventName}:${text}:${href}`;
+      const now = Date.now();
+      if (
+        lastTrackedRef.current.key === dedupeKey &&
+        now - lastTrackedRef.current.timestamp < 400
+      ) {
+        return;
+      }
+      lastTrackedRef.current = { key: dedupeKey, timestamp: now };
+
+      const gtag = (window as Window & {
+        gtag?: (
+          command: 'event',
+          eventName: string,
+          eventParams: Record<string, string | number>
+        ) => void;
+      }).gtag;
+
+      if (typeof gtag === 'function') {
+        gtag('event', eventName, {
+          event_category: 'engagement',
+          event_label: text || href || interactiveElement.tagName.toLowerCase(),
+          value: 1,
+        });
+      }
+    };
+
+    document.addEventListener('click', handleOwnerRezClick, true);
+    return () => document.removeEventListener('click', handleOwnerRezClick, true);
   }, []);
 
   return (
@@ -67,7 +125,10 @@ export default function BookNowPage() {
           </div>
 
           {/* OwnerRez Booking Form Widget */}
-          <div className="bg-white/95 rounded-2xl shadow-2xl p-8 md:p-12 backdrop-blur-sm">
+          <div
+            ref={ownerRezContainerRef}
+            className="bg-white/95 rounded-2xl shadow-2xl p-8 md:p-12 backdrop-blur-sm"
+          >
             <div className="ownerrez-widget" data-propertyId="934d8c678417484ea626901fabf33f9a" data-widget-type="Booking/Inquiry" data-widgetId="c6ca2a8f9c92439b9b5b040d41cd25df"></div>
           </div>
 
