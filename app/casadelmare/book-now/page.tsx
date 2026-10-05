@@ -27,6 +27,39 @@ export default function BookNowPage() {
   }, []);
 
   useEffect(() => {
+    const trackOwnerRezEvent = (
+      eventName: 'ownerrez_book_now_click' | 'ownerrez_inquiry_click' | 'ownerrez_cta_click',
+      label: string,
+      source: 'dom_click' | 'postmessage'
+    ) => {
+      const dedupeKey = `${eventName}:${label}:${source}`;
+      const now = Date.now();
+      if (
+        lastTrackedRef.current.key === dedupeKey &&
+        now - lastTrackedRef.current.timestamp < 400
+      ) {
+        return;
+      }
+      lastTrackedRef.current = { key: dedupeKey, timestamp: now };
+
+      const gtag = (window as Window & {
+        gtag?: (
+          command: 'event',
+          eventName: string,
+          eventParams: Record<string, string | number>
+        ) => void;
+      }).gtag;
+
+      if (typeof gtag === 'function') {
+        gtag('event', eventName, {
+          event_category: 'engagement',
+          event_label: label,
+          event_source: source,
+          value: 1,
+        });
+      }
+    };
+
     const handleOwnerRezClick = (event: MouseEvent) => {
       const target = event.target as Element | null;
       if (!target || !ownerRezContainerRef.current) {
@@ -50,35 +83,57 @@ export default function BookNowPage() {
         eventName = 'ownerrez_inquiry_click';
       }
 
-      const dedupeKey = `${eventName}:${text}:${href}`;
-      const now = Date.now();
-      if (
-        lastTrackedRef.current.key === dedupeKey &&
-        now - lastTrackedRef.current.timestamp < 400
-      ) {
+      trackOwnerRezEvent(
+        eventName as 'ownerrez_book_now_click' | 'ownerrez_inquiry_click' | 'ownerrez_cta_click',
+        text || href || interactiveElement.tagName.toLowerCase(),
+        'dom_click'
+      );
+    };
+
+    const handleOwnerRezMessage = (event: MessageEvent) => {
+      if (event.origin !== 'https://app.ownerrez.com') {
         return;
       }
-      lastTrackedRef.current = { key: dedupeKey, timestamp: now };
 
-      const gtag = (window as Window & {
-        gtag?: (
-          command: 'event',
-          eventName: string,
-          eventParams: Record<string, string | number>
-        ) => void;
-      }).gtag;
+      let payload: unknown = event.data;
+      if (typeof payload === 'string') {
+        try {
+          payload = JSON.parse(payload);
+        } catch {
+          return;
+        }
+      }
 
-      if (typeof gtag === 'function') {
-        gtag('event', eventName, {
-          event_category: 'engagement',
-          event_label: text || href || interactiveElement.tagName.toLowerCase(),
-          value: 1,
-        });
+      if (!payload || typeof payload !== 'object') {
+        return;
+      }
+
+      const payloadObject = payload as Record<string, unknown>;
+      const payloadUrl = typeof payloadObject.url === 'string' ? payloadObject.url.toLowerCase() : '';
+      const action = typeof payloadObject.action === 'string' ? payloadObject.action.toLowerCase() : '';
+      const combined = `${action} ${payloadUrl}`.trim();
+
+      if (!combined) {
+        return;
+      }
+
+      if (combined.includes('book') || combined.includes('reserv') || combined.includes('checkout')) {
+        trackOwnerRezEvent('ownerrez_book_now_click', combined, 'postmessage');
+        return;
+      }
+
+      if (combined.includes('inquir') || combined.includes('quote') || combined.includes('contact')) {
+        trackOwnerRezEvent('ownerrez_inquiry_click', combined, 'postmessage');
       }
     };
 
     document.addEventListener('click', handleOwnerRezClick, true);
-    return () => document.removeEventListener('click', handleOwnerRezClick, true);
+    window.addEventListener('message', handleOwnerRezMessage);
+
+    return () => {
+      document.removeEventListener('click', handleOwnerRezClick, true);
+      window.removeEventListener('message', handleOwnerRezMessage);
+    };
   }, []);
 
   return (
