@@ -89,6 +89,14 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
     setCurrentIndex(index);
   };
 
+  const handlePreviousImage = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+  };
+
+  const handleNextImage = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
+
   const toPictureSrc = (url: string) => `/pictures/${url.replace(/^\/?pictures\//, '')}`;
 
   const handleMainImageClick = () => {
@@ -125,17 +133,39 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
       </div>
 
       {/* Main image controlled by thumbnail state */}
-      <button type="button" onClick={handleMainImageClick} className="w-full text-left">
-        <Image
-          src={currentImageSrc}
-          alt={currentImage.alt}
-          width={1600}
-          height={900}
-          sizes="(max-width: 768px) 100vw, 1024px"
-          priority={currentIndex === 0}
-          className="w-full h-auto rounded-lg shadow-lg"
-        />
-      </button>
+      <div className="relative">
+        <button type="button" onClick={handleMainImageClick} className="w-full text-left">
+          <Image
+            src={currentImageSrc}
+            alt={currentImage.alt}
+            width={1600}
+            height={900}
+            sizes="(max-width: 768px) 100vw, 1024px"
+            priority={currentIndex === 0}
+            className="w-full h-auto rounded-lg shadow-lg"
+          />
+        </button>
+        {images.length > 1 && (
+          <>
+            <button
+              type="button"
+              onClick={handlePreviousImage}
+              aria-label="View previous image"
+              className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-black/50 px-3 py-2 text-2xl font-semibold text-white transition hover:bg-black/65"
+            >
+              &#8249;
+            </button>
+            <button
+              type="button"
+              onClick={handleNextImage}
+              aria-label="View next image"
+              className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-black/50 px-3 py-2 text-2xl font-semibold text-white transition hover:bg-black/65"
+            >
+              &#8250;
+            </button>
+          </>
+        )}
+      </div>
 
       {/* Carousel Thumbnails */}
       <div className="mt-6 flex gap-2 overflow-x-auto pb-2">
