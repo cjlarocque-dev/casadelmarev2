@@ -11,6 +11,7 @@ export default function Home() {
     name: property.name,
     description: property.description,
     url: `${siteUrl}/casadelmare`,
+    email: property.email,
     image: [
       `${siteUrl}/pictures/outdoor/dock/01-dock-canal.jpg`,
       `${siteUrl}/pictures/general/05-sunset.jpg`,
@@ -29,6 +30,10 @@ export default function Home() {
       latitude: property.latitude,
       longitude: property.longitude,
     },
+    areaServed: {
+      '@type': 'City',
+      name: 'North Myrtle Beach',
+    },
     numberOfRooms: property.bedrooms,
     occupancy: {
       '@type': 'QuantitativeValue',
@@ -44,12 +49,54 @@ export default function Home() {
       { '@type': 'Place', name: 'Intercoastal Waterway Dock' },
     ],
   };
+  const faqItems = [
+    {
+      question: 'How far is Casa Del Mare from Cherry Grove Beach?',
+      answer: 'Casa Del Mare is less than a 5-minute walk from Cherry Grove Beach in North Myrtle Beach.',
+    },
+    {
+      question: 'How many guests can stay at Casa Del Mare?',
+      answer: 'The home sleeps up to 14 guests with 5 bedrooms and 3 bathrooms.',
+    },
+    {
+      question: 'Does Casa Del Mare have a hot tub?',
+      answer: 'Yes. Casa Del Mare includes a private hot tub for guest use.',
+    },
+    {
+      question: 'Can I book Casa Del Mare directly?',
+      answer: 'Yes. You can book direct through the secure Book Now page and OwnerRez booking form.',
+    },
+    {
+      question: 'Does the property have water access?',
+      answer: 'Yes. Casa Del Mare has direct intercoastal waterway access with a private dock.',
+    },
+    {
+      question: 'Where is Casa Del Mare located?',
+      answer: 'Casa Del Mare is located at 325 52nd Ave North, North Myrtle Beach, SC 29582.',
+    },
+  ];
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  };
 
   return (
     <div className="min-h-screen bg-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(vacationRentalSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       {/* Sticky Navigation - changed from fixed to sticky for iOS stability */}
       <header className="wave-header sticky top-0 w-full z-[120] shadow-2xl md:fixed isolate">
@@ -110,6 +157,15 @@ export default function Home() {
                 Explore
               </a>
             </div>
+            <p className="mt-6 text-white/90 text-base md:text-lg">
+              <a href="/casadelmare/availability" className="underline hover:text-amber-200 transition">
+                Check vacation rental availability in North Myrtle Beach
+              </a>{' '}
+              or{' '}
+              <a href="/casadelmare/book-now" className="underline hover:text-amber-200 transition">
+                book direct with Casa Del Mare
+              </a>.
+            </p>
           </div>
         </div>
 
@@ -499,6 +555,24 @@ export default function Home() {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section className="py-28 bg-white border-t border-blue-100">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <h2 className="text-5xl font-bold text-blue-600 mb-4">Vacation Rental FAQs</h2>
+            <p className="text-gray-600 text-lg">Answers to common questions about staying at Casa Del Mare in North Myrtle Beach.</p>
+          </div>
+          <div className="space-y-5">
+            {faqItems.map((faq) => (
+              <div key={faq.question} className="bg-blue-50 rounded-2xl p-6 border border-blue-100">
+                <h3 className="text-xl font-semibold text-blue-700 mb-2">{faq.question}</h3>
+                <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA Section */}
       <section id="booking" className="py-40 bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -534,12 +608,18 @@ export default function Home() {
                 <li><a href="#about" className="hover:text-white transition">About</a></li>
                 <li><a href="#amenities" className="hover:text-white transition">Amenities</a></li>
                 <li><a href="#gallery" className="hover:text-white transition">Gallery</a></li>
+                <li><a href="/casadelmare/availability" className="hover:text-white transition">Check Availability</a></li>
+                <li><a href="/casadelmare/book-now" className="hover:text-white transition">Book Direct</a></li>
               </ul>
             </div>
             <div>
               <h4 className="text-white font-bold text-lg mb-4">Contact</h4>
-              <p className="text-gray-400">North Myrtle Beach, SC</p>
-              <p className="text-gray-400">info@casadelmare.com</p>
+              <p className="text-gray-400">{property.address}</p>
+              <p className="text-gray-400">
+                <a href={`mailto:${property.email}`} className="hover:text-white transition">
+                  {property.email}
+                </a>
+              </p>
             </div>
           </div>
           <div className="border-t border-gray-800 pt-8 text-center text-gray-500">

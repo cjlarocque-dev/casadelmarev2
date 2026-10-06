@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import MobileMenu from '@/app/components/MobileMenu';
+import { property } from '@/lib/propertyData';
 
 export default function AvailabilityPage() {
   // Load OwnerRez widget after component mounts (only once via window check)
@@ -81,8 +82,18 @@ export default function AvailabilityPage() {
             <div className="text-center mt-12">
               <p className="text-white/95 text-lg mb-6 drop-shadow-md">Ready to book your stay?</p>
               <a href="/casadelmare/book-now" className="btn-primary text-lg inline-block">
-                Book Now
+                Book Direct with Casa Del Mare
               </a>
+              <p className="text-white/90 mt-5 text-base drop-shadow-md">
+                Before booking, explore our{' '}
+                <a href="/casadelmare#amenities" className="underline hover:text-amber-200 transition">
+                  vacation rental amenities
+                </a>{' '}
+                and{' '}
+                <a href="/casadelmare#gallery" className="underline hover:text-amber-200 transition">
+                  photo gallery
+                </a>.
+              </p>
             </div>
           </div>
         </section>
@@ -103,12 +114,17 @@ export default function AvailabilityPage() {
                 <li><a href="/casadelmare#amenities" className="hover:text-white transition">Amenities</a></li>
                 <li><a href="/casadelmare#gallery" className="hover:text-white transition">Gallery</a></li>
                 <li><a href="/casadelmare/availability" className="hover:text-white transition">Availability</a></li>
+                <li><a href="/casadelmare/book-now" className="hover:text-white transition">Book Direct</a></li>
               </ul>
             </div>
             <div>
               <h4 className="text-white font-bold text-lg mb-4">Contact</h4>
-              <p className="text-gray-400">North Myrtle Beach, SC</p>
-              <p className="text-gray-400">info@casadelmare.com</p>
+              <p className="text-gray-400">{property.address}</p>
+              <p className="text-gray-400">
+                <a href={`mailto:${property.email}`} className="hover:text-white transition">
+                  {property.email}
+                </a>
+              </p>
             </div>
           </div>
           <div className="border-t border-gray-800 pt-8 text-center text-gray-500">

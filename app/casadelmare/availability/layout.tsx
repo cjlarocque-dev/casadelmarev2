@@ -3,16 +3,16 @@ import type { Metadata } from 'next';
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.familybeachtrips.com').replace(/\/$/, '');
 
 export const metadata: Metadata = {
-  title: 'Vacation Rental Availability | Casa Del Mare North Myrtle Beach',
+  title: 'Check Availability | Casa Del Mare North Myrtle Beach Rental',
   description:
-    'Check Casa Del Mare availability in North Myrtle Beach and view open dates for your Cherry Grove beach house stay.',
+    'View open dates for Casa Del Mare, a waterfront 5-bedroom North Myrtle Beach vacation rental that sleeps 14 near Cherry Grove Beach.',
   alternates: {
     canonical: `${siteUrl}/casadelmare/availability`,
   },
   openGraph: {
-    title: 'Vacation Rental Availability | Casa Del Mare North Myrtle Beach',
+    title: 'Check Availability | Casa Del Mare North Myrtle Beach Rental',
     description:
-      'Check Casa Del Mare availability in North Myrtle Beach and view open dates for your Cherry Grove beach house stay.',
+      'View open dates for Casa Del Mare, a waterfront 5-bedroom North Myrtle Beach vacation rental that sleeps 14 near Cherry Grove Beach.',
     url: `${siteUrl}/casadelmare/availability`,
     siteName: 'Casa Del Mare',
     type: 'website',

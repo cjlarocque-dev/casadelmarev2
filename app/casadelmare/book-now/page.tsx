@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import MobileMenu from '@/app/components/MobileMenu';
+import { property } from '@/lib/propertyData';
 
 export default function BookNowPage() {
   const ownerRezContainerRef = useRef<HTMLDivElement>(null);
@@ -176,6 +177,12 @@ export default function BookNowPage() {
             <p className="text-xl text-white/90 max-w-2xl mx-auto drop-shadow-md">
               Reserve Casa Del Mare for your next beach getaway. Check availability and book securely below.
             </p>
+            <p className="text-white/90 mt-4 text-base md:text-lg drop-shadow-md">
+              Need dates first?{' '}
+              <a href="/casadelmare/availability" className="underline hover:text-amber-200 transition">
+                Check current vacation rental availability
+              </a>.
+            </p>
             <div className="w-24 h-1 bg-gradient-to-r from-amber-200 to-cyan-300 mx-auto mt-6 rounded-full shadow-lg"></div>
           </div>
 
@@ -211,9 +218,9 @@ export default function BookNowPage() {
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12 relative z-10">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <p className="mb-4">Casa Del Mare • North Myrtle Beach, SC</p>
+          <p className="mb-4">{property.name} • {property.address}</p>
           <p className="text-gray-400 text-sm">
-            Questions? Email us at <a href="mailto:familybeachtripsusa@gmail.com" className="text-cyan-400 hover:underline">familybeachtripsusa@gmail.com</a>
+            Questions? Email us at <a href={`mailto:${property.email}`} className="text-cyan-400 hover:underline">{property.email}</a>
           </p>
         </div>
       </footer>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
+import Image from 'next/image';
 
 interface GalleryImage {
   url: string;
@@ -88,13 +89,15 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
     setCurrentIndex(index);
   };
 
+  const toPictureSrc = (url: string) => `/pictures/${url.replace(/^\/?pictures\//, '')}`;
+
   const handleMainImageClick = () => {
     if (lgRef.current) {
       lgRef.current.openGallery(currentIndex);
       return;
     }
 
-    const fallback = `/pictures/${images[currentIndex].url.replace('pictures/', '')}`;
+    const fallback = toPictureSrc(images[currentIndex].url);
     window.open(fallback, '_blank', 'noopener,noreferrer');
   };
 
@@ -103,7 +106,7 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
   };
 
   const currentImage = images[currentIndex];
-  const currentImageSrc = `/pictures/${currentImage.url.replace('pictures/', '')}`;
+  const currentImageSrc = toPictureSrc(currentImage.url);
 
   return (
     <div className="mb-12">
@@ -112,7 +115,7 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
         {images.map((photo, index) => (
           <a
             key={index}
-            href={`/pictures/${photo.url.replace('pictures/', '')}`}
+            href={toPictureSrc(photo.url)}
             data-lg-size="1280-720"
             data-index={index}
           >
@@ -123,9 +126,13 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
 
       {/* Main image controlled by thumbnail state */}
       <button type="button" onClick={handleMainImageClick} className="w-full text-left">
-        <img
+        <Image
           src={currentImageSrc}
           alt={currentImage.alt}
+          width={1600}
+          height={900}
+          sizes="(max-width: 768px) 100vw, 1024px"
+          priority={currentIndex === 0}
           className="w-full h-auto rounded-lg shadow-lg"
         />
       </button>
@@ -142,9 +149,13 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
                 : 'border-gray-300 opacity-60 hover:opacity-100'
             }`}
           >
-            <img
-              src={`/pictures/${photo.url.replace('pictures/', '')}`}
+            <Image
+              src={toPictureSrc(photo.url)}
               alt={photo.alt}
+              width={96}
+              height={80}
+              sizes="96px"
+              loading="lazy"
               className="w-full h-full object-cover"
             />
           </button>
