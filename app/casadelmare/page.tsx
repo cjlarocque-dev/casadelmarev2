@@ -4,8 +4,53 @@ import ImageGallery from '@/app/components/ImageGallery';
 import MobileMenu from '@/app/components/MobileMenu';
 
 export default function Home() {
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.familybeachtrips.com').replace(/\/$/, '');
+  const vacationRentalSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'VacationRental',
+    name: property.name,
+    description: property.description,
+    url: `${siteUrl}/casadelmare`,
+    image: [
+      `${siteUrl}/pictures/outdoor/dock/01-dock-canal.jpg`,
+      `${siteUrl}/pictures/general/05-sunset.jpg`,
+      `${siteUrl}/pictures/indoor/living-room/01-living-room.jpg`,
+    ],
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '325 52nd Ave North',
+      addressLocality: 'North Myrtle Beach',
+      addressRegion: 'SC',
+      postalCode: '29582',
+      addressCountry: 'US',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: property.latitude,
+      longitude: property.longitude,
+    },
+    numberOfRooms: property.bedrooms,
+    occupancy: {
+      '@type': 'QuantitativeValue',
+      maxValue: property.maxGuests,
+    },
+    amenityFeature: amenities.map((amenity) => ({
+      '@type': 'LocationFeatureSpecification',
+      name: amenity.title,
+      value: true,
+    })),
+    containsPlace: [
+      { '@type': 'Place', name: 'Cherry Grove Beach Access' },
+      { '@type': 'Place', name: 'Intercoastal Waterway Dock' },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(vacationRentalSchema) }}
+      />
       {/* Sticky Navigation - changed from fixed to sticky for iOS stability */}
       <header className="wave-header sticky top-0 w-full z-[120] shadow-2xl md:fixed isolate">
         <nav className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center relative z-10">

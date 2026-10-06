@@ -10,6 +10,8 @@ const poppins = Poppins({
   display: "swap",
 });
 
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.familybeachtrips.com").replace(/\/$/, "");
+
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -17,8 +19,13 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Casa Del Mare | Luxury Beachfront Vacation Rental",
-  description: "Experience paradise at Casa Del Mare, a stunning 5-bedroom beachfront property in North Myrtle Beach, perfect for family getaways.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Casa Del Mare | North Myrtle Beach Vacation Rental",
+    template: "%s | Casa Del Mare",
+  },
+  description:
+    "Waterfront 5-bedroom vacation rental in North Myrtle Beach near Cherry Grove Beach. Check availability and book direct at Casa Del Mare.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
