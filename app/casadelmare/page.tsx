@@ -286,28 +286,29 @@ export default function Home() {
 
       {/* Kitchen Section */}
       <BedroomsSection
+        sectionId="kitchen"
         title="The Kitchen"
-        description="Fully equipped kitchen with ceramic flat top electric range, granite countertops, and plenty of counter space for meal preparation. The open floor plan connects to the dining and living areas—truly the heart of the home."
+        description="The kitchen is fully equipped for real family meals, not just quick snacks. You get a ceramic flat-top range, full-size refrigerator, granite counters, and easy flow into dining and living areas so everyone can gather while meals are being prepared."
         rooms={[
           {
             icon: '🍳',
             title: 'Ceramic Flat Top Electric Range',
-            description: 'Modern, efficient cooking equipment',
+            description: 'Cook breakfast, lunch, and dinner with plenty of burner space.',
           },
           {
             icon: '🪨',
             title: 'Granite Countertops',
-            description: 'Plenty of counter space for meal prep',
+            description: 'Durable prep space for group meals and serving platters.',
           },
           {
             icon: '❄️',
             title: 'Full-Size Refrigerator',
-            description: 'Plenty of storage for groceries',
+            description: 'Store groceries and drinks for your entire beach week.',
           },
           {
             icon: '🍴',
-            title: 'Dishwasher',
-            description: 'Convenient cleanup after meals',
+            title: 'Easy Cleanup Setup',
+            description: 'Dishwasher and open layout make cleanup quick after meals.',
           },
         ]}
         imagePaths={[
@@ -318,53 +319,70 @@ export default function Home() {
           '/pictures/general/08-front-exterior.jpg',
           '/pictures/general/09-front-porch.jpg',
         ]}
+        imageAlts={[
+          'Fully equipped kitchen at Casa Del Mare with granite counters',
+          'Indoor dining space connected to the kitchen',
+          'Dining table setup for family meals',
+          'Open kitchen and living layout view',
+          'Front exterior of Casa Del Mare',
+          'Front porch entry area',
+        ]}
         bgColor="from-amber-50 to-orange-50"
         accentColor="text-amber-700"
       />
 
       {/* Bedrooms & Bathrooms Section */}
       <BedroomsSection
+        sectionId="bedrooms-and-bathrooms"
         title="Bed & Bath"
-        description="Casa Del Mare features 5 beautifully appointed bedrooms and 3 luxurious bathrooms, ensuring comfort and privacy for the entire family. Each bedroom is thoughtfully designed with quality linens, ample storage, and modern amenities. The bathrooms feature premium fixtures and spa-like touches for a truly relaxing stay."
+        description="Casa Del Mare sleeps up to 14 guests across five comfortable bedrooms and three full bathrooms. The bedroom mix works well for families and multi-family groups, with a king suite, multiple queen rooms, and a bunk room for kids."
         rooms={[
           {
             icon: '🛏️',
-            title: 'Master Bedroom',
-            description: 'King bed with private access',
+            title: 'Master Bedroom (King)',
+            description: 'Spacious primary suite with king bed and privacy.',
           },
           {
             icon: '🛏️',
-            title: 'Guest Bedroom 1',
-            description: 'Queen bed with full bathroom access',
+            title: 'Guest Bedroom 1 (Queen)',
+            description: 'Comfortable queen room with nearby full bath access.',
           },
           {
             icon: '🛏️',
-            title: 'Guest Bedroom 2',
-            description: 'Queen bed with shared bathroom',
+            title: 'Guest Bedroom 2 (Queen)',
+            description: 'Quiet queen bedroom with easy access to shared bath.',
           },
           {
             icon: '🛏️',
-            title: 'Guest Bedroom 3',
-            description: 'Queen bed with shared bathroom',
+            title: 'Guest Bedroom 3 (Queen)',
+            description: 'Additional queen room ideal for larger groups.',
           },
           {
             icon: '🛏️',
             title: 'Bunkroom',
-            description: 'Full size bunks, great for kids',
+            description: 'Full-size bunks that are perfect for kids and teens.',
           },
           {
             icon: '🚿',
             title: 'Full Bathrooms',
-            description: '3 bathrooms: 1 with tub/shower, 2 with walk-in showers',
+            description: 'Three full bathrooms to keep morning routines easy.',
           },
         ]}
         imagePaths={[
           '/pictures/bedrooms/master/01-master.jpg',
+          '/pictures/bedrooms/master/02-desk.jpg',
           '/pictures/bedrooms/guest-1/01-turtle-room.jpg',
           '/pictures/bedrooms/guest-2/01-beige-room.jpg',
           '/pictures/bedrooms/guest-3/01-sailboat-room.jpg',
           '/pictures/bedrooms/bunkroom/01-bunkroom.jpg',
-          '/pictures/indoor/bathroom-placeholder.jpg', // We'll need to add a bathroom image
+        ]}
+        imageAlts={[
+          'Master bedroom with king bed',
+          'Master bedroom seating and desk area',
+          'Guest bedroom one with queen bed',
+          'Guest bedroom two with queen bed',
+          'Guest bedroom three with queen bed',
+          'Bunkroom with full-size bunks',
         ]}
         bgColor="from-green-50 to-green-100"
         accentColor="text-green-700"
@@ -372,47 +390,58 @@ export default function Home() {
 
       {/* Outdoor Spaces Section */}
       <BedroomsSection
+        sectionId="outdoor-living"
         title="Outdoor Living"
-        description="Experience the best of coastal living with expansive outdoor spaces. Enjoy sunrise views over the beach and sunset views over the marsh from the spacious deck. Relax in the hot tub, access the water via private dock, or unwind in the beautiful landscaped backyard—there's something for everyone in this outdoor paradise."
+        description="Outdoor living is one of the best parts of this home. Start your day with sunrise light, enjoy marsh sunsets in the evening, and spend time on the deck, dock, and backyard between beach trips."
         rooms={[
           {
             icon: '🌅',
             title: 'Sunrise & Sunset Views',
-            description: 'Beautiful sunrises over the beach and sunsets over the marsh',
+            description: 'Catch bright morning skies and colorful marsh sunsets.',
           },
           {
             icon: '🏡',
-            title: 'Deck',
-            description: 'Expansive deck with seating and water views',
+            title: 'Expansive Deck',
+            description: 'Outdoor seating area with water and neighborhood views.',
           },
           {
             icon: '🌊',
-            title: 'Dock',
-            description: 'Direct water access for kayaking and boating',
+            title: 'Private Dock Access',
+            description: 'Direct water access for kayaking and boating activities.',
           },
           {
             icon: '♨️',
             title: 'Hot Tub',
-            description: 'Relaxing hot tub overlooking the water',
+            description: 'Relax in the hot tub after a day at the beach.',
           },
           {
             icon: '🌳',
             title: 'Backyard',
-            description: 'Landscaped grounds with hammock and seating',
+            description: 'Landscaped yard with space to unwind and hang out.',
           },
           {
             icon: '🚣',
             title: 'Water Activities',
-            description: 'Perfect for kayaking, paddleboarding, and fishing',
+            description: 'Great setup for kayaking, paddleboarding, and fishing.',
           },
         ]}
         imagePaths={[
           '/pictures/general/06-sunrise.jpg',
           '/pictures/outdoor/deck/01-deck.jpg',
+          '/pictures/outdoor/deck/02-overhead.jpg',
           '/pictures/outdoor/dock/01-dock-canal.jpg',
+          '/pictures/outdoor/dock/02-dock.jpg',
           '/pictures/outdoor/hottub/01-hottub.jpg',
-          '/pictures/outdoor/backyard/01-backyard.jpg',
-          '/pictures/general/05-sunset.jpg',
+          '/pictures/outdoor/backyard/02-hammock.jpg',
+        ]}
+        imageAlts={[
+          'Sunrise view near Casa Del Mare',
+          'Main deck seating area',
+          'Overhead view of the outdoor deck',
+          'Private dock on the waterway',
+          'Dock and canal access for kayaks',
+          'Private hot tub at Casa Del Mare',
+          'Backyard hammock area',
         ]}
         bgColor="from-cyan-50 to-blue-50"
         accentColor="text-cyan-700"
@@ -420,38 +449,39 @@ export default function Home() {
 
       {/* Living & Game Room Section */}
       <BedroomsSection
+        sectionId="indoor-living"
         title="Living & Recreation"
-        description="The heart of Casa Del Mare features elegant living spaces designed for relaxation and entertainment. From the spacious living room with premium seating to the well-appointed dining area for family meals, and the fun game room for recreation—there's plenty of space for everyone to enjoy quality time together."
+        description="Inside, the home gives your group plenty of places to gather and spread out. The living room, dining area, and game room support everything from family dinners to movie nights and rainy-day fun."
         rooms={[
           {
             icon: '🛋️',
             title: 'Living Room',
-            description: 'Spacious living area with comfortable seating and entertainment',
+            description: 'Comfortable seating and TV space for group downtime.',
           },
           {
             icon: '🍽️',
             title: 'Dining Room',
-            description: 'Elegant dining area with seating for the whole family',
+            description: 'Indoor dining setup for shared meals and planning the day.',
           },
           {
             icon: '🎮',
             title: 'Game Room',
-            description: 'Fun activities and games for family entertainment',
+            description: 'Kid-friendly and adult-friendly games for all-ages fun.',
           },
           {
             icon: '📺',
             title: 'TV & Entertainment',
-            description: 'Multiple entertainment systems throughout the home',
+            description: 'Entertainment options throughout the home.',
           },
           {
             icon: '☕',
             title: 'Open Floor Plan',
-            description: 'Flowing spaces perfect for gathering and relaxing',
+            description: 'Flowing layout that keeps everyone connected indoors.',
           },
           {
             icon: '✨',
             title: 'Modern Amenities',
-            description: 'All the comforts of home with premium finishes',
+            description: 'Home-style convenience with upgraded finishes.',
           },
         ]}
         imagePaths={[
@@ -459,8 +489,16 @@ export default function Home() {
           '/pictures/indoor/dining/01-dining.jpg',
           '/pictures/indoor/game-room/01-gameroom.jpg',
           '/pictures/indoor/living-room/02-living-room-alt.jpg',
+          '/pictures/indoor/living-room/03-living-room-detail.jpg',
           '/pictures/indoor/dining/02-dining-table.jpg',
-          '/pictures/indoor/game-room/02-games.jpg',
+        ]}
+        imageAlts={[
+          'Main indoor living room with seating',
+          'Indoor dining area at Casa Del Mare',
+          'Game room entertainment space',
+          'Alternate view of living room seating',
+          'Living room detail view',
+          'Dining table detail setup',
         ]}
         bgColor="from-orange-50 to-amber-50"
         accentColor="text-orange-700"

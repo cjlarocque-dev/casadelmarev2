@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import Image from 'next/image';
 
 interface RoomItem {
@@ -10,27 +9,29 @@ interface RoomItem {
 }
 
 interface BedroomsSectionProps {
-  scrollY?: number;
+  sectionId?: string;
   title: string;
   description: string;
   rooms: RoomItem[];
   imagePaths: string[];
+  imageAlts?: string[];
   bgColor?: string;
   accentColor?: string;
 }
 
 export default function BedroomsSection({
-  scrollY = 0,
+  sectionId = 'feature-section',
   title,
   description,
   rooms,
   imagePaths,
+  imageAlts = [],
   bgColor = 'from-blue-50 to-blue-100',
   accentColor = 'text-blue-700',
 }: BedroomsSectionProps) {
   return (
     <section
-      id="bedrooms-bathrooms"
+      id={sectionId}
       className={`relative py-20 px-4 md:px-8 bg-gradient-to-b ${bgColor} overflow-hidden`}
     >
       <div className="max-w-7xl mx-auto">
@@ -79,7 +80,7 @@ export default function BedroomsSection({
               >
                 <Image
                   src={imagePath}
-                  alt={`Room ${index}`}
+                  alt={imageAlts[index] ?? `${title} photo ${index + 1}`}
                   fill
                   className="object-cover hover:scale-105 transition-transform duration-300"
                 />
@@ -87,6 +88,18 @@ export default function BedroomsSection({
             ))}
           </div>
         </div>
+
+        <p className="mt-10 text-center text-gray-700 text-base md:text-lg">
+          Ready to plan your stay?{' '}
+          <a href="/casadelmare/availability" className={`${accentColor} font-semibold underline underline-offset-4`}>
+            Check availability
+          </a>{' '}
+          or{' '}
+          <a href="/casadelmare/book-now" className={`${accentColor} font-semibold underline underline-offset-4`}>
+            book direct
+          </a>
+          .
+        </p>
       </div>
     </section>
   );
