@@ -79,7 +79,7 @@ export default function FactsPage() {
     name: 'Casa Del Mare Property Facts & Guest Rules',
     url: `${siteUrl}/casadelmare/facts`,
     dateModified: '2026-10-11',
-    about: { '@type': 'VacationRental', name: property.name, url: `${siteUrl}/casadelmare` },
+    about: { '@type': 'Thing', name: property.name, url: `${siteUrl}/casadelmare` },
     mainEntity: sections.map((section) => ({
       '@type': 'Question',
       name: section.title,
