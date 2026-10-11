@@ -111,6 +111,7 @@ export default function Home() {
             <li><a href="#about" className="hover:text-amber-200 transition duration-300 font-medium">About</a></li>
             <li><a href="#amenities" className="hover:text-amber-200 transition duration-300 font-medium">Amenities</a></li>
             <li><a href="#gallery" className="hover:text-amber-200 transition duration-300 font-medium">Gallery</a></li>
+            <li><a href="/casadelmare/facts" className="hover:text-amber-200 transition duration-300 font-medium">Property Facts</a></li>
             <li><a href="/casadelmare/availability" className="hover:text-amber-200 transition duration-300 font-medium">Availability</a></li>
             <li><a href="/casadelmare/book-now" className="hover:text-amber-200 transition duration-300 font-medium">Book Now</a></li>
           </ul>
@@ -120,6 +121,7 @@ export default function Home() {
               { href: '#about', label: 'About' },
               { href: '#amenities', label: 'Amenities' },
               { href: '#gallery', label: 'Gallery' },
+              { href: '/casadelmare/facts', label: 'Property Facts' },
               { href: '/casadelmare/availability', label: 'Availability' },
               { href: '/casadelmare/book-now', label: 'Book Now' },
             ]}
@@ -194,6 +196,11 @@ export default function Home() {
           <div className="max-w-5xl mx-auto">
             <p className="text-2xl text-gray-800 leading-relaxed text-center mb-12 font-light animate-fade-in-up">
               {property.description}
+            </p>
+            <p className="text-center text-lg mb-10">
+              <a href="/casadelmare/facts" className="text-blue-700 underline underline-offset-4">
+                Review sleeping arrangements, parking, beach access, and guest rules
+              </a>
             </p>
             
             {/* Quick Stats with Animation */}
@@ -650,6 +657,7 @@ export default function Home() {
                 <li><a href="#about" className="hover:text-white transition">About</a></li>
                 <li><a href="#amenities" className="hover:text-white transition">Amenities</a></li>
                 <li><a href="#gallery" className="hover:text-white transition">Gallery</a></li>
+                <li><a href="/casadelmare/facts" className="hover:text-white transition">Property Facts &amp; Guest Rules</a></li>
                 <li><a href="/casadelmare/availability" className="hover:text-white transition">Check Availability</a></li>
                 <li><a href="/casadelmare/book-now" className="hover:text-white transition">Book Direct</a></li>
               </ul>

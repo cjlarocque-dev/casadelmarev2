@@ -13,6 +13,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
+      url: `${siteUrl}/casadelmare/facts`,
+      lastModified: new Date('2026-10-11'),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
       url: `${siteUrl}/casadelmare/availability`,
       lastModified: now,
       changeFrequency: 'weekly',
