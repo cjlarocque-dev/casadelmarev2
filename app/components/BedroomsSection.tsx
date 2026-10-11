@@ -82,6 +82,8 @@ export default function BedroomsSection({
                   src={imagePath}
                   alt={imageAlts[index] ?? `${title} photo ${index + 1}`}
                   fill
+                  sizes={index === 0 ? '(max-width: 768px) 100vw, 50vw' : '(max-width: 768px) 50vw, 25vw'}
+                  quality={75}
                   className="object-cover hover:scale-105 transition-transform duration-300"
                 />
               </div>

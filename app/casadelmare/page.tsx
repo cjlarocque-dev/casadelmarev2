@@ -2,6 +2,7 @@ import { property, amenities, hostStory, gallery, restaurants, beachActivities, 
 import BedroomsSection from '@/app/components/BedroomsSection';
 import ImageGallery from '@/app/components/ImageGallery';
 import MobileMenu from '@/app/components/MobileMenu';
+import Image from 'next/image';
 
 export default function Home() {
   const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.familybeachtrips.com').replace(/\/$/, '');
@@ -127,13 +128,16 @@ export default function Home() {
       </header>
 
       {/* Hero Section - Removed parallax to fix iOS Safari crash */}
-      <section 
-        className="relative min-h-screen pt-20 bg-cover bg-center flex items-center justify-center overflow-hidden"
-        style={{
-          backgroundImage: 'url(/pictures/outdoor/dock/01-dock-canal.jpg)',
-          backgroundSize: 'cover',
-        }}
-      >
+      <section className="relative min-h-screen pt-20 flex items-center justify-center overflow-hidden">
+        <Image
+          src="/pictures/outdoor/dock/01-dock-canal.jpg"
+          alt="Casa Del Mare private dock and waterway view"
+          fill
+          priority
+          sizes="100vw"
+          quality={75}
+          className="object-cover"
+        />
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
         
