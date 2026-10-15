@@ -62,7 +62,7 @@ const faqItems = [
   },
   {
     question: 'Does the property have water access?',
-    answer: 'Yes. Casa Del Mare has direct intercoastal waterway access with a private dock.',
+    answer: 'Yes. Casa Del Mare has direct Intracoastal Waterway access with a private dock.',
   },
   {
     question: 'Where is Casa Del Mare located?',
@@ -357,7 +357,7 @@ export default function CasaDelMareVariantA() {
     })),
     containsPlace: [
       { '@type': 'Place', name: 'Cherry Grove Beach Access' },
-      { '@type': 'Place', name: 'Intercoastal Waterway Dock' },
+      { '@type': 'Place', name: 'Intracoastal Waterway Dock' },
     ],
   };
   const faqSchema = {
@@ -406,7 +406,7 @@ export default function CasaDelMareVariantA() {
             </a>
           </div>
 
-          <MobileMenu links={mobileNavLinks} />
+          <MobileMenu links={mobileNavLinks} panelClassName={bodyFont.className} linkClassName={bodyFont.className} />
         </nav>
       </header>
 
@@ -440,15 +440,15 @@ export default function CasaDelMareVariantA() {
             </div>
             <div className="mt-14 grid max-w-2xl gap-6 border-t border-white/25 pt-8 sm:grid-cols-3">
               <div>
-                <p className="text-4xl text-white">{property.bedrooms}</p>
+                <p className={`${headlineFont.className} text-4xl text-white`}>{property.bedrooms}</p>
                 <p className="mt-2 text-sm uppercase tracking-[0.2em] text-[#d9cbb8]">Bedrooms</p>
               </div>
               <div>
-                <p className="text-4xl text-white">{property.maxGuests}</p>
+                <p className={`${headlineFont.className} text-4xl text-white`}>{property.maxGuests}</p>
                 <p className="mt-2 text-sm uppercase tracking-[0.2em] text-[#d9cbb8]">Guests</p>
               </div>
               <div>
-                <p className="text-4xl text-white">{property.beachDistance}</p>
+                <p className={`${headlineFont.className} text-4xl text-white`}>{property.beachDistance}</p>
                 <p className="mt-2 text-sm uppercase tracking-[0.2em] text-[#d9cbb8]">To the beach</p>
               </div>
             </div>
@@ -537,6 +537,8 @@ export default function CasaDelMareVariantA() {
         imageAlts={featureSections.kitchen.imageAlts}
         bgColor={featureSections.kitchen.bgColor}
         accentColor={featureSections.kitchen.accentColor}
+        headlineClassName={headlineFont.className}
+        bodyClassName={bodyFont.className}
       />
 
       <BedroomsSection
@@ -548,6 +550,8 @@ export default function CasaDelMareVariantA() {
         imageAlts={featureSections.bedrooms.imageAlts}
         bgColor={featureSections.bedrooms.bgColor}
         accentColor={featureSections.bedrooms.accentColor}
+        headlineClassName={headlineFont.className}
+        bodyClassName={bodyFont.className}
       />
 
       <BedroomsSection
@@ -559,6 +563,8 @@ export default function CasaDelMareVariantA() {
         imageAlts={featureSections.outdoor.imageAlts}
         bgColor={featureSections.outdoor.bgColor}
         accentColor={featureSections.outdoor.accentColor}
+        headlineClassName={headlineFont.className}
+        bodyClassName={bodyFont.className}
       />
 
       <BedroomsSection
@@ -570,6 +576,8 @@ export default function CasaDelMareVariantA() {
         imageAlts={featureSections.indoor.imageAlts}
         bgColor={featureSections.indoor.bgColor}
         accentColor={featureSections.indoor.accentColor}
+        headlineClassName={headlineFont.className}
+        bodyClassName={bodyFont.className}
       />
 
       <section id="host-story" className="px-6 py-28 md:py-36">
@@ -611,7 +619,7 @@ export default function CasaDelMareVariantA() {
                 <div className="mt-8 space-y-6">
                   {group.items.map((item) => (
                     <div key={item.name} className="border-t border-stone-200 pt-6 first:border-t-0 first:pt-0">
-                      <h4 className="text-lg font-medium uppercase tracking-[0.12em] text-[#1f4c48]">{item.name}</h4>
+                      <h4 className={`${headlineFont.className} text-lg font-medium uppercase tracking-[0.12em] text-[#1f4c48]`}>{item.name}</h4>
                       <p className="mt-3 text-base leading-7 text-stone-600">{item.description}</p>
                     </div>
                   ))}
@@ -665,11 +673,11 @@ export default function CasaDelMareVariantA() {
           <div>
             <h3 className={`${headlineFont.className} text-3xl text-[#122f30]`}>Casa Del Mare</h3>
             <p className="mt-4 max-w-sm text-sm leading-7 text-stone-600">
-              A refined waterfront vacation rental in North Myrtle Beach designed for slower, more memorable stays.
+              A refined waterfront vacation rental in North Myrtle Beach with private dock access, a hot tub, and room for memorable group stays.
             </p>
           </div>
           <div>
-            <h4 className="text-sm uppercase tracking-[0.25em] text-[#1f4c48]">Browse Variants</h4>
+            <h4 className={`${headlineFont.className} text-sm uppercase tracking-[0.25em] text-[#1f4c48]`}>Browse Variants</h4>
             <ul className="mt-4 space-y-3 text-sm text-stone-600">
               <li><a href="/casadelmareA" className="hover:text-[#122f30]">Variant A · Editorial Luxury</a></li>
               <li><a href="/casadelmareB" className="hover:text-[#122f30]">Variant B · Contemporary Minimal</a></li>
@@ -677,7 +685,7 @@ export default function CasaDelMareVariantA() {
             </ul>
           </div>
           <div>
-            <h4 className="text-sm uppercase tracking-[0.25em] text-[#1f4c48]">Contact</h4>
+            <h4 className={`${headlineFont.className} text-sm uppercase tracking-[0.25em] text-[#1f4c48]`}>Contact</h4>
             <p className="mt-4 text-sm leading-7 text-stone-600">{property.address}</p>
             <a href={`mailto:${property.email}`} className="text-sm leading-7 text-stone-600 hover:text-[#122f30]">
               {property.email}

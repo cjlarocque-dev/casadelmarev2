@@ -1,4 +1,4 @@
-import { Poppins } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import Image from 'next/image';
 
 import BedroomsSection from '@/app/components/BedroomsSection';
@@ -15,9 +15,9 @@ import {
   restaurants,
 } from '@/lib/propertyData';
 
-const poppins = Poppins({
+const inter = Inter({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['400', '500', '600', '700'],
 });
 
 const galleryImages = [
@@ -57,7 +57,7 @@ const faqItems = [
   },
   {
     question: 'Does the property have water access?',
-    answer: 'Yes. Casa Del Mare has direct intercoastal waterway access with a private dock.',
+    answer: 'Yes. Casa Del Mare has direct Intracoastal Waterway access with a private dock.',
   },
   {
     question: 'Where is Casa Del Mare located?',
@@ -264,7 +264,7 @@ export default function CasaDelMareVariantB() {
     })),
     containsPlace: [
       { '@type': 'Place', name: 'Cherry Grove Beach Access' },
-      { '@type': 'Place', name: 'Intercoastal Waterway Dock' },
+      { '@type': 'Place', name: 'Intracoastal Waterway Dock' },
     ],
   };
   const faqSchema = {
@@ -281,7 +281,7 @@ export default function CasaDelMareVariantB() {
   };
 
   return (
-    <div className={`${poppins.className} min-h-screen bg-[#f7f4ee] text-slate-800`}>
+    <div className={`${inter.className} min-h-screen bg-[#f7f4ee] text-slate-800`}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(vacationRentalSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
@@ -313,7 +313,7 @@ export default function CasaDelMareVariantB() {
             </a>
           </div>
 
-          <MobileMenu links={mobileNavLinks} />
+          <MobileMenu links={mobileNavLinks} panelClassName={inter.className} linkClassName={inter.className} />
         </nav>
       </header>
 
@@ -574,7 +574,7 @@ export default function CasaDelMareVariantB() {
           <div>
             <h3 className="text-2xl font-semibold text-slate-900">Casa Del Mare</h3>
             <p className="mt-4 max-w-sm text-sm leading-7 text-slate-600">
-              Contemporary coastal styling paired with the same Casa Del Mare experience and content structure.
+              A contemporary North Myrtle Beach waterfront vacation rental with dock access, beach proximity, and room for 14 guests.
             </p>
           </div>
           <div>

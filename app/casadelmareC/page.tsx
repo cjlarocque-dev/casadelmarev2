@@ -1,4 +1,4 @@
-import { Cormorant_Garamond, Inter } from 'next/font/google';
+import { Lato, Playfair_Display } from 'next/font/google';
 import Image from 'next/image';
 
 import BedroomsSection from '@/app/components/BedroomsSection';
@@ -15,14 +15,14 @@ import {
   restaurants,
 } from '@/lib/propertyData';
 
-const headlineFont = Cormorant_Garamond({
+const headlineFont = Playfair_Display({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
 });
 
-const bodyFont = Inter({
+const bodyFont = Lato({
   subsets: ['latin'],
-  weight: ['400', '500', '600'],
+  weight: ['400', '700'],
 });
 
 const galleryImages = [
@@ -62,7 +62,7 @@ const faqItems = [
   },
   {
     question: 'Does the property have water access?',
-    answer: 'Yes. Casa Del Mare has direct intercoastal waterway access with a private dock.',
+    answer: 'Yes. Casa Del Mare has direct Intracoastal Waterway access with a private dock.',
   },
   {
     question: 'Where is Casa Del Mare located?',
@@ -269,7 +269,7 @@ export default function CasaDelMareVariantC() {
     })),
     containsPlace: [
       { '@type': 'Place', name: 'Cherry Grove Beach Access' },
-      { '@type': 'Place', name: 'Intercoastal Waterway Dock' },
+      { '@type': 'Place', name: 'Intracoastal Waterway Dock' },
     ],
   };
   const faqSchema = {
@@ -318,7 +318,7 @@ export default function CasaDelMareVariantC() {
             </a>
           </div>
 
-          <MobileMenu links={mobileNavLinks} />
+          <MobileMenu links={mobileNavLinks} panelClassName={bodyFont.className} linkClassName={bodyFont.className} />
         </nav>
       </header>
 
@@ -358,7 +358,7 @@ export default function CasaDelMareVariantC() {
                   { label: 'Beach Distance', value: property.beachDistance },
                 ].map((stat) => (
                   <div key={stat.label} className="border-l-2 border-[#eedccd] pl-4">
-                    <p className="text-3xl">{stat.value}</p>
+                    <p className={`${headlineFont.className} text-3xl`}>{stat.value}</p>
                     <p className="mt-1 text-sm uppercase tracking-[0.18em] text-white/78">{stat.label}</p>
                   </div>
                 ))}
@@ -453,6 +453,8 @@ export default function CasaDelMareVariantC() {
         imageAlts={featureSections.kitchen.imageAlts}
         bgColor={featureSections.kitchen.bgColor}
         accentColor={featureSections.kitchen.accentColor}
+        headlineClassName={headlineFont.className}
+        bodyClassName={bodyFont.className}
       />
 
       <BedroomsSection
@@ -464,6 +466,8 @@ export default function CasaDelMareVariantC() {
         imageAlts={featureSections.bedrooms.imageAlts}
         bgColor={featureSections.bedrooms.bgColor}
         accentColor={featureSections.bedrooms.accentColor}
+        headlineClassName={headlineFont.className}
+        bodyClassName={bodyFont.className}
       />
 
       <BedroomsSection
@@ -475,6 +479,8 @@ export default function CasaDelMareVariantC() {
         imageAlts={featureSections.outdoor.imageAlts}
         bgColor={featureSections.outdoor.bgColor}
         accentColor={featureSections.outdoor.accentColor}
+        headlineClassName={headlineFont.className}
+        bodyClassName={bodyFont.className}
       />
 
       <BedroomsSection
@@ -486,6 +492,8 @@ export default function CasaDelMareVariantC() {
         imageAlts={featureSections.indoor.imageAlts}
         bgColor={featureSections.indoor.bgColor}
         accentColor={featureSections.indoor.accentColor}
+        headlineClassName={headlineFont.className}
+        bodyClassName={bodyFont.className}
       />
 
       <section id="host-story" className="px-6 py-28 md:py-32">
@@ -526,7 +534,7 @@ export default function CasaDelMareVariantC() {
                 <div className="mt-7 grid gap-5">
                   {group.items.map((item) => (
                     <div key={item.name} className="rounded-[1.4rem] border border-white/60 bg-white/70 p-5">
-                      <h4 className="text-lg font-medium text-[#395066]">{item.name}</h4>
+                      <h4 className={`${headlineFont.className} text-lg font-medium text-[#395066]`}>{item.name}</h4>
                       <p className="mt-2 text-sm leading-7 text-slate-600">{item.description}</p>
                     </div>
                   ))}
@@ -582,11 +590,11 @@ export default function CasaDelMareVariantC() {
           <div>
             <h3 className={`${headlineFont.className} text-3xl text-[#395066]`}>Casa Del Mare</h3>
             <p className="mt-4 max-w-sm text-sm leading-7 text-slate-600">
-              A warmer editorial interpretation of the same Casa Del Mare property content and booking experience.
+              A warm waterfront vacation rental in North Myrtle Beach with private dock access, beach proximity, and generous gathering space.
             </p>
           </div>
           <div>
-            <h4 className="text-sm uppercase tracking-[0.22em] text-[#b46e53]">Browse Variants</h4>
+            <h4 className={`${headlineFont.className} text-sm uppercase tracking-[0.22em] text-[#b46e53]`}>Browse Variants</h4>
             <ul className="mt-4 space-y-3 text-sm text-slate-600">
               <li><a href="/casadelmareA" className="hover:text-[#395066]">Variant A · Editorial Luxury</a></li>
               <li><a href="/casadelmareB" className="hover:text-[#395066]">Variant B · Contemporary Minimal</a></li>
@@ -594,7 +602,7 @@ export default function CasaDelMareVariantC() {
             </ul>
           </div>
           <div>
-            <h4 className="text-sm uppercase tracking-[0.22em] text-[#b46e53]">Contact</h4>
+            <h4 className={`${headlineFont.className} text-sm uppercase tracking-[0.22em] text-[#b46e53]`}>Contact</h4>
             <p className="mt-4 text-sm leading-7 text-slate-600">{property.address}</p>
             <a href={`mailto:${property.email}`} className="text-sm leading-7 text-slate-600 hover:text-[#395066]">
               {property.email}
