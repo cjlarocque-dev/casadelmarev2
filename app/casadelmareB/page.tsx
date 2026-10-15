@@ -445,6 +445,8 @@ export default function CasaDelMareVariantB() {
         imageAlts={featureSections.kitchen.imageAlts}
         bgColor={featureSections.kitchen.bgColor}
         accentColor={featureSections.kitchen.accentColor}
+        headlineClassName={inter.className}
+        bodyClassName={inter.className}
       />
 
       <BedroomsSection
@@ -456,6 +458,8 @@ export default function CasaDelMareVariantB() {
         imageAlts={featureSections.bedrooms.imageAlts}
         bgColor={featureSections.bedrooms.bgColor}
         accentColor={featureSections.bedrooms.accentColor}
+        headlineClassName={inter.className}
+        bodyClassName={inter.className}
       />
 
       <BedroomsSection
@@ -467,6 +471,8 @@ export default function CasaDelMareVariantB() {
         imageAlts={featureSections.outdoor.imageAlts}
         bgColor={featureSections.outdoor.bgColor}
         accentColor={featureSections.outdoor.accentColor}
+        headlineClassName={inter.className}
+        bodyClassName={inter.className}
       />
 
       <BedroomsSection
@@ -478,6 +484,8 @@ export default function CasaDelMareVariantB() {
         imageAlts={featureSections.indoor.imageAlts}
         bgColor={featureSections.indoor.bgColor}
         accentColor={featureSections.indoor.accentColor}
+        headlineClassName={inter.className}
+        bodyClassName={inter.className}
       />
 
       <section id="host-story" className="px-6 py-24 md:py-32">
