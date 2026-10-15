@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 interface MobileMenuLink {
@@ -9,19 +9,19 @@ interface MobileMenuLink {
   className?: string;
 }
 
-interface MobileMenuProps {
+export interface MobileMenuProps {
   links: MobileMenuLink[];
+  buttonClassName?: string;
+  panelClassName?: string;
+  linkClassName?: string;
 }
 
-export default function MobileMenu({ links }: MobileMenuProps) {
+export default function MobileMenu({ links, buttonClassName, panelClassName, linkClassName }: MobileMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
   const lastPointerToggleRef = useRef(0);
   const openedAtRef = useRef(0);
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  const portalRoot = typeof document === 'undefined' ? null : document.body;
 
   const handlePointerToggle = () => {
     const now = Date.now();
@@ -43,13 +43,13 @@ export default function MobileMenu({ links }: MobileMenuProps) {
       <button
         type="button"
         aria-label="Toggle menu"
-        className="text-white text-3xl hover:text-amber-200 transition"
+        className={`text-white text-3xl hover:text-amber-200 transition ${buttonClassName ?? ""}`}
         onPointerUp={handlePointerToggle}
       >
         ☰
       </button>
 
-      {isMounted &&
+      {portalRoot &&
         isOpen &&
         createPortal(
           <>
@@ -64,12 +64,12 @@ export default function MobileMenu({ links }: MobileMenuProps) {
                 setIsOpen(false);
               }}
             />
-            <div className="fixed left-4 right-4 top-[calc(env(safe-area-inset-top)+76px)] bg-blue-600 px-6 py-4 shadow-2xl rounded-lg z-[9999] md:hidden">
+            <div className={`fixed left-4 right-4 top-[calc(env(safe-area-inset-top)+76px)] bg-blue-600 px-6 py-4 shadow-2xl rounded-lg z-[9999] md:hidden ${panelClassName ?? ""}`}>
               {links.map((link) => (
                 <a
                   key={link.href + link.label}
                   href={link.href}
-                  className={`block py-3 text-white hover:text-amber-200 font-medium ${link.className ?? ''}`}
+                  className={`block py-3 text-white hover:text-amber-200 font-medium ${linkClassName ?? ''} ${link.className ?? ''}`}
                   onClick={() => setIsOpen(false)}
                 >
                   {link.label}
@@ -77,7 +77,7 @@ export default function MobileMenu({ links }: MobileMenuProps) {
               ))}
             </div>
           </>,
-          document.body
+          portalRoot
         )}
     </div>
   );

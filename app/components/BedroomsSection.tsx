@@ -8,7 +8,7 @@ interface RoomItem {
   description: string;
 }
 
-interface BedroomsSectionProps {
+export interface BedroomsSectionProps {
   sectionId?: string;
   title: string;
   description: string;
@@ -17,6 +17,8 @@ interface BedroomsSectionProps {
   imageAlts?: string[];
   bgColor?: string;
   accentColor?: string;
+  headlineClassName?: string;
+  bodyClassName?: string;
 }
 
 export default function BedroomsSection({
@@ -28,6 +30,8 @@ export default function BedroomsSection({
   imageAlts = [],
   bgColor = 'from-blue-50 to-blue-100',
   accentColor = 'text-blue-700',
+  headlineClassName = '',
+  bodyClassName = '',
 }: BedroomsSectionProps) {
   return (
     <section
@@ -40,10 +44,10 @@ export default function BedroomsSection({
           {/* LEFT: Title, Description, Room List */}
           <div className="flex flex-col gap-8">
             <div>
-              <h2 className={`text-4xl md:text-5xl font-bold ${accentColor} mb-6`}>
+              <h2 className={`${headlineClassName} text-4xl md:text-5xl font-bold ${accentColor} mb-6`}>
                 {title}
               </h2>
-              <p className="text-lg text-gray-700 leading-relaxed mb-8">
+              <p className={`${bodyClassName} text-lg text-gray-700 leading-relaxed mb-8`}>
                 {description}
               </p>
             </div>
@@ -56,10 +60,10 @@ export default function BedroomsSection({
                     {room.icon}
                   </div>
                   <div>
-                    <h3 className={`text-xl font-bold ${accentColor} mb-1`}>
+                    <h3 className={`${headlineClassName} text-xl font-bold ${accentColor} mb-1`}>
                       {room.title}
                     </h3>
-                    <p className="text-gray-600">{room.description}</p>
+                    <p className={`${bodyClassName} text-gray-600`}>{room.description}</p>
                   </div>
                 </div>
               ))}
@@ -91,13 +95,13 @@ export default function BedroomsSection({
           </div>
         </div>
 
-        <p className="mt-10 text-center text-gray-700 text-base md:text-lg">
+        <p className={`${bodyClassName} mt-10 text-center text-gray-700 text-base md:text-lg`}>
           Ready to plan your stay?{' '}
-          <a href="/casadelmare/availability" className={`${accentColor} font-semibold underline underline-offset-4`}>
+          <a href="/casadelmare/availability" className={`${bodyClassName} ${accentColor} font-semibold underline underline-offset-4`}>
             Check availability
           </a>{' '}
           or{' '}
-          <a href="/casadelmare/book-now" className={`${accentColor} font-semibold underline underline-offset-4`}>
+          <a href="/casadelmare/book-now" className={`${bodyClassName} ${accentColor} font-semibold underline underline-offset-4`}>
             book direct
           </a>
           .
