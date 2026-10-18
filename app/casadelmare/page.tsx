@@ -2,7 +2,7 @@ import { Lato, Playfair_Display } from 'next/font/google';
 import Image from 'next/image';
 
 import BedroomsSection from '@/app/components/BedroomsSection';
-import HotDealModal from '@/app/components/HotDealModal';
+import { DiscountModalProvider } from '@/app/components/DiscountModalProvider';
 import ImageGallery from '@/app/components/ImageGallery';
 import MobileMenu from '@/app/components/MobileMenu';
 import {
@@ -310,18 +310,9 @@ export default function Home() {
     })),
   };
 
-  const discountModalEnabled =
-    process.env.NEXT_PUBLIC_DISCOUNT_MODAL_ENABLED === 'true';
-  const discountCode = process.env.NEXT_PUBLIC_DISCOUNT_CODE || '10OFF-Fall2026';
-
   return (
     <div className={`${bodyFont.className} min-h-screen bg-[#f7f4ef] text-slate-800`}>
-      <HotDealModal
-        enabled={discountModalEnabled}
-        title="Fall Special: 10% Off"
-        description="Book your coastal escape now and save 10% on your stay at Casa Del Mare. Limited time offer!"
-        promoCode={discountCode}
-      />
+      <DiscountModalProvider />
 
       <script
         type="application/ld+json"
