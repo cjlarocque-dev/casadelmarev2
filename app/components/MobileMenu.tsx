@@ -43,7 +43,7 @@ export default function MobileMenu({ links, buttonClassName, panelClassName, lin
       <button
         type="button"
         aria-label="Toggle menu"
-        className={`text-white text-3xl hover:text-amber-200 transition ${buttonClassName ?? ""}`}
+        className={`text-[#395066] text-3xl hover:text-[#b46e53] transition ${buttonClassName ?? ""}`}
         onPointerUp={handlePointerToggle}
       >
         ☰
@@ -64,7 +64,7 @@ export default function MobileMenu({ links, buttonClassName, panelClassName, lin
                 setIsOpen(false);
               }}
             />
-            <div className={`fixed left-4 right-4 top-[calc(env(safe-area-inset-top)+76px)] bg-blue-600 px-6 py-4 shadow-2xl rounded-lg z-[9999] md:hidden ${panelClassName ?? ""}`}>
+            <div className={`fixed left-4 right-4 top-[calc(env(safe-area-inset-top)+76px)] bg-[#395066] px-6 py-4 shadow-2xl rounded-lg z-[9999] md:hidden ${panelClassName ?? ""}`}>
               {links.map((link) => (
                 <a
                   key={link.href + link.label}
