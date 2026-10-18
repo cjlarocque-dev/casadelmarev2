@@ -18,11 +18,10 @@ export default function HotDealModal({
   description,
   promoCode,
   dismissible = true,
-  showDelay = 2000,
+  showDelay = 800,
 }: HotDealModalProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [hasBeenDismissed, setHasBeenDismissed] = useState(false);
-  const navigationTimeoutRef = useRef<NodeJS.Timeout>();
   const showTimeoutRef = useRef<NodeJS.Timeout>();
   const portalRoot = typeof document === 'undefined' ? null : document.body;
 
@@ -31,52 +30,20 @@ export default function HotDealModal({
       return;
     }
 
-    const resetNavigationTimer = () => {
-      if (navigationTimeoutRef.current) {
-        clearTimeout(navigationTimeoutRef.current);
-      }
-
-      navigationTimeoutRef.current = setTimeout(() => {
-        if (!isVisible && !hasBeenDismissed) {
-          if (showTimeoutRef.current) {
-            clearTimeout(showTimeoutRef.current);
-          }
-          showTimeoutRef.current = setTimeout(() => {
-            setIsVisible(true);
-          }, showDelay);
-        }
-      }, 1000);
-    };
-
-    const handleScroll = resetNavigationTimer;
-    const handleMouseMove = resetNavigationTimer;
-    const handleKeyPress = resetNavigationTimer;
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('mousemove', handleMouseMove, { passive: true });
-    window.addEventListener('keydown', handleKeyPress, { passive: true });
-
-    resetNavigationTimer();
+    showTimeoutRef.current = setTimeout(() => {
+      setIsVisible(true);
+    }, showDelay);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('keydown', handleKeyPress);
-      if (navigationTimeoutRef.current) {
-        clearTimeout(navigationTimeoutRef.current);
-      }
       if (showTimeoutRef.current) {
         clearTimeout(showTimeoutRef.current);
       }
     };
-  }, [enabled, hasBeenDismissed, isVisible, showDelay]);
+  }, [enabled, hasBeenDismissed, showDelay]);
 
   const handleDismiss = () => {
     setIsVisible(false);
     setHasBeenDismissed(true);
-    if (navigationTimeoutRef.current) {
-      clearTimeout(navigationTimeoutRef.current);
-    }
     if (showTimeoutRef.current) {
       clearTimeout(showTimeoutRef.current);
     }
