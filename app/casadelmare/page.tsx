@@ -310,13 +310,17 @@ export default function Home() {
     })),
   };
 
+  const discountModalEnabled =
+    process.env.NEXT_PUBLIC_DISCOUNT_MODAL_ENABLED === 'true';
+  const discountCode = process.env.NEXT_PUBLIC_DISCOUNT_CODE || '10OFF-Fall2026';
+
   return (
     <div className={`${bodyFont.className} min-h-screen bg-[#f7f4ef] text-slate-800`}>
       <HotDealModal
-        enabled={true}
+        enabled={discountModalEnabled}
         title="Fall Special: 10% Off"
         description="Book your coastal escape now and save 10% on your stay at Casa Del Mare. Limited time offer!"
-        promoCode="10OFF-Fall2026"
+        promoCode={discountCode}
       />
 
       <script
