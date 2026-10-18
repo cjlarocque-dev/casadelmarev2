@@ -8,12 +8,13 @@ import { property } from '@/lib/propertyData';
 
 const headlineFont = Playfair_Display({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  display: 'swap',
 });
 
 const bodyFont = Lato({
   subsets: ['latin'],
   weight: ['400', '700'],
+  display: 'swap',
 });
 
 const navLinks = [

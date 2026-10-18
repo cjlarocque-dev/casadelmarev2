@@ -1,8 +1,8 @@
 // Casa Del Mare Property Data - Updated from original site
 export const property = {
   name: 'Casa Del Mare',
-  tagline: 'A Raised Beach House Getaway on Intercoastal Waters',
-  description: 'Casa Del Mare is your ultimate beach escape, perfectly positioned less than a 5-minute walk from the pristine sands of Cherry Grove Beach in North Myrtle Beach. This spacious 5-bedroom, 3-bathroom home comfortably sleeps 14 guests, making it ideal for large families and groups seeking a relaxing, quiet getaway. Designed with family fun in mind, the property features a game room for indoor entertainment, a soothing hot tub perfect for unwinding after beach days, and expansive outdoor living spaces including a large back deck with a gas grill for unforgettable meals with waterfront channel views. An outdoor seating area complete with TV allows you to enjoy entertainment with gentle breezes, while every corner of the home encourages connection and relaxation.',
+  tagline: 'A Raised Beach House Getaway on the Intracoastal Waterway',
+  description: 'Casa Del Mare is a spacious North Myrtle Beach beach-house retreat, located less than a 5-minute walk from the sands of Cherry Grove Beach. This 5-bedroom, 3-bathroom home sleeps up to 14 guests, making it ideal for large families and groups seeking a relaxed coastal getaway. Designed for connection and comfort, the home includes a game room for indoor entertainment, a private hot tub for post-beach evenings, and expansive outdoor living spaces, including a large back deck with a gas grill and waterfront channel views. An outdoor seating area with a TV lets you enjoy the breeze while staying connected, and every corner of the home is designed to make gathering easy.',
   bedrooms: 5,
   bathrooms: 3,
   maxGuests: 14,
@@ -38,12 +38,12 @@ export const amenities = [
   {
     icon: '🏖️',
     title: 'Beach Access',
-    description: 'Less than 5 minutes walk to Cherry Grove Beach in North Myrtle Beach.',
+    description: 'Less than a 5-minute walk to Cherry Grove Beach in North Myrtle Beach.',
   },
   {
     icon: '🍖',
     title: 'Outdoor Dining',
-    description: 'Large back deck with gas grill for memorable meals overlooking the intercoastal channel.',
+    description: 'Large back deck with gas grill for memorable meals overlooking the waterfront channel.',
   },
   {
     icon: '📺',
@@ -53,7 +53,7 @@ export const amenities = [
   {
     icon: '🚤',
     title: 'Water Access',
-    description: 'Direct access to intercoastal waterway with dock for boats and water activities.',
+    description: 'Direct access to the Intracoastal Waterway with a private dock for boating and water activities.',
   },
   {
     icon: '✨',
@@ -63,11 +63,11 @@ export const amenities = [
 ];
 
 export const hostStory = [
-  'Welcome to Casa del Mare — "House by the Sea." Inspired by our Italian heritage and love for the ocean, our home reflects what matters most to us: family, connection, and time spent together.',
+  'Welcome to Casa Del Mare — "House by the Sea." Inspired by our Italian heritage and love for the ocean, our home reflects what matters most to us: family, connection, and time spent together.',
   'We grew up surrounded by shared meals, laughter, and strong family values, and those traditions continue to shape who we are today. Family vacations have always been a special time for us to slow down, reconnect, and enjoy life\'s simple moments.',
-  'Casa del Mare is our way of sharing that experience — a place to relax, unwind, and create lasting memories in North Myrtle Beach.',
+  'Casa Del Mare is our way of sharing that experience — a place to relax, unwind, and create lasting memories in North Myrtle Beach.',
   'While professionally managed by Vacasa for a seamless stay, the heart of this home comes from our family.',
-  'We\'re so glad you\'re here and hope your time at Casa del Mare is truly special.',
+  'We\'re so glad you\'re here and hope your time at Casa Del Mare is truly special.',
 ];
 
 export const gallery = [
