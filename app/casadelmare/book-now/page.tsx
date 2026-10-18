@@ -1,16 +1,51 @@
 'use client';
 
+import { Lato, Playfair_Display } from 'next/font/google';
 import { useEffect, useRef } from 'react';
+
 import MobileMenu from '@/app/components/MobileMenu';
 import { property } from '@/lib/propertyData';
+
+const headlineFont = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+});
+
+const bodyFont = Lato({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+});
+
+const navLinks = [
+  { href: '/casadelmare', label: 'Home' },
+  { href: '/casadelmare/facts', label: 'Property Facts' },
+  { href: '/casadelmare/availability', label: 'Availability' },
+  { href: '/casadelmare/book-now', label: 'Book Now', className: 'text-[#eedccd]' },
+];
+
+const featureCards = [
+  {
+    icon: '🏠',
+    title: '5 Bedrooms',
+    description: 'Sleeps up to 14 guests comfortably for easy family getaways.',
+  },
+  {
+    icon: '🌊',
+    title: 'Waterfront',
+    description: 'Private dock access, marsh views, and a warm coastal setting.',
+  },
+  {
+    icon: '🏖️',
+    title: 'Beach Access',
+    description: 'Less than 5 minutes to Cherry Grove Beach and the Atlantic shoreline.',
+  },
+];
 
 export default function BookNowPage() {
   const ownerRezContainerRef = useRef<HTMLDivElement>(null);
   const lastTrackedRef = useRef<{ key: string; timestamp: number }>({ key: '', timestamp: 0 });
 
-  // Load OwnerRez widget after component mounts (only once via window check)
   useEffect(() => {
-    // Only add script if not already loaded
     if ((window as any).OwnerRezWidgets) {
       (window as any).OwnerRezWidgets.loadWidgets();
       return;
@@ -138,90 +173,202 @@ export default function BookNowPage() {
   }, []);
 
   return (
-    <div className="min-h-screen" style={{
-      backgroundImage: 'url(/pictures/general/05-sunset.jpg)',
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-    }}>
-      {/* Shade Overlay */}
-      <div className="fixed inset-0 bg-black/40 pointer-events-none"></div>
-
-      {/* Sticky Navigation - changed from fixed to sticky for iOS stability */}
-      <header className="wave-header sticky top-0 w-full z-[120] shadow-2xl md:fixed isolate">
-        <nav className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center relative z-10">
-          <a href="/casadelmare" className="text-3xl font-bold text-white tracking-tight hover:text-amber-200 transition">
+    <div className={`${bodyFont.className} min-h-screen bg-[#f7f4ef] text-slate-800`}>
+      <header className="sticky top-0 z-[120] border-b border-[#d7dfe6]/60 bg-[#f7f4ef]/90 backdrop-blur-xl">
+        <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
+          <a href="/casadelmare" className={`${headlineFont.className} text-3xl text-[#395066]`}>
             Casa Del Mare
           </a>
-          
-          {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <a href="/casadelmare" className="text-white hover:text-amber-200 transition duration-300 font-medium">
-              ← Back to Home
+
+          <ul className="hidden items-center gap-6 text-sm uppercase tracking-[0.18em] text-slate-600 md:flex">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <a href={link.href} className={`${link.className ?? ''} transition hover:text-[#b46e53]`}>
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          <div className="hidden items-center gap-3 md:flex">
+            <a
+              href="/casadelmare/availability"
+              className="rounded-full border border-[#cfd7df] px-4 py-2 text-xs uppercase tracking-[0.18em] text-slate-600 transition hover:border-[#395066] hover:text-[#395066]"
+            >
+              Check Dates
+            </a>
+            <a
+              href="/casadelmare/book-now"
+              className="rounded-full bg-[#b46e53] px-4 py-2 text-xs uppercase tracking-[0.18em] text-white transition hover:bg-[#9e5f47]"
+            >
+              Book Now
             </a>
           </div>
 
           <MobileMenu
-            links={[
-              { href: '/casadelmare', label: '← Back to Home' },
-            ]}
+            links={navLinks}
+            buttonClassName="text-[#395066] hover:text-[#b46e53]"
+            panelClassName={`${bodyFont.className} bg-[#395066] text-white`}
+            linkClassName={`${bodyFont.className} text-sm uppercase tracking-[0.18em]`}
           />
         </nav>
       </header>
 
-      {/* Booking Section */}
-      <section className="pt-32 pb-20 px-4 md:px-8 relative z-10">
-        <div className="max-w-4xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-16">
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">Book Your Stay</h1>
-            <p className="text-xl text-white/90 max-w-2xl mx-auto drop-shadow-md">
-              Reserve Casa Del Mare for your next beach getaway. Check availability and book securely below.
+      <main>
+        <section
+          className="relative overflow-hidden"
+          style={{
+            backgroundImage: 'url(/pictures/general/05-sunset.jpg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-[#233240]/82 via-[#395066]/56 to-[#b46e53]/34" />
+          <div className="relative mx-auto max-w-7xl px-6 py-24 md:py-32">
+            <div className="max-w-3xl text-white">
+              <p className="text-sm uppercase tracking-[0.35em] text-[#eedccd]">
+                Direct Booking · Secure Inquiry
+              </p>
+              <h1 className={`${headlineFont.className} mt-5 text-5xl leading-tight md:text-7xl`}>
+                Book Your Stay
+              </h1>
+              <p className="mt-6 text-xl leading-relaxed text-white/90 md:text-2xl">
+                Reserve Casa Del Mare for your next beach getaway with a direct booking experience
+                designed to feel warm, simple, and secure.
+              </p>
+              <p className="mt-5 text-base leading-7 text-white/85 md:text-lg">
+                Need dates first?{' '}
+                <a
+                  href="/casadelmare/availability"
+                  className="underline underline-offset-4 transition hover:text-[#eedccd]"
+                >
+                  Check current vacation rental availability
+                </a>
+                .
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="px-4 py-16 md:px-8 md:py-24">
+          <div className="mx-auto max-w-5xl">
+            <div
+              ref={ownerRezContainerRef}
+              className="rounded-[2rem] border border-[#d7dfe6] bg-white/95 p-8 shadow-[0_24px_60px_rgba(57,80,102,0.14)] backdrop-blur-sm md:p-12"
+            >
+              <div className="mb-8 text-center">
+                <p className="text-sm uppercase tracking-[0.3em] text-[#b46e53]">Reservation Form</p>
+                <h2 className={`${headlineFont.className} mt-3 text-4xl text-[#395066] md:text-5xl`}>
+                  Secure your coastal dates
+                </h2>
+                <p className="mx-auto mt-4 max-w-2xl text-lg leading-8 text-slate-600">
+                  Submit your booking or inquiry directly through the OwnerRez widget below. All
+                  reservation functionality stays exactly the same, now wrapped in the Version C
+                  presentation.
+                </p>
+              </div>
+
+              <div className="rounded-[1.5rem] border border-[#eadfd5] bg-[#fcf8f3] p-4 md:p-6">
+                <div
+                  className="ownerrez-widget"
+                  data-propertyId="934d8c678417484ea626901fabf33f9a"
+                  data-widget-type="Booking/Inquiry"
+                  data-widgetId="c6ca2a8f9c92439b9b5b040d41cd25df"
+                />
+              </div>
+            </div>
+
+            <div className="mt-12 grid gap-6 md:grid-cols-3">
+              {featureCards.map((card) => (
+                <div
+                  key={card.title}
+                  className="rounded-[1.75rem] border border-[#e8ddd4] bg-[#fbf5ed] p-8 text-center shadow-[0_18px_44px_rgba(180,110,83,0.12)]"
+                >
+                  <div className="text-4xl">{card.icon}</div>
+                  <h3 className={`${headlineFont.className} mt-5 text-3xl text-[#395066]`}>
+                    {card.title}
+                  </h3>
+                  <p className="mt-3 text-base leading-7 text-slate-600">{card.description}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-12 rounded-[2rem] bg-[#395066] px-8 py-10 text-center text-white shadow-[0_18px_44px_rgba(57,80,102,0.28)]">
+              <p className="text-sm uppercase tracking-[0.35em] text-[#eedccd]">Questions Before Booking?</p>
+              <h2 className={`${headlineFont.className} mt-4 text-4xl md:text-5xl`}>
+                We&apos;re happy to help you plan
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-lg leading-8 text-white/85">
+                Reach out if you need help with dates, occupancy, or property details before
+                finalizing your reservation.
+              </p>
+              <div className="mt-8 flex flex-wrap justify-center gap-4">
+                <a
+                  href={`mailto:${property.email}`}
+                  className="rounded-full bg-[#f7f4ef] px-6 py-3 text-sm uppercase tracking-[0.22em] text-[#395066] transition hover:bg-white"
+                >
+                  Email the Host
+                </a>
+                <a
+                  href="/casadelmare/facts"
+                  className="rounded-full border border-white/50 px-6 py-3 text-sm uppercase tracking-[0.22em] text-white transition hover:border-[#eedccd] hover:text-[#eedccd]"
+                >
+                  View Property Facts
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer className="border-t border-[#d7dfe6] bg-[#f7f4ef] px-6 py-16">
+        <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-3">
+          <div>
+            <h3 className={`${headlineFont.className} text-3xl text-[#395066]`}>Casa Del Mare</h3>
+            <p className="mt-4 max-w-sm text-sm leading-7 text-slate-600">
+              Your perfect beach getaway in North Myrtle Beach, South Carolina.
             </p>
-            <p className="text-white/90 mt-4 text-base md:text-lg drop-shadow-md">
-              Need dates first?{' '}
-              <a href="/casadelmare/availability" className="underline hover:text-amber-200 transition">
-                Check current vacation rental availability
-              </a>.
-            </p>
-            <div className="w-24 h-1 bg-gradient-to-r from-amber-200 to-cyan-300 mx-auto mt-6 rounded-full shadow-lg"></div>
           </div>
 
-          {/* OwnerRez Booking Form Widget */}
-          <div
-            ref={ownerRezContainerRef}
-            className="bg-white/95 rounded-2xl shadow-2xl p-8 md:p-12 backdrop-blur-sm"
-          >
-            <div className="ownerrez-widget" data-propertyId="934d8c678417484ea626901fabf33f9a" data-widget-type="Booking/Inquiry" data-widgetId="c6ca2a8f9c92439b9b5b040d41cd25df"></div>
+          <div>
+            <h4 className={`${headlineFont.className} text-sm uppercase tracking-[0.22em] text-[#b46e53]`}>
+              Quick Links
+            </h4>
+            <ul className="mt-4 space-y-3 text-sm text-slate-600">
+              <li>
+                <a href="/casadelmare" className="transition hover:text-[#395066]">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="/casadelmare/facts" className="transition hover:text-[#395066]">
+                  Property Facts &amp; Guest Rules
+                </a>
+              </li>
+              <li>
+                <a href="/casadelmare/availability" className="transition hover:text-[#395066]">
+                  Check Availability
+                </a>
+              </li>
+            </ul>
           </div>
 
-          {/* Additional Info */}
-          <div className="mt-16 grid md:grid-cols-3 gap-8">
-            <div className="text-center bg-white/90 rounded-2xl p-8 backdrop-blur-sm shadow-xl">
-              <div className="text-4xl mb-4">🏠</div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">5 Bedrooms</h3>
-              <p className="text-gray-600">Sleeps up to 14 guests comfortably</p>
-            </div>
-            <div className="text-center bg-white/90 rounded-2xl p-8 backdrop-blur-sm shadow-xl">
-              <div className="text-4xl mb-4">🌊</div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">Waterfront</h3>
-              <p className="text-gray-600">Direct dock access and water views</p>
-            </div>
-            <div className="text-center bg-white/90 rounded-2xl p-8 backdrop-blur-sm shadow-xl">
-              <div className="text-4xl mb-4">🏖️</div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">Beach Access</h3>
-              <p className="text-gray-600">Less than 5 minutes to Cherry Grove Beach</p>
-            </div>
+          <div>
+            <h4 className={`${headlineFont.className} text-sm uppercase tracking-[0.22em] text-[#b46e53]`}>
+              Contact
+            </h4>
+            <p className="mt-4 text-sm leading-7 text-slate-600">{property.address}</p>
+            <a
+              href={`mailto:${property.email}`}
+              className="text-sm leading-7 text-slate-600 transition hover:text-[#395066]"
+            >
+              {property.email}
+            </a>
           </div>
         </div>
-      </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12 relative z-10">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <p className="mb-4">{property.name} • {property.address}</p>
-          <p className="text-gray-400 text-sm">
-            Questions? Email us at <a href={`mailto:${property.email}`} className="text-cyan-400 hover:underline">{property.email}</a>
-          </p>
+        <div className="mx-auto mt-12 max-w-7xl border-t border-[#d7dfe6] pt-8 text-center text-sm text-slate-500">
+          <p>&copy; 2026 Casa Del Mare. All rights reserved.</p>
         </div>
       </footer>
     </div>
