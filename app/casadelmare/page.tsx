@@ -788,7 +788,7 @@ export default function Home() {
         </div>
 
         <div className="mx-auto mt-12 max-w-7xl border-t border-[#d7dfe6] pt-8 text-center text-sm text-slate-500">
-          <p>&copy; 2026 Casa Del Mare. All rights reserved.</p>
+          <p>&copy; 2026 JCL Family Property Management, LLC. All rights reserved.</p>
         </div>
       </footer>
     </div>
