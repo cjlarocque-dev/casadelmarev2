@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Poppins } from "next/font/google";
+import UtmCapture from "./components/UtmCapture";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -65,7 +66,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
       </head>
-      <body className="min-h-full flex flex-col font-poppins">{children}</body>
+      <body className="min-h-full flex flex-col font-poppins">
+        <UtmCapture />
+        {children}
+      </body>
     </html>
   );
 }

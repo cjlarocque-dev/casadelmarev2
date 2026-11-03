@@ -5,6 +5,7 @@ import { useEffect, useRef } from 'react';
 
 import MobileMenu from '@/app/components/MobileMenu';
 import { property } from '@/lib/propertyData';
+import { getStoredUtmParams } from '@/lib/utm';
 
 const headlineFont = Playfair_Display({
   subsets: ['latin'],
@@ -93,6 +94,7 @@ export default function BookNowPage() {
           event_label: label,
           event_source: source,
           value: 1,
+          ...getStoredUtmParams(),
         });
       }
     };
