@@ -1,6 +1,42 @@
 User-agent: *
 Allow: /
 
+# Explicit allow rules for major search and AI crawlers (functionally
+# redundant with the wildcard rule above, but kept explicit so future
+# edits don't accidentally block them).
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
 Sitemap: https://www.familybeachtrips.com/sitemap.xml
 
 # AI / LLM-friendly summary of this site (not an official robots.txt directive,
