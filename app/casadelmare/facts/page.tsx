@@ -29,7 +29,7 @@ const sections = [
   {
     id: 'beach-water',
     title: 'How close is the beach, and what water access is included?',
-    answer: 'Cherry Grove Beach is less than a 5-minute walk away. The home also has a private dock on House Creek, a tidal waterway.',
+    answer: 'Casa Del Mare is less than a 5-minute walk from Cherry Grove Beach in North Myrtle Beach, SC, and includes a private dock on House Creek, a tidal waterway.',
     facts: [
       ['Beach access', 'Walk to Cherry Grove Beach in North Myrtle Beach.'],
       ['Private dock', 'House Creek dock access; tide heights limit boat access.'],
@@ -39,7 +39,7 @@ const sections = [
   {
     id: 'amenities',
     title: 'What amenities are available at the home?',
-    answer: 'The home includes a fully equipped kitchen, indoor recreation spaces, and outdoor areas for relaxing between beach trips.',
+    answer: 'Casa Del Mare includes a fully equipped kitchen, an indoor game room, a private hot tub, and a large back deck with a gas grill and waterway views.',
     facts: [
       ['Kitchen', 'Ceramic flat-top electric range, granite countertops, full-size refrigerator, and dishwasher.'],
       ['Indoor living', 'Living room, dining area, game room, high-speed WiFi, and laundry facilities.'],
@@ -49,7 +49,7 @@ const sections = [
   {
     id: 'parking-access',
     title: 'How much parking is available, and are stairs required?',
-    answer: 'Four parking spaces are available. Stairs are required to enter the home, and there is no elevator.',
+    answer: 'Casa Del Mare has four parking spaces. The home is accessed by stairs only, with no elevator.',
     facts: [
       ['Parking', 'Four parking spaces.'],
       ['Access', 'Stair access only; no elevator.'],
@@ -58,7 +58,7 @@ const sections = [
   {
     id: 'guest-rules',
     title: 'Are pets, smoking, or vaping allowed?',
-    answer: 'Pets are not allowed. Smoking and vaping are permitted outside only and are strictly prohibited inside.',
+    answer: 'Pets are not allowed at Casa Del Mare. Smoking and vaping are permitted outside only and are strictly prohibited indoors.',
     facts: [
       ['Pets', 'No pets.'],
       ['Smoking and vaping', 'Outside only; strictly prohibited indoors.'],
@@ -67,7 +67,7 @@ const sections = [
   {
     id: 'booking',
     title: 'What are the check-in times and minimum stay?',
-    answer: 'Check-in is at 4 p.m. and checkout is at 10 a.m., local North Myrtle Beach time. The minimum stay is two nights.',
+    answer: 'Check-in at Casa Del Mare is at 4 p.m. and checkout is at 10 a.m., North Myrtle Beach local time, with a two-night minimum stay.',
     facts: [
       ['Check-in', '4 p.m. Eastern Time.'],
       ['Checkout', '10 a.m. Eastern Time.'],

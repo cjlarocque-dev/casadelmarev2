@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.familybeachtrips.com/sitemap.xml
+
+# AI / LLM-friendly summary of this site (not an official robots.txt directive,
+# but provided for AI assistants and answer engines that look for it):
+# https://www.familybeachtrips.com/llms.txt
