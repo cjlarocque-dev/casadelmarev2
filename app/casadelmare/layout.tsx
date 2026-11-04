@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.familybeachtrips.com').replace(/\/$/, '');
 
 export const metadata: Metadata = {
-  title: 'Casa Del Mare | North Myrtle Beach Waterfront Vacation Rental',
+  title: { absolute: 'Casa Del Mare | North Myrtle Beach Waterfront Vacation Rental' },
   description:
     'Waterfront 5-bedroom North Myrtle Beach vacation rental with hot tub, dock access, and space for 14 guests near Cherry Grove Beach. Book direct.',
   alternates: {
